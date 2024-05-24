@@ -7,6 +7,68 @@
   pointer-events: none;
 }
 
+
+@media screen and (max-width: 768px) {
+  .contenedor-movil{
+      display: block;
+  }
+  .contenedor{  
+      display: none;    
+      position: inherit;
+      width: 100%;
+     
+  }
+  .frase-Imagen{
+      display: inline;
+      height: 40%;
+  }
+  .frase-session5{
+      padding:0px 40px 0px 40px;
+      margin-top: 0px; 
+      display: flex;
+      justify-content: center;
+      align-items: center;  
+      padding: 10px;  
+      min-height: 2rem;                   
+      font-size: 1.2rem;
+  }
+  .texto-session5{
+      padding: 5px;
+      margin-top: 0px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      font-size: 0.8rem;
+      padding: 10px 10px 0px;
+      
+  }
+  .imagen{
+      position: relative;
+  }
+  .contenedor-Imagen{
+    
+      padding: 0px;
+      padding: 0px;
+      position: absolute;
+      height: 13rem;        
+  }
+
+  .button-seccion5{       
+      margin-left: 0px;
+  }
+
+  .fila-texto{
+      height: 48vh;
+  }
+  .contenedorSeccion5{
+      height: 48vh;
+  }
+
+}
+
+/*FIN SESSION 5*/
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
