@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './App.css';
 import NavBar from './components/NavBar';
 import Home from './pages/Home';
 import Contacto from './pages/Contacto';
@@ -20,7 +19,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/contacto" element={<Contacto />} />
             <Route path="/nosotros" element={<Nosotros />} />
-            <Route path="*" element={<NotFound />} /> {/* Añade esta línea */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>
       </main>
