@@ -1,0 +1,60 @@
+.cards {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background-color: #FAF9F0;
+}
+
+.card {
+   margin: 0.8vw;
+   border-radius: 1%;
+   box-shadow: 3px 3px 3px rgba(0,0,0,0.3);
+   min-width: 200px;
+   max-width: 18vw;
+   background-color: #E9E0B4;
+}
+
+.card img {
+    width: 100%;
+}
+
+.cardContenido {
+    padding: 1.5vh;
+}
+.cardTitulo {
+    font-weight: 800;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.cardDescripcion {
+    text-align: justify;
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.cardPie {
+    display: flex;
+    justify-content: space-between;
+    padding: 1vh;
+    font-size: 0.8rem;
+}
+
+.cardPieOferta {
+    padding: 0.5rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.cardPieBoton {
+    text-decoration: none;
+    text-align: center;
+    background-color: #E6260C;
+    color: white;
+    width: fit-content;
+    padding: 0.5rem;
+    box-shadow: 3px 3px 8px black;
+}
+
+
