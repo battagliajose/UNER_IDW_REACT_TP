@@ -6,6 +6,7 @@ import testimonio2 from '../assets/nosotros/Testimonio2.jpg';
 import testimonio3 from '../assets/nosotros/Testimonio3.jpg';
 import testimonio4 from '../assets/nosotros/Testimonio4.jpg';
 import testimonio6 from '../assets/nosotros/Testimonio6.jpg';
+import Testimonio from "../components/Testimonio";
 
 
 function Nosotros(props){
@@ -64,26 +65,11 @@ function Nosotros(props){
             <section className="containerNos"> 
                 <h2>TESTIMONIOS</h2> {/*<!-- Subtítulo -->*/}
                 <div className="comentarios">
-                    <div className="comentario">
-                        <img className="fotoTestimonio" src={testimonio1} alt="fotoTestimonio" />
-                        <p>"¡Excelente servicio! Nos alojamos en una hermosa casa en Italia gracias a <span className="resaltado">HotelFlix</span>. ¡Altamente recomendado!"<br /><br /><span className="resaltado">- Juan Pérez -</span></p>
-                    </div>
-                    <div className="comentario">
-                        <img className="fotoTestimonio" src={testimonio3} alt="fotoTestimonio" />
-                        <p>"Reservé un departamento en Río de Janeiro y fue una experiencia maravillosa. Sin duda volveré a utilizar <span className="resaltado">HotelFlix</span> en mis próximos viajes."<br /><br /><span className="resaltado">- María González -</span></p>
-                    </div>
-                    <div className="comentario">
-                        <img className="fotoTestimonio" src={testimonio4} alt="fotoTestimonio" />
-                        <p>"Gracias a <span className="resaltado">HotelFlix</span> pude encontrar un alojamiento perfecto para mis vacaciones en Argentina. ¡Increíble servicio!"<br /><br /><span className="resaltado">- Roberto Fernández-</span></p>
-                    </div>
-                    <div className="comentario">
-                        <img className="fotoTestimonio" src={testimonio2} alt="fotoTestimonio" />
-                        <p>"Excelente plataforma para buscar alojamiento. Encontré un hotel en Barcelona con una ubicación perfecta y a un precio increíble. ¡Muy recomendable!"<br /><br /><span className="resaltado">- Ana López-</span></p>
-                    </div>
-                    <div className="comentario">
-                        <img className="fotoTestimonio" src={testimonio6} alt="fotoTestimonio" />
-                        <p>"<span className="resaltado">HotelFlix</span> me salvó en mi último viaje de negocios. Encontré un departamento en Miami con todas las comodidades que necesitaba. ¡Volveré a usarlo!"<br /><br /><span className="resaltado">-Carlos Rodríguez-</span></p>
-                    </div>
+                    <Testimonio imagen={testimonio1} leyenda="¡Excelente servicio! Nos alojamos en una hermosa casa en Italia gracias a HotelFlix. ¡Altamente recomendado!" nombre="Juan Pérez"/>
+                    <Testimonio imagen={testimonio3} leyenda="Reservé un departamento en Río de Janeiro y fue una experiencia maravillosa. Sin duda volveré a utilizar HotelFlix en mis próximos viajes." nombre="María González"/>
+                    <Testimonio imagen={testimonio4} leyenda="Gracias a HotelFlix pude encontrar un alojamiento perfecto para mis vacaciones en Argentina. ¡Increíble servicio!" nombre="Roberto Fernández"/>
+                    <Testimonio imagen={testimonio2} leyenda="Excelente plataforma para buscar alojamiento. Encontré un hotel en Barcelona con una ubicación perfecta y a un precio increíble. ¡Muy recomendable!" nombre="Ana López"/>
+                    <Testimonio imagen={testimonio6} leyenda="HotelFlix me salvó en mi último viaje de negocios. Encontré un departamento en Miami con todas las comodidades que necesitaba. ¡Volveré a usarlo!" nombre="Carlos Rodríguez"/>
                 </div>
             </section>
         </div>
