@@ -1,0 +1,114 @@
+.contenedorSeccion5{
+    width: 100%;
+    height: 60vh;
+}
+.fila-texto{
+    height:35vh;
+    position: relative;
+    background-color: #242430;
+}
+.imagen{
+    position: absolute;
+    width: 100%;
+    height: 100%; 
+    object-fit: cover;
+}
+.contenedor-Imagen{         
+    object-fit: cover;
+}
+.contenedor{
+    position: relative;
+    width: 80%;
+    top: -5rem;
+    left: 15%;
+    height: 30vh;
+    max-width: 64%
+}
+.frase-session5{
+    color: white;
+   font-size: 2rem;
+   margin-top: 4rem;
+   text-align: center;
+}
+.button-seccion5{
+    float:left;
+    color: white;
+    background-color:#E6260C ;
+    padding: 10px;
+    margin-left: 10px;
+}
+.contenedor-button{
+    margin-top: 10px;
+}
+
+.texto-session5{
+color:white;
+font-size: 1.0rem;
+margin-top: 4rem;
+margin-bottom: 40px;
+}
+.frase-Imagen{
+    display: none;
+}
+.contenedor-movil{
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .contenedor-movil{
+        display: block;
+    }
+    .contenedor{  
+        display: none;    
+        position: inherit;
+        width: 100%;
+       
+    }
+    .frase-Imagen{
+        display: inline;
+        height: 40%;
+    }
+    .frase-session5{
+        padding:0px 40px 0px 40px;
+        margin-top: 0px; 
+        display: flex;
+        justify-content: center;
+        align-items: center;  
+        padding: 10px;  
+        min-height: 2rem;                   
+        font-size: 1.2rem;
+    }
+    .texto-session5{
+        padding: 5px;
+        margin-top: 0px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        font-size: 0.8rem;
+        padding: 10px 10px 0px;
+        
+    }
+    .imagen{
+        position: relative;
+    }
+    .contenedor-Imagen{
+        padding: 0px;
+        padding: 0px;
+        position: absolute;
+        height: 13rem;        
+    }
+
+    .button-seccion5{       
+        margin-left: 0px;
+    }
+
+    .fila-texto{
+        height: 48vh;
+    }
+    .contenedorSeccion5{
+        height: 48vh;
+    }
+ 
+  }
