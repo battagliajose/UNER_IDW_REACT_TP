@@ -1,7 +1,7 @@
-div {
+.notfound {
     width: 100%;
     text-align: center;
 }
-img {
+.notfound img {
     margin: 0 auto;
 }
