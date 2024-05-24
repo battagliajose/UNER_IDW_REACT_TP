@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"; 
 import apartmentImage from '../assets/tarjetas/apartment-01.jpg';
 
 function Tarjeta(props) {
@@ -10,7 +11,7 @@ function Tarjeta(props) {
             <p className="cardDescripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque praesentium repellat magnam laudantium nisi!</p>
             <div className="cardPie">
                 <p className="cardPieOferta">Oferta! 35% off</p>
-                <a className="cardPieBoton" href="\">¡Reserva Ya!</a> 
+                <Link className="cardPieBoton" to="/">¡Reserva Ya!</Link> 
             </div>
         </div>
     </div>

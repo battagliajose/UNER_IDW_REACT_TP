@@ -9,24 +9,23 @@ import Nosotros from './pages/Nosotros';
 import Footer from './components/Footer';
 import NotFound from './components/NotFound';
 
-
 function App() {
   return (
     <div className="App">
-      <header>
-        <NavBar />
-      </header>
-      <main>
-        <Router>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/contacto" element={<Contacto />} />
-            <Route path="/nosotros" element={<Nosotros />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Router>
-      </main>
-      <Footer />
+      <Router>
+        <header>
+          <NavBar />
+        </header>
+        <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/contacto" element={<Contacto />} />
+              <Route path="/nosotros" element={<Nosotros />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+        </main>
+        <Footer />
+      </Router>
     </div>
   );
 }

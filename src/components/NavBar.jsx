@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom"; 
 
 function NavBar(props) {
    return( 
         <div>
-            <a href="/">Home -</a>
-            <a href="/nosotros">Nosotros -</a>
-            <a href="/contacto">Contacto</a>
+            <Link to="/">Home -</Link>
+            <Link to="/nosotros">Nosotros -</Link>
+            <Link to="/contacto">Contacto</Link>
         </div>
     );
 }
