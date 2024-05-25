@@ -20,7 +20,7 @@ function Tarjetas(props) {
     const i = Math.floor(Math.random() * 14)
     const rangoRandom = alojamientos.slice(i, i + 5);
     return (
-        <div className='cards'>
+        <div className='tarjetas'>
             {rangoRandom.map(crearTarjeta)}
         </div>
     );
