@@ -8,6 +8,7 @@ import Contacto from './pages/Contacto';
 import Nosotros from './pages/Nosotros';
 import Footer from './components/Footer';
 import NotFound from './components/NotFound';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 function App() {
   return (
