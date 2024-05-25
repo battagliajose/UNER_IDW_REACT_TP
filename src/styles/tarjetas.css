@@ -24,32 +24,38 @@
 .tarjetaContenido {
     padding: 1.5vh;
 }
+
 .tarjetaTitulo {
     font-weight: 800;
-    font-size: 1rem;
+    font-size: 1.3rem;
     margin-bottom: 1rem;
+    letter-spacing: 0.03rem;
 }
 
 .tarjetaDescripcion {
     text-align: justify;
     font-weight: 700;
-    font-size: 0.8rem;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.03rem;
 }
 
 .tarjetaPie {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
     padding: 1vh;
     font-size: 0.8rem;
     position: absolute;
     bottom: 10px;
-    width: 80%;
+    width: 90%;
 }
 
 .tarjetaPieOferta {
-    padding: 0.5rem;
     font-weight: 700;
     text-align: center;
+    text-wrap: wrap;
+    height: 0.1vw;
 }
 
 .tarjetaPieBoton {
