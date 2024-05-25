@@ -1,4 +1,4 @@
-.cards {
+.tarjetas {
     width: 100%;
     display: flex;
     justify-content: space-around;
@@ -6,53 +6,58 @@
     background-color: #FAF9F0;
 }
 
-.card {
+.tarjeta {
    margin: 0.8vw;
    border-radius: 1%;
    box-shadow: 3px 3px 3px rgba(0,0,0,0.3);
-   min-width: 200px;
+   min-width: 280px;
    max-width: 18vw;
    background-color: #E9E0B4;
    position: relative;
    padding-bottom: 8vh;
 }
 
-.card img {
+.tarjeta img {
     width: 100%;
 }
 
-.cardContenido {
+.tarjetaContenido {
     padding: 1.5vh;
 }
-.cardTitulo {
-    font-weight: 800;
-    font-size: 1rem;
-    margin-bottom: 1rem;
-}
 
-.cardDescripcion {
-    text-align: justify;
+.tarjetaTitulo {
     font-weight: 700;
-    font-size: 0.8rem;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.1vw;
 }
 
-.cardPie {
+.tarjetaDescripcion {
+    text-align: justify;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.01vw;
+}
+
+.tarjetaPie {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
     padding: 1vh;
     font-size: 0.8rem;
     position: absolute;
     bottom: 10px;
-    width: 80%;
+    width: 90%;
 }
 
-.cardPieOferta {
-    padding: 0.5rem;
+.tarjetaPieOferta {
     font-weight: 700;
     text-align: center;
+    text-wrap: wrap;
+    height: 0.1vw;
 }
 
-.cardPieBoton {
+.tarjetaPieBoton {
     text-decoration: none;
     text-align: center;
     background-color: #E6260C;
