@@ -4,9 +4,11 @@ import '../styles/tarjetas.css'
 import alojamientos from '../alojamientos.json'
 
 function Tarjetas(props) {
+    const i = Math.floor(Math.random() * 14)
+    const rangoRandom = alojamientos.slice(i, i + 5);
     return (
         <div className='cards'>
-            {alojamientos.map(Tarjeta)}
+            {rangoRandom.map(Tarjeta)}
         </div>
     );
 }

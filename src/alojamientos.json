@@ -3,36 +3,141 @@
       "id": 1,
       "titulo": "Bella vista",
       "imagen": "../../img/tarjetas/apartment-01.jpg",
-      "descripcion": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque praesentium repellat magnam laudantium nisi!",
+      "descripcion": "Disfruta de unas vistas impresionantes desde este acogedor apartamento. Con una ubicación privilegiada, es el lugar perfecto para relajarse y disfrutar de la belleza natural que te rodea.",
       "oferta": "18% off"
     },
     {
       "id": 2,
       "titulo": "Cerca de la playa",
       "imagen": "../../img/tarjetas/apartment-02.jpg",
-      "descripcion": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat.",
+      "descripcion": "Este encantador alojamiento te ofrece la oportunidad de estar a solo unos pasos de la arena y el mar. Perfecto para los amantes del sol y el mar que buscan comodidad y conveniencia.",
       "oferta": "10% off"
     },
     {
       "id": 3,
       "titulo": "Gran capacidad",
       "imagen": "../../img/tarjetas/apartment-03.jpg",
-      "descripcion": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "descripcion": "Con amplios espacios y todas las comodidades que necesitas, este alojamiento es ideal para grupos grandes o familias que buscan una estancia cómoda y memorable.",
       "oferta": "5% off"
     },
     {
       "id": 4,
       "titulo": "Ciudad",
       "imagen": "../../img/tarjetas/apartment-04.jpg",
-      "descripcion": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque praesentium repellat magnam laudantium nisi!",
+      "descripcion": "Sumérgete en el ritmo vibrante de la ciudad desde este moderno apartamento. Con una ubicación céntrica, estarás rodeado de restaurantes, tiendas y atracciones emocionantes.",
       "oferta": "15% off"
     },
     {
       "id": 5,
       "titulo": "Campo",
       "imagen": "../../img/tarjetas/apartment-05.jpg",
-      "descripcion": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      "descripcion": "Escápate del ajetreo y el bullicio de la vida urbana y encuentra paz y tranquilidad en este encantador alojamiento rural. Rodeado de naturaleza, es el lugar perfecto para desconectar y recargar energías.",
       "oferta": "25% off"
+    },
+    {
+      "id": 6,
+      "titulo": "Apartamento moderno",
+      "imagen": "../../img/tarjetas/apartment-06.jpg",
+      "descripcion": "Un apartamento moderno con todas las comodidades para una estancia relajante.",
+      "oferta": "20% off"
+    },
+    {
+      "id": 7,
+      "titulo": "Vistas al mar",
+      "imagen": "../../img/tarjetas/apartment-07.jpg",
+      "descripcion": "Disfruta de unas impresionantes vistas al mar desde este acogedor alojamiento.",
+      "oferta": "12% off"
+    },
+    {
+      "id": 8,
+      "titulo": "Loft céntrico",
+      "imagen": "../../img/tarjetas/apartment-08.jpg",
+      "descripcion": "Un loft moderno y elegante en el corazón de la ciudad.",
+      "oferta": "15% off"
+    },
+    {
+      "id": 9,
+      "titulo": "Casa rural",
+      "imagen": "../../img/tarjetas/apartment-09.jpg",
+      "descripcion": "Escápate a esta encantadora casa rural y disfruta de la tranquilidad del campo.",
+      "oferta": "30% off"
+    },
+    {
+      "id": 10,
+      "titulo": "Apartamento de lujo",
+      "imagen": "../../img/tarjetas/apartment-10.jpg",
+      "descripcion": "Experimenta el lujo y la comodidad en este impresionante apartamento.",
+      "oferta": "20% off"
+    },
+    {
+      "id": 11,
+      "titulo": "Casa junto al río",
+      "imagen": "../../img/tarjetas/apartment-11.jpg",
+      "descripcion": "Relájate en esta encantadora casa con vistas al río y al bosque circundante.",
+      "oferta": "25% off"
+    },
+    {
+      "id": 12,
+      "titulo": "Chalet de montaña",
+      "imagen": "../../img/tarjetas/apartment-12.jpg",
+      "descripcion": "Un acogedor chalet de montaña con impresionantes vistas panorámicas.",
+      "oferta": "20% off"
+    },
+    {
+      "id": 13,
+      "titulo": "Casita junto al lago",
+      "imagen": "../../img/tarjetas/apartment-13.jpg",
+      "descripcion": "Disfruta de la serenidad del lago en esta pintoresca casita.",
+      "oferta": "15% off"
+    },
+    {
+      "id": 14,
+      "titulo": "Ático con terraza",
+      "imagen": "../../img/tarjetas/apartment-14.jpg",
+      "descripcion": "Un elegante ático con una espaciosa terraza para disfrutar del sol y las vistas.",
+      "oferta": "10% off"
+    },
+    {
+      "id": 15,
+      "titulo": "Apartamento histórico",
+      "imagen": "../../img/tarjetas/apartment-15.jpg",
+      "descripcion": "Sumérgete en la historia en este encantador apartamento situado en un edificio histórico.",
+      "oferta": "20% off"
+    },
+    {
+      "id": 16,
+      "titulo": "Villa de lujo",
+      "imagen": "../../img/tarjetas/apartment-16.jpg",
+      "descripcion": "Una impresionante villa con piscina privada y todas las comodidades de lujo.",
+      "oferta": "30% off"
+    },
+    {
+      "id": 17,
+      "titulo": "Refugio en la montaña",
+      "imagen": "../../img/tarjetas/apartment-17.jpg",
+      "descripcion": "Escápate del bullicio de la ciudad y encuentra paz y tranquilidad en este refugio de montaña.",
+      "oferta": "25% off"
+    },
+    {
+      "id": 18,
+      "titulo": "Cabaña acogedora",
+      "imagen": "../../img/tarjetas/apartment-18.jpg",
+      "descripcion": "Una cabaña encantadora para una escapada romántica o un retiro tranquilo.",
+      "oferta": "15% off"
+    },
+    {
+      "id": 19,
+      "titulo": "Apartamento familiar",
+      "imagen": "../../img/tarjetas/apartment-19.jpg",
+      "descripcion": "Espacioso y cómodo, este apartamento es perfecto para familias que buscan un hogar lejos de casa.",
+      "oferta": "10% off"
+    },
+    {
+      "id": 20,
+      "titulo": "Suite de lujo",
+      "imagen": "../../img/tarjetas/apartment-20.jpg",
+      "descripcion": "Disfruta de la máxima comodidad y elegancia en esta lujosa suite.",
+      "oferta": "20% off"
     }
   ]
   
