@@ -1,13 +1,16 @@
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './styles/reset.css'
-import './styles/normalize.css'
-import './styles/main.css'
+import './styles/reset.css';
+import './styles/normalize.css';
+import './styles/main.css';
 import NavBar from './components/NavBar';
 import Home from './pages/Home';
 import Contacto from './pages/Contacto';
 import Nosotros from './pages/Nosotros';
 import Footer from './components/Footer';
 import NotFound from './components/NotFound';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 function App() {
   return (
