@@ -1,5 +1,22 @@
 import '../styles/footer.css'
 import React from 'react'
+import { Link } from "react-router-dom";
+
+
+
+const socialIcons = [
+    { id: 1, className: "bi bi-facebook px-1" },
+    { id: 2, className: "bi bi-twitter px-1" },
+    { id: 3, className: "bi bi-instagram px-1" },
+    { id: 4, className: "bi bi-youtube px-1" },
+    { id: 5, className: "bi bi-telegram px-1" }
+];
+
+const links = [
+    { id: 1, to: "#", text: "Política" },
+    { id: 2, to: "/contacto", text: "Contacto" },
+    { id: 3, to: "#", text: "Preguntas frecuentes" }
+];
 
 const Footer = () => {
     return (
@@ -14,28 +31,18 @@ const Footer = () => {
                         <div className="col-md text-center redes">
                             <p>seguinos en</p>
                             <br />
-                            <i className="bi bi-facebook px-1"></i>
-                            <i className="bi bi-twitter px-1"></i>
-                            <i className="bi bi-instagram px-1"></i>
-                            <i className="bi bi-youtube px-1"></i>
-                            <i className="bi bi-telegram px-1"></i>
+                            {socialIcons.map(icon => (
+                                <i key={icon.id} className={icon.className}></i>
+                            ))}
                         </div>
                         <div className="col-md text-center">
-                            <p>
-                                <a href="#" className="text-reset text-decoration-none">
-                                    <span className="p_footer">Política</span>
-                                </a>
-                            </p>
-                            <p>
-                                <a href="contacto.html" className="text-reset text-decoration-none">
-                                    <span className="p_footer">Contacto</span>
-                                </a>
-                            </p>
-                            <p>
-                                <a href="#" className="text-reset text-decoration-none">
-                                    <span className="p_footer">Preguntas frecuentes</span>
-                                </a>
-                            </p>
+                            {links.map(link => (
+                                <p key={link.id}>
+                                    <Link to={link.to} className="text-reset text-decoration-none">
+                                        <span className="p_footer">{link.text}</span>
+                                    </Link>
+                                </p>
+                            ))}
                         </div>
                     </div>
                 </div>
