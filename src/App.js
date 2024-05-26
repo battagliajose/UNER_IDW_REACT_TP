@@ -1,8 +1,9 @@
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './styles/reset.css'
-import './styles/normalize.css'
-import './styles/main.css'
+import './styles/reset.css';
+import './styles/normalize.css';
+import './styles/main.css';
 import NavBar from './components/NavBar';
 import Home from './pages/Home';
 import Contacto from './pages/Contacto';
