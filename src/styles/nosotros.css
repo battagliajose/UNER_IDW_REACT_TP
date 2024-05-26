@@ -29,7 +29,8 @@ main h2 {
 
 .containerNos {
     width: 75%;
-    margin: 10vh auto;
+    margin: 0 auto;
+    padding: 3vh 0;
 }
 
 .misionVision {

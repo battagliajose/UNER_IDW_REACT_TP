@@ -8,18 +8,17 @@ function Tarjetas(props) {
     const rangoRandom = alojamientos.slice(i, i + 5);
     return (
         <div className='tarjetas'>
-            {rangoRandom.map(function (alojamiento)
-                {
-                    return (
-                        <Tarjeta
-                            key={alojamiento.id}
-                            imagen={alojamiento.imagen}
-                            titulo={alojamiento.titulo}
-                            descripcion={alojamiento.descripcion}
-                            oferta={alojamiento.oferta}
-                        />
-                    );
-                })}
+            {rangoRandom.map( alojamiento => {
+                return (
+                    <Tarjeta
+                        key={alojamiento.id}
+                        imagen={alojamiento.imagen}
+                        titulo={alojamiento.titulo}
+                        descripcion={alojamiento.descripcion}
+                        oferta={alojamiento.oferta}
+                    />
+                );
+            })};
         </div>
     );
 }
