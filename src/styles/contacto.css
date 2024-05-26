@@ -1,0 +1,103 @@
+.formulario{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.formulario-form{
+    display: flex;
+    justify-content: center; 
+    align-items: center;  
+}
+
+.formulario-form label{
+    display: flex;
+    justify-content: start;
+}
+
+.formulario-mapa{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.mapa {
+    box-shadow: 3px 3px 3px rgba(0,0,0,0.3);    
+}
+
+.fila-form-mapa{
+    margin-bottom: 20px;
+    height:70vh;
+}
+
+.button-formulario{
+    background-color:#E6260C ;
+    color: white;
+    border:0px;
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.contenedor-form{
+    height: auto;
+    margin-top: 4rem;
+    text-align: center;
+    
+}
+
+.contacto{
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+input, textarea {
+    box-shadow: 3px 3px 3px rgba(0,0,0,0.3);
+}
+
+input:hover, textarea:hover{
+    border: 2px solid #E6260C; 
+}
+
+input:focus, textarea:focus{
+    border: 2px solid #E6260C !important; 
+}
+
+.texto-formulario{
+    text-align: center;
+    margin: 2rem auto;
+    font-size: 0.8rem;
+    width: 80%;
+}
+.texto-formulario p{
+    margin-bottom: 10px;
+    
+}
+
+@media screen and (max-width: 768px) {
+    .fila-form-mapa{
+        margin-bottom: 20px;
+        height:100vh;
+    }
+    
+    .contenedor-form{
+        height: auto;
+        margin-top: 8rem;
+        text-align: center;
+    }
+
+    .texto-formulario{
+        width: 100%;
+        padding: 0 10px; /* Añadir espacio a los lados del texto */
+        font-size: 14px; /* Reducir el tamaño del texto */
+        line-height: 1.5; /* Añadir espaciado entre líneas */
+    }
+    
+    .texto-formulario{
+        padding-bottom: 12rem;
+    }
+}
+
+.text-fin{
+    padding-bottom: 5rem;
+}
