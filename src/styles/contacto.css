@@ -1,3 +1,9 @@
+.contenedor-form {
+    padding-top: 5vh;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(222, 218, 218, 0.8)), url("../../public/img/contacto/1140-road-trip-apps.jpg");
+    background-size: cover;
+}
+
 .formulario{
     display: flex;
     flex-direction: row;
@@ -26,7 +32,6 @@
 }
 
 .fila-form-mapa{
-    margin-bottom: 20px;
     height:70vh;
 }
 
