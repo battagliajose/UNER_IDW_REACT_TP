@@ -3,5 +3,6 @@
     text-align: center;
 }
 .notfound img {
-    margin: 0 auto;
+    margin: 30 auto;
+    margin-top: 120px
 }
