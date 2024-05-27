@@ -47,10 +47,18 @@
 
 .btnPortada {
     display: flex;
+    border: 1px black solid;
     align-items: center;
     background-color: #E6260C;
     color: white;
     padding: 0.5rem;
     font-size: 2.3vw;
     height: 5vw;
+    cursor: pointer;
+}
+
+.btnPortada:hover {
+    border-radius: 1vw;
+    border: 1px white solid;
+    transition: border 0.3s ease, border-radius 0.3s ease;
 }

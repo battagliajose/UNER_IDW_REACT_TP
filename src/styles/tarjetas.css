@@ -25,6 +25,7 @@
     background-color: #E9E0B4;
     position: relative;
     padding-bottom: 8vh;
+    cursor: pointer;
  }
 
 .tarjeta img {
