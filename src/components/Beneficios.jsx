@@ -39,7 +39,7 @@ const Beneficios = () => {
                         <div className="d-flex justify-content-center">
                             
                                 {socialIcons.map(icon => (
-                                    <div class="square-container">
+                                    <div className="square-container">
                                         <i key={icon.id} className={icon.className}></i>
                                     </div>
                                 ))}
