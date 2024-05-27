@@ -8,7 +8,7 @@
 
 .tarjeta {
    margin: 0.8vw;
-   border-radius: 1%;
+   border-radius: 5px;
    box-shadow: 3px 3px 3px rgba(0,0,0,0.3);
    min-width: 280px;
    max-width: 18vw;
@@ -17,8 +17,60 @@
    padding-bottom: 8vh;
 }
 
+.tarjeta:hover {
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.8);
+    transition: box-shadow 0.3s ease;
+    min-width: 280px;
+    max-width: 18vw;
+    background-color: #E9E0B4;
+    position: relative;
+    padding-bottom: 8vh;
+ }
+
 .tarjeta img {
     width: 100%;
+    border-radius: 5px 5px 0 0;
+}
+
+.tarjetafavoriteIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 50%;
+    width: 2vw;
+    height: 2vw;
+    position:absolute;
+    top: 10px;
+    right: 10px;
+    min-width: 30px;
+    min-height: 30px;
+}
+
+.tarjetafavoriteIcon img {
+    width: 50%;
+    height: 50%;
+}
+
+.tarjetafavoriteIcon:hover {
+    width: 2.5vw;
+    height: 2.5vw;
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.tarjetaPrecioDia {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255,255,255,0.60);
+    font-weight: 800;
+    border-radius: 10px;
+    position:absolute;
+    padding: 5px 15px;
+    top: 10px;
+    left: 10px;
+    min-width: 30px;
+    min-height: 30px;
 }
 
 .tarjetaContenido {
@@ -50,14 +102,6 @@
     width: 90%;
 }
 
-.tarjetaPrecioDia {
-    background-color:burlywood;
-    border-radius: 50%;
-    padding: 2vh;
-    font-size: larger;
-    font-weight: 800;
-}
-
 .tarjetaPieOferta {
     font-weight: 700;
     text-align: center;
@@ -72,7 +116,11 @@
     color: white;
     width: fit-content;
     padding: 0.5rem;
-    box-shadow: 3px 3px 8px black;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.6);
 }
 
+.tarjetaPieBoton:hover {
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.8);
+    transition: box-shadow 0.3s ease;
+}
 
