@@ -50,6 +50,14 @@
     width: 90%;
 }
 
+.tarjetaPrecioDia {
+    background-color:burlywood;
+    border-radius: 50%;
+    padding: 2vh;
+    font-size: larger;
+    font-weight: 800;
+}
+
 .tarjetaPieOferta {
     font-weight: 700;
     text-align: center;

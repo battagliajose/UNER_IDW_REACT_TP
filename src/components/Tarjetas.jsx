@@ -16,6 +16,7 @@ function Tarjetas(props) {
                         titulo={alojamiento.titulo}
                         descripcion={alojamiento.descripcion}
                         oferta={alojamiento.oferta}
+                        precio={alojamiento.precioDia}
                     />
                 );
             })};
