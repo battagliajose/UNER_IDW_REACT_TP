@@ -17,9 +17,11 @@ function Tarjetas(props) {
                         descripcion={alojamiento.descripcion}
                         oferta={alojamiento.oferta}
                         precio={alojamiento.precioDia}
+                        dormitorios={alojamiento.dormitorios}
+                        banios={alojamiento.banios}
                     />
                 );
-            })};
+            })}
         </div>
     );
 }

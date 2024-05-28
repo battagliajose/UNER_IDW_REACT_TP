@@ -125,3 +125,15 @@
     transition: box-shadow 0.3s ease;
 }
 
+.tarjetaInfoIcons {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    width:fit-content;
+}
+
+.tarjetaInfoIcons img {
+    width: 1vw;
+    margin: 5px;
+}
+
