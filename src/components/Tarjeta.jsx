@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState}  from "react";
 import { Link } from "react-router-dom"; 
 
 import HeartTransp from '../assets/tarjetas/heart-transp.png'
@@ -7,10 +7,12 @@ import bath from '../assets/tarjetas/banera.png'
 import dorm from '../assets/tarjetas/dormitorio.png'
 
 function Tarjeta(props) {
+    const [like, setLike] = useState(false);
+
     return( 
         <div className="tarjeta">
         <img src={props.imagen} alt="tarjeta" />
-        <div className="tarjetafavoriteIcon"><img src={HeartTransp} alt="favorito" /></div>
+        <div className="tarjetafavoriteIcon" onClick={(e) => setLike(!like)}><img src={like ? HeartFull : HeartTransp} alt="favorito"/></div>
         <p className="tarjetaPrecioDia">${props.precio}</p>
         <div className="tarjetaInfoIcons">
             <img src={dorm} alt="Dormitorios" />
