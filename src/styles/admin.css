@@ -1,9 +1,12 @@
-.tituloTipos {
-    margin: 100px;
+.admin {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    margin: 200px auto;
 }
 
 .tablaTipos {
-    margin: 100px;
     border-collapse: collapse;
     border: 1px solid black; /* Establece el borde de la tabla */
 }
@@ -13,12 +16,11 @@
     padding: 8px; /* Añade un espacio interno alrededor del contenido de las celdas */
 }
 
-form {
-    margin: 100px;
-}
-
 .tablaTipos {
     border-collapse: collapse;
     border: 1px solid black; /* Establece el borde de la tabla */
 }
 
+.form-container {
+    margin-top: 50px;
+}

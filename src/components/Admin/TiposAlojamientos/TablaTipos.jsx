@@ -25,7 +25,6 @@ function TablaTipos() {
 
     return (
       <table className="tablaTipos" border="3">
-        <caption>Tipos de alojamientos</caption>
         <thead>
             <tr>
                 <th>id</th>

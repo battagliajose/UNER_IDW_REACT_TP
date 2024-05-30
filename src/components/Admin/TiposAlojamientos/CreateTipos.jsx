@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function ModTipos() {
+function CreateTipos() {
     const [descripcion, setDescripcion] = useState('');
 
     const envioTipo = async (event) => { 
@@ -46,4 +46,4 @@ function ModTipos() {
     )
 }
 
-export default ModTipos;
+export default CreateTipos;

@@ -1,17 +1,15 @@
 import TablaTipos from "../components/Admin/TiposAlojamientos/TablaTipos";
-import ModTipos from "../components/Admin/TiposAlojamientos/ModTipos"
+import CreateTipos from "../components/Admin/TiposAlojamientos/CreateTipos"
 
 import '../styles/admin.css'
 
 function Admin() {
 
     return (
-        <div>
-            <div>
-                <h2 className="tituloTipos">Tipos de alojamientos</h2>
-                <TablaTipos />
-            </div>
-            <ModTipos />
+        <div className="admin">
+            <h2 className="tituloTipos">Tipos de alojamientos</h2>
+            <TablaTipos />
+            <CreateTipos />
         </div>
     );
 }
