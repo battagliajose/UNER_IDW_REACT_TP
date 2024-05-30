@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
-function CreateTipos() {
+function CreateTipos({ fetchTiposAlojamiento }) {
     const [descripcion, setDescripcion] = useState('');
 
     const envioTipo = async (event) => { 
@@ -10,7 +10,6 @@ function CreateTipos() {
             Descripcion: descripcion
         };
 
-        // Envio del json
         try {
             const response = await fetch('http://localhost:3001/tiposAlojamiento/createTipoAlojamiento', {
                 method: 'POST',
@@ -21,23 +20,26 @@ function CreateTipos() {
             });
             if(response.ok){
                 alert('Tipo alojamiento creado');
+                setDescripcion('');
+                fetchTiposAlojamiento(); // Actualizar la lista de tipos de alojamiento
             }
         } catch (error) {
             alert('Error: ' + error.message);
         }
     };
-    
+
     return (
         <div className="form-container">
             <form onSubmit={envioTipo}>
                 <div>
                     <label htmlFor="descripcion">Tipo Alojamiento:</label>
                     <input
-                    type="text"
-                    id="descripcion"
-                    name="descripcion"
-                    required
-                    onChange={(e) => setDescripcion(e.target.value)}
+                        type="text"
+                        id="descripcion"
+                        name="descripcion"
+                        value={descripcion}
+                        required
+                        onChange={(e) => setDescripcion(e.target.value)}
                     />
                 </div>
                 <button type="submit">Enviar</button>
