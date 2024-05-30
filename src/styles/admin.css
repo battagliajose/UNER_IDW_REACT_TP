@@ -1,3 +1,24 @@
+.tituloTipos {
+    margin: 100px;
+}
+
+.tablaTipos {
+    margin: 100px;
+    border-collapse: collapse;
+    border: 1px solid black; /* Establece el borde de la tabla */
+}
+
+.tablaTipos th, .tablaTipos td {
+    border: 1px solid black; /* Establece el borde para las celdas de encabezado y datos */
+    padding: 8px; /* Añade un espacio interno alrededor del contenido de las celdas */
+}
+
 form {
     margin: 100px;
 }
+
+.tablaTipos {
+    border-collapse: collapse;
+    border: 1px solid black; /* Establece el borde de la tabla */
+}
+
