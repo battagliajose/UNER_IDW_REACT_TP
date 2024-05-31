@@ -1,9 +1,21 @@
-import React from "react";
+import React, {useState} from "react";
 import ItemTipo from "./ItemTipo";
+import ModalUpdateTipos from "./ModalUpdateTipos"
 
-function TablaTipos({ tiposAlojamiento, fetchTiposAlojamiento,cambiarNombreBoton,cargarDescripcionEnForm }) {
+function TablaTipos({ tiposAlojamiento, fetchTiposAlojamiento }) {
 //    Se recibe la lista y las funciones para pasarlas a otro componente( funciones fetchTiposAlojamiento y cambiarNombreBoton ) 
    
+    const [showModalUpdate, setShowModalUpdate] = useState(false);
+    const [IdMod, setIdMod] = useState(0);
+    const [DescripMod, setDescripMod] = useState("");
+    
+    const handleShowUpdate = ({id, descripcion}) => {
+        setShowModalUpdate(true);
+        setIdMod(id);
+        setDescripMod(descripcion)
+    }
+
+    const handleCloseUpdate= () => setShowModalUpdate(false);
    
     return (
         <table className="tablaTipos" border="3">
@@ -23,11 +35,11 @@ function TablaTipos({ tiposAlojamiento, fetchTiposAlojamiento,cambiarNombreBoton
                       descripcion={tipo.Descripcion} 
                     //   Se pasan las funciones recibidas al componente ItemTipo de
                       fetchTiposAlojamiento={fetchTiposAlojamiento}
-                      cambiarNombreBoton ={cambiarNombreBoton}
-                      cargarDescripcionEnForm={cargarDescripcionEnForm}
+                      handleShowUpdate={handleShowUpdate}
                     />
                 ))}
             </tbody>
+            <ModalUpdateTipos show={showModalUpdate} handleClose={handleCloseUpdate} fetchTiposAlojamiento={fetchTiposAlojamiento} id={IdMod} descripcion={DescripMod}/>
         </table>
     );
 }

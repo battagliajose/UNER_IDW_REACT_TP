@@ -1,7 +1,7 @@
 import React from "react";
 
-function ItemTipo({ id, descripcion, fetchTiposAlojamiento,cambiarNombreBoton,cargarDescripcionEnForm }) {
-        // Se reciben los datos del listados destructurados y las funciones fetchTiposAlojamiento y cambiarNombreBoton 
+function ItemTipo({ id, descripcion, fetchTiposAlojamiento, handleShowUpdate }) {
+    // Se reciben los datos del listados destructurados y las funciones fetchTiposAlojamiento y cambiarNombreBoton 
 
     const handleDelete = async (id) => {
         try {
@@ -21,8 +21,6 @@ function ItemTipo({ id, descripcion, fetchTiposAlojamiento,cambiarNombreBoton,ca
 
     const handleModificar = async (id) => {
        
-        cambiarNombreBoton("Modificar"); // Acciono la funcion declarada en el component Admin
-
         //buscar el tipo de alojamiento
         try {
             const response = await fetch(`http://localhost:3001/tiposAlojamiento/getTipoAlojamiento/${id}`, {
@@ -35,7 +33,6 @@ function ItemTipo({ id, descripcion, fetchTiposAlojamiento,cambiarNombreBoton,ca
                 
                 const data = await response.json();        
                 console.log(data.Descripcion);                          
-                cargarDescripcionEnForm(data.Descripcion)
 
                 fetchTiposAlojamiento(); // Actualizar la lista de tipos de alojamiento
             }
@@ -50,7 +47,7 @@ function ItemTipo({ id, descripcion, fetchTiposAlojamiento,cambiarNombreBoton,ca
         <tr className="itemTipo">
             <td>{id}</td>
             <td>{descripcion}</td>
-            <td><button onClick={() => handleModificar(id)}>Modificar</button></td>
+            <td><button onClick={() => handleShowUpdate({ id, descripcion })}>Modificar</button></td>
             <td><button onClick={() => handleDelete(id)}>Eliminar</button></td>
         </tr>
     );
