@@ -6,6 +6,20 @@ import '../styles/admin.css';
 function Admin() {
     const [tiposAlojamiento, setTiposAlojamiento] = useState([]);
 
+    //varible para setear el botón
+    const [nombreBoton, setBotonNombre] = useState('Enviar');
+
+    //funcion para cambiar el nombre del botón
+    const cambiarNombreBoton = (titulo) => {
+        setBotonNombre(titulo);
+    };
+
+    const [valorDescripcion, setValorDescripcion] = useState('');
+
+    const cargarDescripcionEnForm= (descripcion) => {        
+        setValorDescripcion(descripcion);
+    }
+
     // Función para obtener los datos de los tipos de alojamiento
     const fetchTiposAlojamiento = async () => {
         try {
@@ -28,8 +42,22 @@ function Admin() {
     return (
         <div className="admin">
             <h2 className="tituloTipos">Tipos de alojamientos</h2>
-            <TablaTipos tiposAlojamiento={tiposAlojamiento} fetchTiposAlojamiento={fetchTiposAlojamiento} />
-            <CreateTipos fetchTiposAlojamiento={fetchTiposAlojamiento} />
+            
+            {/* Paso por props la lista de alojamiento cargada en la funcion fetchTiposAlojamiento, la funcion propia y una funcion para cambiar nombre de botón */}
+            <TablaTipos 
+                tiposAlojamiento={tiposAlojamiento}
+                fetchTiposAlojamiento={fetchTiposAlojamiento}
+                cambiarNombreBoton={cambiarNombreBoton} 
+                cargarDescripcionEnForm={cargarDescripcionEnForm} 
+                />
+
+            {/* Paso por props el nombre del botón seteado con el valor "Enviar",y las funcion para traer la lista de alojamientos y cambiar el nombre del boton*/}
+            <CreateTipos 
+                fetchTiposAlojamiento={fetchTiposAlojamiento} 
+                nombreBoton={nombreBoton}
+                cambiarNombreBoton={cambiarNombreBoton} 
+                valorDescripcion={valorDescripcion}
+                />
         </div>
     );
 }

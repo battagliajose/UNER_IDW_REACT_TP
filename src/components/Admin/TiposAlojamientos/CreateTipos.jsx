@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 
-function CreateTipos({ fetchTiposAlojamiento }) {
-    const [descripcion, setDescripcion] = useState('');
+function CreateTipos({ fetchTiposAlojamiento,nombreBoton,cambiarNombreBoton,valorDescripcion }) {
 
+    //declarada la variable para descpcion. me llega la info 
+    console.log("Que me llego ", valorDescripcion);
+    const [descripcion, setDescripcion] = useState(valorDescripcion);
+     
+ 
     const envioTipo = async (event) => { 
         event.preventDefault();
 
@@ -26,6 +30,9 @@ function CreateTipos({ fetchTiposAlojamiento }) {
         } catch (error) {
             alert('Error: ' + error.message);
         }
+
+        //Actulizar titulo del botón
+        cambiarNombreBoton("Enviar")
     };
 
     return (
@@ -42,7 +49,7 @@ function CreateTipos({ fetchTiposAlojamiento }) {
                         onChange={(e) => setDescripcion(e.target.value)}
                     />
                 </div>
-                <button type="submit">Enviar</button>
+                <button type="submit">{nombreBoton}</button>
             </form>
         </div>
     )
