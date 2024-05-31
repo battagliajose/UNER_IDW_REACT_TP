@@ -78,13 +78,6 @@ input:focus, textarea:focus{
     margin-bottom: 10px;
 }
 
-
-footer {
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
-}
-
 @media screen and (max-width: 768px) {
     .fila-form-mapa{
         margin-bottom: 20px;

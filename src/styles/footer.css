@@ -15,4 +15,10 @@
     color:  #E6260C;
     padding-left: 0.5rem;
     padding-right: 0.5rem; 
-    }
+}
+
+.footer_Bottom {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+}

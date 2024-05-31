@@ -1,5 +1,6 @@
 import '../styles/footer.css'
-import React from 'react'
+import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { Link } from "react-router-dom";
 
 
@@ -19,9 +20,13 @@ const links = [
 ];
 
 const Footer = () => {
+
+    const location = useLocation();
+    const footerBottom = location.pathname === '/admin' || location.pathname === '/contacto';
+
     return (
         <>
-            <footer className="bg-dark text-white pt-3 pb-3">
+            <footer className={footerBottom ? "footer_Bottom bg-dark text-white pt-3 pb-3" : "bg-dark text-white pt-3 pb-3"}>
                 <div className="container">
                     <div className="row">
                         <div className="col-md text-center">
