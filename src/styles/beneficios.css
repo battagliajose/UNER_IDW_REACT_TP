@@ -10,10 +10,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 1rem; /* Espacio entre los íconos */
+    margin: 1rem;  
 }
+
 
 .icon-style-pers{
     color: #000000;
     font-size: 2rem;    
 }
+
+

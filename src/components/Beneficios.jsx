@@ -33,18 +33,15 @@ const Beneficios = () => {
                 </div>
             </div>
 
+
             <div className="container">
                 <div className="row">
-                    <div className="col-md-12 text-center container-beneficios">
-                        <div className="d-flex justify-content-center">
-                            
-                                {socialIcons.map(icon => (
-                                    <div className="square-container">
-                                        <i key={icon.id} className={icon.className}></i>
-                                    </div>
-                                ))}
-                            
-                        </div>
+                    <div className="col-12 d-flex flex-wrap justify-content-center">
+                        {socialIcons.map(icon => (
+                            <div key={icon.id} className="square-container">
+                                <i className={icon.className}></i>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
