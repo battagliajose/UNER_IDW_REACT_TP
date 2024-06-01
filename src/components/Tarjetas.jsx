@@ -1,10 +1,29 @@
 import React from "react";
 import Tarjeta from "./Tarjeta"
+import '../styles/tarjetas.css'
+import alojamientos from '../alojamientos.json'
 
 function Tarjetas(props) {
-    <div>
-        <Tarjeta />
-    </div>
+    const i = Math.floor(Math.random() * 14)
+    const rangoRandom = alojamientos.slice(i, i + 5);
+    return (
+        <div className='tarjetas'>
+            {rangoRandom.map( alojamiento => {
+                return (
+                    <Tarjeta
+                        key={alojamiento.id}
+                        imagen={alojamiento.imagen}
+                        titulo={alojamiento.titulo}
+                        descripcion={alojamiento.descripcion}
+                        oferta={alojamiento.oferta}
+                        precio={alojamiento.precioDia}
+                        dormitorios={alojamiento.dormitorios}
+                        banios={alojamiento.banios}
+                    />
+                );
+            })}
+        </div>
+    );
 }
 
 export default Tarjetas;

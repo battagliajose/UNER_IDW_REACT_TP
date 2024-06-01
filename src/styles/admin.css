@@ -1,0 +1,28 @@
+.admin {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    margin: 200px auto;
+   
+    
+}
+
+.tablaTipos {
+    border-collapse: collapse;
+    border: 1px solid black; /* Establece el borde de la tabla */
+}
+
+.tablaTipos th, .tablaTipos td {
+    border: 1px solid black; /* Establece el borde para las celdas de encabezado y datos */
+    padding: 8px; /* Añade un espacio interno alrededor del contenido de las celdas */
+}
+
+.tablaTipos {
+    border-collapse: collapse;
+    border: 1px solid black; /* Establece el borde de la tabla */
+}
+
+.form-container {
+    margin-top: 50px;
+}

@@ -1,0 +1,64 @@
+.espaciador {
+    width: 100%;
+}
+
+.imagenPortadaEspaciador {
+    width: 100%;
+    object-fit: cover;
+    min-height: 350px;
+}
+
+.contenedorImagenPortada {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+}
+
+.imagenPortada {
+    width: 100%;
+    object-fit: cover;
+    min-height: 350px;
+}
+
+.botonera {
+    position: absolute;
+    top: 70%;
+    left: 30%;
+    transform: translate(-10vw, -5vw);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color:rgba(0, 0, 0, 0.6);
+    border-radius: 2vw;
+    padding: 2vw;
+}
+
+.inputPortada {
+    height: 5vw;
+    width: 20vw;
+    border: 2px solid #E6260C;
+    padding: 0px 1vw;
+    margin: 0.5rem;
+    font-size: 1.7vw;
+    min-width: 250px;
+}
+
+.btnPortada {
+    display: flex;
+    border: 1px black solid;
+    align-items: center;
+    background-color: #E6260C;
+    color: white;
+    padding: 0.5rem;
+    font-size: 2.3vw;
+    height: 5vw;
+    cursor: pointer;
+}
+
+.btnPortada:hover {
+    border-radius: 1vw;
+    border: 1px white solid;
+    transition: border 0.3s ease, border-radius 0.3s ease;
+}
