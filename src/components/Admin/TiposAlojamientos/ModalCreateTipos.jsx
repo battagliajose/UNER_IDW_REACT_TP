@@ -1,19 +1,44 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
+import Col from 'react-bootstrap/Col';   
+import InputGroup from 'react-bootstrap/InputGroup';
+import Row from 'react-bootstrap/Row';
 
 function ModalCreateTipos({ show, handleClose, fetchTiposAlojamiento} ) {
 
+  const [validated, setValidated] = useState(false);
+
   const handleSubmit = (event) => {
-    event.preventDefault();
-    createTipoModal()
-    console.log(descripcion);
-    handleClose();
-    fetchTiposAlojamiento();
+    
+    //validacion del input
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    setValidated(true);
+     
+    // Si pasa validacion ejecutar accion
+    if(validated){
+
+      event.preventDefault();
+      createTipoModal()
+      console.log(descripcion);
+      handleClose();
+      fetchTiposAlojamiento();
+    }
   };
 
   const [descripcion, setDescripcion] = useState("");
 
+  //Control de validacion
+  
+
+
   const createTipoModal = async () => { 
+
+    
 
     const dataJson = {
         Descripcion: descripcion
@@ -43,16 +68,31 @@ function ModalCreateTipos({ show, handleClose, fetchTiposAlojamiento} ) {
         <Modal.Title>Ingresar Descripción</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form onSubmit={handleSubmit}>
-          <Form.Group controlId="formDescription">
+
+
+
+        <Form noValidate validated={validated} onSubmit={handleSubmit}>
+          <Form.Group controlId="formDescription">         
             <Form.Label>Descripción</Form.Label>
+            <InputGroup hasValidation>  
             <Form.Control
               type="text"
+              required
               placeholder="Ingresa una descripción"
               onChange={(e) => setDescripcion(e.target.value)}
             />
-          </Form.Group>
+             <Form.Control.Feedback type="invalid">
+                    Debe llenar este campo
+            </Form.Control.Feedback>
+            </InputGroup>
+            </Form.Group>                    
+        
         </Form>
+
+
+
+
+
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
