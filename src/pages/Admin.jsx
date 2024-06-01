@@ -39,9 +39,7 @@ function Admin() {
     return (
         <div className="admin">
             <h2 className="tituloTipos">Tipos de alojamientos</h2>
-            <button onClick={handleShowCreate}>
-                Nuevo
-            </button>
+
             <ModalCreateTipos show={showModalCreate} handleClose={handleCloseCreate} fetchTiposAlojamiento={fetchTiposAlojamiento} />
             
             {/* Paso por props la lista de alojamiento cargada en la funcion fetchTiposAlojamiento, la funcion propia y una funcion para cambiar nombre de botón */}
@@ -50,14 +48,9 @@ function Admin() {
                 fetchTiposAlojamiento={fetchTiposAlojamiento}
                 cargarDescripcionEnForm={cargarDescripcionEnForm} 
                 />
-
-            {/* Paso por props el nombre del botón seteado con el valor "Enviar",y las funcion para traer la lista de alojamientos y cambiar el nombre del boton*/}
-            {/*<CreateTipos 
-                fetchTiposAlojamiento={fetchTiposAlojamiento} 
-                nombreBoton={nombreBoton}
-                cambiarNombreBoton={cambiarNombreBoton} 
-                valorDescripcion={valorDescripcion}
-                />*/}
+            <button className="primary" onClick={handleShowCreate}>
+                Nuevo
+            </button>
         </div>
     );
 }
