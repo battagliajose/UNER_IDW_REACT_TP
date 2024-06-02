@@ -1,12 +1,17 @@
 .admin {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 20%;
     align-items: center;
-    margin: 200px auto;
-   
-    
+    margin: 200px auto;    
 }
+
+.contenedor-button{
+    
+    display: flex;
+    justify-content: end;
+}
+
 
 .tablaTipos {
     border-collapse: collapse;
@@ -32,7 +37,9 @@
     padding: 10px;
     text-align: center;
 }
+
 .buttonNuevo{
+width:60px;
 margin-bottom: 10px;
 border-radius: 5px;
 border: none;
@@ -40,6 +47,7 @@ background-color: #616263;
 color:white;
 padding: 5px;
 font-size: 2rem;
+
 }
 .buttonNuevo:hover{
     background-color:#E6260C; 
@@ -48,6 +56,5 @@ font-size: 2rem;
 .tablero{
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    
+    flex-direction: column;    
 }
