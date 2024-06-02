@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import ItemTipo from "./ItemTipo";
 import ModalUpdateTipos from "./ModalUpdateTipos"
+import '../../../styles/filasTabla.css';
 
 function TablaTipos({ tiposAlojamiento, fetchTiposAlojamiento }) {
 //    Se recibe la lista y las funciones para pasarlas a otro componente( funciones fetchTiposAlojamiento y cambiarNombreBoton ) 
@@ -20,9 +21,9 @@ function TablaTipos({ tiposAlojamiento, fetchTiposAlojamiento }) {
     return (
         <table className="tablaTipos" border="3">
             <thead>
-                <tr>
+                <tr className="cabecera">
                     <th>id</th>
-                    <th style={{ width: '200px' }}>Descr.</th>
+                    <th style={{ width: '200px' }}>Descripcion</th>
                     <th>Modificar</th>
                     <th>Eliminar</th>
                 </tr>

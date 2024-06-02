@@ -1,3 +1,25 @@
 .colorearFila{
-    background-color:#616263;
+    background-color:#a2a5a8;
+}
+.cabecera{
+    background-color:#a2a5a8;
+    font-weight: bold;
+}
+.editar{
+    font-size:medium;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.eliminar{
+    font-size:medium;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.eliminar:hover,
+.editar:hover{
+    color: #E6260C;
+    cursor: pointer;   
 }
