@@ -7,7 +7,7 @@ function Contacto() {
     <section className="contenedor-form">
       <h3 className="contacto">Contactanos</h3>
       <div className="container">
-        <div className="row fila-form-mapa">
+        <div className="row">
           <div className="col-md-6 formulario-form">
             <form style={{ width: "26rem" }}>
               {/* Name input */}
