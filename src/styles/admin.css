@@ -8,6 +8,13 @@
  
 }
 
+.contenedor-button{
+    
+    display: flex;
+    justify-content: end;
+}
+
+
 
 .tablaTipos {
     border-collapse: collapse;
