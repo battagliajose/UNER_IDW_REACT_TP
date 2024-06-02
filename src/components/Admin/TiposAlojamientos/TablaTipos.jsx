@@ -22,7 +22,7 @@ function TablaTipos({ tiposAlojamiento, fetchTiposAlojamiento }) {
             <thead>
                 <tr>
                     <th>id</th>
-                    <th>Descr.</th>
+                    <th style={{ width: '200px' }}>Descr.</th>
                     <th>Modificar</th>
                     <th>Eliminar</th>
                 </tr>
@@ -36,6 +36,8 @@ function TablaTipos({ tiposAlojamiento, fetchTiposAlojamiento }) {
                     //   Se pasan las funciones recibidas al componente ItemTipo de
                       fetchTiposAlojamiento={fetchTiposAlojamiento}
                       handleShowUpdate={handleShowUpdate}
+                      //si es par o no para pintar la fila
+                      colorFila={tipo.idTipoAlojamiento % 2===0}
                     />
                 ))}
             </tbody>
