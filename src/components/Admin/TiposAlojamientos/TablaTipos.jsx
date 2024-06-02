@@ -42,7 +42,7 @@ function TablaTipos({ tiposAlojamiento, fetchTiposAlojamiento }) {
                     />
                 ))}
             </tbody>
-            <ModalUpdateTipos show={showModalUpdate} handleClose={handleCloseUpdate} fetchTiposAlojamiento={fetchTiposAlojamiento} id={IdMod} descripcion={DescripMod}/>
+            <ModalUpdateTipos show={showModalUpdate} handleClose={handleCloseUpdate} fetchTiposAlojamiento={fetchTiposAlojamiento} id={IdMod} descrip={DescripMod}/>
         </table>
     );
 }

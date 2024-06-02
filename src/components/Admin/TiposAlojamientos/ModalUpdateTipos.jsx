@@ -3,8 +3,9 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
 import '../../../styles/modales.css';
 
-function ModalUpdateTipos({ show, handleClose, fetchTiposAlojamiento, id, descripcionMod}) {
+function ModalUpdateTipos({ show, handleClose, fetchTiposAlojamiento, id,descrip}) {
 
+  
   const [validated, setValidated] = useState(false);
 
   const[snack, setSnack]=useState(false);
@@ -71,6 +72,7 @@ function ModalUpdateTipos({ show, handleClose, fetchTiposAlojamiento, id, descri
             <Form.Label>Descripción</Form.Label>
             <InputGroup hasValidation>  
             <Form.Control
+              value={descrip}
               type="text"
               required
               placeholder="Ingresa una descripción"
