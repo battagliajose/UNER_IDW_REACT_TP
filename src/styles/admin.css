@@ -3,9 +3,8 @@
     flex-direction: column;
     width: 100%;
     align-items: center;      
-    
-    padding: 18.5%;
- 
+    min-height: 100%;
+    padding: 17.3%; 
 }
 
 .tablaTipos {
