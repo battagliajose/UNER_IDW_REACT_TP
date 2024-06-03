@@ -41,9 +41,12 @@ function Admin() {
             <ModalCreateTipos show={showModalCreate} handleClose={handleCloseCreate} fetchTiposAlojamiento={fetchTiposAlojamiento} />
             <div className='tablero'>             
             <h2 className="tituloTipos">Tipos de alojamientos</h2>
+            <div className='contenedor-button'>
             <button className='buttonNuevo' onClick={handleShowCreate}>
                 +
             </button>             
+
+            </div>
             {/* Paso por props la lista de alojamiento cargada en la funcion fetchTiposAlojamiento, la funcion propia y una funcion para cambiar nombre de botón */}
             <TablaTipos 
                 tiposAlojamiento={tiposAlojamiento}

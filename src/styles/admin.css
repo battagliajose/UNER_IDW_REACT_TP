@@ -7,6 +7,14 @@
     padding: 17.3%; 
 }
 
+.contenedor-button{
+    
+    display: flex;
+    justify-content: end;
+}
+
+
+
 .tablaTipos {
     border-collapse: collapse;
     border: 1px solid #242430b0;/* Establece el borde de la tabla */
@@ -31,7 +39,9 @@
     padding: 10px;
     text-align: center;
 }
+
 .buttonNuevo{
+width:60px;
 margin-bottom: 10px;
 border-radius: 5px;
 border: none;
@@ -39,6 +49,7 @@ background-color: #616263;
 color:white;
 padding: 5px;
 font-size: 2rem;
+
 }
 .buttonNuevo:hover{
     background-color:#E6260C; 
