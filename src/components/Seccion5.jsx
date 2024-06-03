@@ -9,7 +9,7 @@ function Seccion5(props) {
           <h4>Disfruta de la vida.Aprovecha la oportunidad</h4>
         </div>
         <div className="col-md-12 frase-Imagen">
-          <img className="imagen" src={props.imagen} />
+          <img className="imagen" src={props.imagen} alt="imagenPileta" />
         </div>
         <div className="col-md-6 texto-session5 ">
           <p>

@@ -59,6 +59,7 @@ function Contacto() {
           </div>
           <div className="col-md-6 formulario-mapa">
             <iframe
+              title="mapa"
               className="mapa"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3365.573949099506!2d-58.23386162361339!3d-32.48408564867756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b45287c99b3d6f%3A0x217ff14d6a8196ff!2sUniversidad%20Nacional%20de%20Entre%20Rios!5e0!3m2!1ses!2sar!4v1714588429597!5m2!1ses!2sar"
               width="600"

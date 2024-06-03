@@ -35,32 +35,6 @@ function ItemTipo({
     }
   };
 
-  const handleModificar = async (id) => {
-    //buscar el tipo de alojamiento
-    try {
-      const response = await fetch(
-        `http://localhost:3001/tiposAlojamiento/getTipoAlojamiento/${id}`,
-        {
-          method: "GET",
-        }
-      );
-      //controlo que hubo conexion
-      if (!response.ok) {
-        throw new Error("Hubo un error al cargar el tipo de alojamiento");
-      } else {
-        const data = await response.json();
-        console.log(data.Descripcion);
-
-        fetchTiposAlojamiento(); // Actualizar la lista de tipos de alojamiento
-      }
-    } catch (error) {
-      console.error(
-        "Hubo un error al modificar el tipo de alojamiento:",
-        error
-      );
-    }
-  };
-
   return (
     <tr>
       <td>{id}</td>
