@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import '../../../styles/modales.css';
 import '../../../styles/filasTabla.css';
-function ItemTipo({ id, descripcion, fetchTiposAlojamiento, handleShowUpdate,colorFila }) {
+function ItemTipo({ id, descripcion, fetchTiposAlojamiento, handleShowUpdate}) {
     // Se reciben los datos del listados destructurados y las funciones fetchTiposAlojamiento y cambiarNombreBoton     
     const[snack, setSnack]=useState(false);
 
@@ -52,16 +52,11 @@ function ItemTipo({ id, descripcion, fetchTiposAlojamiento, handleShowUpdate,col
 
     return (
         <>
-        <tr className={colorFila? 'colorearFila':''}>
+        <tr>
             <td>{id}</td>
             <td>{descripcion}</td>
-            <td>
-               
-                <p className='bi bi-pencil-fill icon-style-pers editar' onClick={() => handleShowUpdate({ id, descripcion })}></p>
-               
-                </td>
-            <td>
-                <p className='bi bi-trash-fill icon-style-pers eliminar' onClick={() => handleDelete(id)}></p></td>
+            <td><p className='bi bi-pencil-fill icon-style-pers editar' onClick={() => handleShowUpdate({ id, descripcion })}></p></td>
+            <td><p className='bi bi-trash-fill icon-style-pers eliminar' onClick={() => handleDelete(id)}></p></td>
         </tr>
         <div className={snack ? 'mostrarSnack' : 'ocultarSnack'} >Tipo de alojamiento creado</div>
         </>
