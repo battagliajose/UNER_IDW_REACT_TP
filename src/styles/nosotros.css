@@ -38,7 +38,8 @@ main h2 {
     justify-content: space-between;
 }
 
-.mision, .vision {
+.mision,
+.vision {
     width: 45%;
     display: inline-block;
 }
@@ -52,7 +53,7 @@ main h2 {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    
+
 }
 
 .comentario {

@@ -22,7 +22,6 @@ function ModalUpdateTipos({ show, handleClose, fetchTiposAlojamiento, id, descri
       setValidated(true);
       event.preventDefault();
       createTipoModal();
-      console.log(descripcion);
       handleClose();
       fetchTiposAlojamiento();
       setSnack(true);

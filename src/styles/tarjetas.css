@@ -7,18 +7,18 @@
 }
 
 .tarjeta {
-   margin: 0.8vw;
-   border-radius: 5px;
-   box-shadow: 3px 3px 3px rgba(0,0,0,0.3);
-   min-width: 280px;
-   max-width: 18vw;
-   background-color: #E9E0B4;
-   position: relative;
-   padding-bottom: 8vh;
+    margin: 0.8vw;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+    min-width: 280px;
+    max-width: 18vw;
+    background-color: #E9E0B4;
+    position: relative;
+    padding-bottom: 8vh;
 }
 
 .tarjeta:hover {
-    box-shadow: 5px 5px 10px rgba(0,0,0,0.8);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
     transition: box-shadow 0.3s ease;
     min-width: 280px;
     max-width: 18vw;
@@ -26,7 +26,7 @@
     position: relative;
     padding-bottom: 8vh;
     cursor: pointer;
- }
+}
 
 .tarjeta img {
     width: 100%;
@@ -37,11 +37,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0, 0, 0, 0.3);
     border-radius: 50%;
     width: 2vw;
     height: 2vw;
-    position:absolute;
+    position: absolute;
     top: 10px;
     right: 10px;
     min-width: 30px;
@@ -63,10 +63,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(255,255,255,0.60);
+    background-color: rgba(255, 255, 255, 0.60);
     font-weight: 800;
     border-radius: 10px;
-    position:absolute;
+    position: absolute;
     padding: 5px 15px;
     top: 10px;
     left: 10px;
@@ -117,11 +117,11 @@
     color: white;
     width: fit-content;
     padding: 0.5rem;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
 }
 
 .tarjetaPieBoton:hover {
-    box-shadow: 4px 4px 8px rgba(0,0,0,0.8);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8);
     transition: box-shadow 0.3s ease;
 }
 
@@ -129,11 +129,10 @@
     display: flex;
     padding: 10px;
     align-items: center;
-    width:fit-content;
+    width: fit-content;
 }
 
 .tarjetaInfoIcons img {
     width: 1vw;
     margin: 5px;
 }
-
