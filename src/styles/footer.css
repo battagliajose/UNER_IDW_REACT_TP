@@ -18,7 +18,7 @@
 }
 
 .footer_Bottom {
-  /*position: absolute;*/
+  position: absolute;
   bottom: 0px;
   width: 100%;
 }
