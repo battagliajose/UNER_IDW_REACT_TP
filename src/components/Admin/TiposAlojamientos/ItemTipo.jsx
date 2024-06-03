@@ -57,8 +57,8 @@ function ItemTipo({ id, descripcion, fetchTiposAlojamiento, handleShowUpdate}) {
             <td>{descripcion}</td>
             <td><p className='bi bi-pencil-fill icon-style-pers editar' onClick={() => handleShowUpdate({ id, descripcion })}></p></td>
             <td><p className='bi bi-trash-fill icon-style-pers eliminar' onClick={() => handleDelete(id)}></p></td>
+            <td className={snack ? 'mostrarSnack' : 'ocultarSnack'} >Tipo de alojamiento creado</td>
         </tr>
-        <div className={snack ? 'mostrarSnack' : 'ocultarSnack'} >Tipo de alojamiento creado</div>
         </>
     );
 }

@@ -18,7 +18,7 @@ function Seccion5(props) {
                 <div className="contenedor-button" ><button className="button-seccion5">Contactanos</button></div>                            
             </div>
         </div>                
-        <div class="row contenedor">
+        <div className="row contenedor">
             <div className="col-md-12 contenedor-Imagen">
                 <img className="imagen" src={props.imagen} alt="Foto de Pileta" />
             </div>
