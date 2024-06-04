@@ -100,9 +100,9 @@ textarea:focus {
         /* Añadir espaciado entre líneas */
     }
 
-    .texto-formulario {
+    /*.texto-formulario {
         padding-bottom: 12rem;
-    }
+    }*/
 }
 
 .text-fin {
