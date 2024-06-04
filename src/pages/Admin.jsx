@@ -47,10 +47,12 @@ function Admin() {
 
         </div>
         {/* Paso por props la lista de alojamiento cargada en la funcion fetchTiposAlojamiento, la funcion propia y una funcion para cambiar nombre de botón */}
+        <div className="contenedorTablaTipos">
         <TablaTipos
           tiposAlojamiento={tiposAlojamiento}
           fetchTiposAlojamiento={fetchTiposAlojamiento}
         />
+        </div>
       </div>
     </div>
   );

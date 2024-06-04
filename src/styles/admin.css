@@ -4,7 +4,13 @@
     width: 100%;
     align-items: center;
     min-height: 100%;
-    padding: 17.3%;
+    padding-top: 10%;
+}
+
+.contenedorTablaTipos {
+    max-height: 350px;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 .contenedor-button {
