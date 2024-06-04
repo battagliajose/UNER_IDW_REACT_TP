@@ -20,7 +20,7 @@ const links = [
 const Footer = () => {
   const location = useLocation();
   const footerBottom =
-    location.pathname === "/contacto"; /*|| location.pathname === '/admin';*/
+    location.pathname === "/contacto" || location.pathname === '/admin';
 
   return (
     <>
