@@ -44,6 +44,7 @@ function Admin() {
           <button className="buttonNuevo" onClick={handleShowCreate}>
             +
           </button>
+
         </div>
         {/* Paso por props la lista de alojamiento cargada en la funcion fetchTiposAlojamiento, la funcion propia y una funcion para cambiar nombre de botón */}
         <TablaTipos
