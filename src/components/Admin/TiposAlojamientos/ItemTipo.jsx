@@ -23,12 +23,10 @@ function ItemTipo({
         throw new Error("Hubo un error al eliminar el tipo de alojamiento");
       } else {
         setSnack(true);
-
         setTimeout(() => {
           setSnack(false);
+          fetchTiposAlojamiento(); // Actualizar la lista de tipos de alojamiento
         }, 2000);
-        //alert("Eliminado correctamente!");
-        fetchTiposAlojamiento(); // Actualizar la lista de tipos de alojamiento
       }
     } catch (error) {
       console.error("Error eliminando:", error);
@@ -52,7 +50,7 @@ function ItemTipo({
         ></p>
       </td>
       <td className={snack ? "mostrarSnack" : "ocultarSnack"}>
-        Tipo de alojamiento creado
+        Tipo de alojamiento eliminado
       </td>
     </tr>
   );
