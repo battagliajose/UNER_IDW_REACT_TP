@@ -3,26 +3,64 @@
     flex-direction: column;
     width: 100%;
     align-items: center;
-    margin: 200px auto;
-   
-    
+    min-height: 100%;
+    padding: 17.3%;
+}
+
+.contenedor-button {
+
+    display: flex;
+    justify-content: end;
 }
 
 .tablaTipos {
     border-collapse: collapse;
-    border: 1px solid black; /* Establece el borde de la tabla */
+    border: 1px solid #242430b0;
+    /* Establece el borde de la tabla */
 }
 
-.tablaTipos th, .tablaTipos td {
-    border: 1px solid black; /* Establece el borde para las celdas de encabezado y datos */
-    padding: 8px; /* Añade un espacio interno alrededor del contenido de las celdas */
+.tablaTipos th,
+.tablaTipos td {
+    border: 1px solid #242430b0;
+    /* Establece el borde para las celdas de encabezado y datos */
+    padding: 8px;
+    /* Añade un espacio interno alrededor del contenido de las celdas */
 }
 
 .tablaTipos {
     border-collapse: collapse;
-    border: 1px solid black; /* Establece el borde de la tabla */
+    border: 1px solid#242430b0;
+    /* Establece el borde de la tabla */
 }
 
 .form-container {
     margin-top: 50px;
+}
+
+.tituloTipos {
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.buttonNuevo {
+    width: 60px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #616263;
+    color: white;
+    padding: 5px;
+    font-size: 2rem;
+
+}
+
+.buttonNuevo:hover {
+    background-color: #E6260C;
+}
+
+.tablero {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }

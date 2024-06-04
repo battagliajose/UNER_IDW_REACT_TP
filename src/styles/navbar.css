@@ -1,22 +1,20 @@
 .h1_header {
-  font-size: 2rem; /*32px*/
-  color:  #E6260C;
-  font-weight:bold;
-  padding-left: 0;        
+  font-size: 2rem;  /*32px*/
+  color: #e6260c;
+  font-weight: bold;
+  padding-left: 0;
 }
 
-  
-.clase-hf-nav{
-    background-color: #242430;
-    color: #E6260C
+.clase-hf-nav {
+  background-color: #242430;
+  color: #e6260c;
 }
-
 
 .nav-pers {
-    margin: 0;    
-    font-size: 1.118rem;       
-  }
+  margin: 0;
+  font-size: 1.118rem;
+}
 
-.nav-pers-link{
-    color: #FAF9F0;
+.nav-pers-link {
+  color: #faf9f0;
 }

@@ -1,24 +1,24 @@
 .h2_footer {
-    font-size: 1.875rem;
-    color:  #E6260C;
-    font-weight:bold;
-    padding-left: 0;
-  }
+  font-size: 1.875rem;
+  color: #E6260C;
+  font-weight: bold;
+  padding-left: 0;
+}
 
-  .p_footer {
-    font-size: 1.125rem;
-    color:  #E6260C;    
-    padding-left: 0;      
-  }
+.p_footer {
+  font-size: 1.125rem;
+  color: #E6260C;
+  padding-left: 0;
+}
 
-  .redes{        
-    color:  #E6260C;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem; 
+.redes {
+  color: #E6260C;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .footer_Bottom {
-  position: absolute;
-  bottom: 0px;
+  bottom: 0;
   width: 100%;
+  clear: both;
 }
