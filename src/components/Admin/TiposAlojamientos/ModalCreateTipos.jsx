@@ -19,13 +19,6 @@ function ModalCreateTipos({ show, handleClose, fetchTiposAlojamiento }) {
       createTipoModal();
       handleClose();
       fetchTiposAlojamiento();
-      setSnack(true);
-
-      // Oculto el snack después de 3 segundos
-      setTimeout(() => {
-        setSnack(false);
-      }, 3000);
-      setValidated(false);
     }
   };
 
@@ -49,6 +42,12 @@ function ModalCreateTipos({ show, handleClose, fetchTiposAlojamiento }) {
       );
       if (response.ok) {
         fetchTiposAlojamiento();
+        setSnack(true);
+        // Oculto el snack después de 3 segundos
+        setTimeout(() => {
+          setSnack(false);
+        }, 2000);
+        setValidated(false);
       }
     } catch (error) {
       alert("Error: " + error.message);

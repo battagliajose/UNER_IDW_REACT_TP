@@ -24,10 +24,6 @@ function ModalUpdateTipos({ show, handleClose, fetchTiposAlojamiento, id, descri
       createTipoModal();
       handleClose();
       fetchTiposAlojamiento();
-      setSnack(true);
-      setTimeout(() => {
-        setSnack(false);
-      }, 2000);
       setValidated(false);
     }
   };
@@ -47,6 +43,10 @@ function ModalUpdateTipos({ show, handleClose, fetchTiposAlojamiento, id, descri
       });
       if (response.ok) {
         fetchTiposAlojamiento();
+        setSnack(true);
+        setTimeout(() => {
+          setSnack(false);
+        }, 2000);
       }
     } catch (error) {
       alert('Error: ' + error.message);
