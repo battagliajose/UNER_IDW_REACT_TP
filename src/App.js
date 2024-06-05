@@ -19,7 +19,10 @@ import Home from "./pages/Home";
 import Contacto from "./pages/Contacto";
 import Nosotros from "./pages/Nosotros";
 import Admin from "./pages/Admin";
+import Alojamiento from "./components/Admin/Alojamientos/Alojamiento"
+
 import NotFound from "./components/NotFound";
+
 
 function App() {
   return (
@@ -35,6 +38,7 @@ function App() {
             <Route path="/nosotros" element={<Nosotros />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="*" element={<NotFound />} />
+            <Route path="/alojamiento" element={<Alojamiento />}></Route>           
           </Routes>
         </main>
         <Footer />
