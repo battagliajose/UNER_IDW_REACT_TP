@@ -1,17 +1,24 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import React, { Component, useState} from 'react'
+import { Button } from 'react-bootstrap'
 import "../../../styles/sidebar.css";
 
-function Sidebar() {
+function Sidebar({ setCrudToShow }) {
 
+    function handleClick(event){
+        const name = event.target.name;
+        if(name === "alojamientos") {
+            setCrudToShow(0)
+        } else if(name === "tipos") {
+            setCrudToShow(1)
+        }
+    }
 
     return (
-        
         <div className='sidebar-contenedor'>
             <h2>Administracion del usuario</h2>
             <div className='opciones'>
-                <Link className="btn btn-danger btn-lg m-3" to='/alojamiento'>Alojamiento</Link>
-                <Link className="btn btn-danger btn-lg m-3"to='/tipoalojamiento'>Tipo de alojamiento</Link>
+                <Button name="alojamientos" onClick = {handleClick} className="btn btn-danger btn-lg m-3">Alojamiento</Button>
+                <Button name="tipos" onClick = {handleClick}className="btn btn-danger btn-lg m-3">Tipo de alojamiento</Button>
             </div>
         </div>
 

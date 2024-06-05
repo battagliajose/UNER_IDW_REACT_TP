@@ -1,10 +1,14 @@
 .admin {
     display: flex;
-    flex-direction: column;
     width: 100%;
     align-items: center;
     min-height: 100%;
     padding-top: 10%;
+}
+
+.adminContainer {
+    display: flex;
+    align-items: center;
 }
 
 .contenedorTablaTipos {
