@@ -1,5 +1,7 @@
 import React from "react";
 import "../styles/seccion5.css";
+import { Link } from "react-router-dom";
+
 
 function Seccion5(props) {
   return (
@@ -19,9 +21,11 @@ function Seccion5(props) {
             nuestros restaurantes de clase mundial y sumérgete en la serenidad
             de nuestros spa de primera categoría.
           </p>
-          <div className="contenedor-button">
-            <button className="button-seccion5">Contactanos</button>
-          </div>
+          <Link to="/contacto" >
+            <div className="contenedor-button">
+              <button className="button-seccion5">Contactanos</button>
+            </div>
+          </Link>
         </div>
       </div>
       <div className="row contenedor">

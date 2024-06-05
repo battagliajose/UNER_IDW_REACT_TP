@@ -44,8 +44,10 @@
     margin-left: 10px;
 }
 
-.contenedor-button {
-    margin-top: 10px;
+.contenedor-button {   
+    display: flex;
+    justify-content: end;
+    margin-right: 50px;
 }
 
 .texto-session5 {
@@ -126,5 +128,9 @@
     .contenedorSeccion5 {
         height: 48vh;
     }
-
+    .contenedor-button {   
+        display: flex;
+        justify-content: end;
+        margin-right: 10px;
+    }
 }
