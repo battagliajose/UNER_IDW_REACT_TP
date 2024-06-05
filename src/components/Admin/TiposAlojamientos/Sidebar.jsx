@@ -6,11 +6,12 @@ function Sidebar() {
 
 
     return (
+        
         <div className='sidebar-contenedor'>
             <h2>Administracion del usuario</h2>
             <div className='opciones'>
-                <Link to='/alojamiento'>Alojamiento</Link>
-                <Link to='/tipoalojamiento'>Tipo de alojamiento</Link>
+                <Link className="btn btn-danger btn-lg m-3" to='/alojamiento'>Alojamiento</Link>
+                <Link className="btn btn-danger btn-lg m-3"to='/tipoalojamiento'>Tipo de alojamiento</Link>
             </div>
         </div>
 
