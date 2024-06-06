@@ -12,7 +12,13 @@ function Admin() {
    return (
     <div className="adminContainer">
           <SideBar setCrudToShow={setCrudToShow}/>
-          {(crudToShow===1) ? <CrudTipos /> : <Alojamiento />}
+          {(crudToShow===1) ? 
+          <div className="contenedores-components">
+            <CrudTipos />
+          </div> : 
+          <div className="contenedores-components">
+            <Alojamiento />
+          </div>}
     </div>
 
   );
