@@ -26,3 +26,20 @@
     text-align: center;
 }
 
+.botones{
+    background-color: #e6260c;
+    margin: 3px;
+    border:0;    
+}
+.botones:focus,
+.botones_active{
+    border: 0;
+}
+
+.botones:hover{
+    transform: scale(0.99);
+    background-color: #2f3133;
+    border-bottom: 1px solid #e6260c;
+    border-radius: 0;
+ 
+}

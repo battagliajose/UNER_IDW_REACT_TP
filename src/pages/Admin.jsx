@@ -4,6 +4,7 @@ import ModalCreateTipos from "../components/Admin/TiposAlojamientos/ModalCreateT
 import "../styles/admin.css";
 import SideBar from "../components/Admin/TiposAlojamientos/Sidebar";
 import CrudTipos from "../components/Admin/TiposAlojamientos/CrudTipos"
+import Alojamiento from "../components/Admin/TiposAlojamientos/Alojamiento";
 
 function Admin() {
   const [crudToShow, setCrudToShow] = useState(0);
@@ -11,7 +12,7 @@ function Admin() {
    return (
     <div className="adminContainer">
           <SideBar setCrudToShow={setCrudToShow}/>
-          {(crudToShow===1) ? <CrudTipos /> : <h2>CRUD Alojamientos!</h2>}      
+          {(crudToShow===1) ? <CrudTipos /> : <Alojamiento />}
     </div>
 
   );

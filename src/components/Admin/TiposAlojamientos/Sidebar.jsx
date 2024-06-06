@@ -17,8 +17,8 @@ function Sidebar({ setCrudToShow }) {
         <div className='sidebar-contenedor'>
             <h2>Administracion del usuario</h2>
             <div className='opciones'>
-                <Button name="alojamientos" onClick = {handleClick} className="btn btn-danger btn-lg m-3">Alojamiento</Button>
-                <Button name="tipos" onClick = {handleClick}className="btn btn-danger btn-lg m-3">Tipo de alojamiento</Button>
+                <Button name="alojamientos" onClick = {handleClick} className="botones">Alojamiento</Button>
+                <Button name="tipos" onClick = {handleClick}className="botones">Tipo de alojamiento</Button>
             </div>
         </div>
 
