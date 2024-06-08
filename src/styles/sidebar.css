@@ -26,23 +26,6 @@
     text-align: center;
 }
 
-<<<<<<< HEAD
-.font_color{
-    background-color: #E6260C;
-}
-
-
-.botonsb:hover {
-    color: #211f1f;
-    background-color: #efe8e7;
-    cursor: pointer;
-}
-
-#botonsb:onclick {
-    display: none;
-
-}
-=======
 .botones{
     background-color: #e6260c;
     margin: 3px;
@@ -60,4 +43,3 @@
     border-radius: 0;
  
 }
->>>>>>> c7d792ccbe6f353a96b296a34f13a2bf667569a6
