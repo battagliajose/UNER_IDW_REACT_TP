@@ -37,9 +37,10 @@
 }
 
 .tablaTipos {
+    width: 100%;
     border-collapse: collapse;
     border: 1px solid#242430b0;
-    /* Establece el borde de la tabla */
+    /* Establece el borde de la tabla */    
 }
 
 .form-container {
@@ -72,4 +73,36 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+}
+
+/*******************************************/
+.tabla-container {
+    max-height: 400px; /* Ajusta la altura según tus necesidades */
+    overflow-y: auto;
+}
+
+
+
+.tablaTipos thead {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 1;
+}
+
+.tablaTipos th, .tablaTipos td {
+    padding: 8px;
+    text-align: left;
+}
+
+.cabecera th {
+    color:aliceblue;
+    background-color: #f36969; /* Color de fondo de la cabecera */
+    padding-top: 2%;
+}
+
+.cuerpo tr:nth-child(even) {
+    background-color: #f9f9f9;
+    margin-top: 3%;
 }

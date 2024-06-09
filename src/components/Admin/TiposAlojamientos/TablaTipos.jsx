@@ -19,8 +19,9 @@ function TablaTipos({ tiposAlojamiento, fetchTiposAlojamiento }) {
   const handleCloseUpdate = () => setShowModalUpdate(false);
 
   return (
-    <div>
+    <div className="tabla-container">
       <table className="tablaTipos" border="3">
+      {/*<table className="tablaTipos" border="3">*/}
         <thead>
           <tr className="cabecera">
             <th>id</th>
