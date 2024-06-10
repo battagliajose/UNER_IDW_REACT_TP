@@ -4,7 +4,7 @@ import ModalUpdateTipos from "./ModalUpdateTipos";
 import "../../../styles/filasTabla.css";
 
 function TablaTipos({ tiposAlojamiento, fetchTiposAlojamiento }) {
-  //    Se recibe la lista y las funciones para pasarlas a otro componente( funciones fetchTiposAlojamiento y cambiarNombreBoton )
+  // Se recibe la lista y las funciones para pasarlas a otro componente (funciones fetchTiposAlojamiento y cambiarNombreBoton)
 
   const [showModalUpdate, setShowModalUpdate] = useState(false);
   const [IdMod, setIdMod] = useState(0);
@@ -21,7 +21,6 @@ function TablaTipos({ tiposAlojamiento, fetchTiposAlojamiento }) {
   return (
     <div className="tabla-container">
       <table className="tablaTipos" border="3">
-      {/*<table className="tablaTipos" border="3">*/}
         <thead>
           <tr className="cabecera">
             <th>id</th>

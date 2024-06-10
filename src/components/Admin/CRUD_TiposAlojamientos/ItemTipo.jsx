@@ -2,12 +2,7 @@ import React, { useState } from "react";
 import "../../../styles/modales.css";
 import "../../../styles/filasTabla.css";
 
-function ItemTipo({
-  id,
-  descripcion,
-  fetchTiposAlojamiento,
-  handleShowUpdate,
-}) {
+function ItemTipo({ id, descripcion, fetchTiposAlojamiento, handleShowUpdate, }) {
   // Se reciben los datos del listados destructurados y las funciones fetchTiposAlojamiento y cambiarNombreBoton
   const [snack, setSnack] = useState(false);
 

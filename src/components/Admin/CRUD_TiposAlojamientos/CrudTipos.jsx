@@ -4,6 +4,10 @@ import TablaTipos from "./TablaTipos";
 
 function CrudTipos() {
     const [tiposAlojamiento, setTiposAlojamiento] = useState([]);
+    const [showModalCreate, setShowModalCreate] = useState(false);
+
+    const handleShowCreate = () => setShowModalCreate(true);
+    const handleCloseCreate = () => setShowModalCreate(false);
 
     // Función para obtener los datos de los tipos de alojamiento
     const fetchTiposAlojamiento = async () => {
@@ -26,10 +30,6 @@ function CrudTipos() {
       fetchTiposAlojamiento();
     }, []);
   
-    const [showModalCreate, setShowModalCreate] = useState(false);
-    const handleShowCreate = () => setShowModalCreate(true);
-    const handleCloseCreate = () => setShowModalCreate(false);
-  
     return (
       <div className="admin">
         <ModalCreateTipos
@@ -43,7 +43,6 @@ function CrudTipos() {
             <button className="buttonNuevo" onClick={handleShowCreate}>
               +
             </button>
-  
           </div>
           {/* Paso por props la lista de alojamiento cargada en la funcion fetchTiposAlojamiento, la funcion propia y una funcion para cambiar nombre de botón */}
           <TablaTipos
