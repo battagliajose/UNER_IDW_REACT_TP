@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import ModalCreateTipos from "./ModalCreateTipos";
-import TablaTipos from "./TablaTipos";
+import TablaTipos from "../TablaCrud";
+import ModalUpdateTipos from "./ModalUpdateTipos";
+import * as API from "../API";
 
 function CrudTipos() {
     const [tiposAlojamiento, setTiposAlojamiento] = useState([]);
@@ -8,21 +10,38 @@ function CrudTipos() {
 
     const handleShowCreate = () => setShowModalCreate(true);
     const handleCloseCreate = () => setShowModalCreate(false);
+    
+    const handleCloseUpdate = () => setShowModalUpdate(false);
+
+    const [snack, setSnack] = useState(false);
 
     // Función para obtener los datos de los tipos de alojamiento
+    
     const fetchTiposAlojamiento = async () => {
-      try {
-        const response = await fetch(
-          "http://localhost:3001/tiposAlojamiento/getTiposAlojamiento"
-        );
-        if (!response.ok) {
-          throw new Error("Hubo un error al obtener los datos");
-        }
-        const data = await response.json();
+      const data = await API.fetchData("http://localhost:3001/tiposAlojamiento/getTiposAlojamiento");
+      if (data) {
         setTiposAlojamiento(data);
-      } catch (error) {
-        console.error(error);
       }
+    };
+
+    const handleDelete = async (id) => {
+      API.deleteItem("http://localhost:3001/tiposAlojamiento/deleteTipoAlojamiento/", id)
+          
+      setSnack(true);
+      setTimeout(() => {
+        setSnack(false);
+        fetchTiposAlojamiento(); // Actualizar la lista de tipos de alojamiento
+      }, 2000);
+    };
+
+    const [showModalUpdate, setShowModalUpdate] = useState(false);
+    const [IdMod, setIdMod] = useState(0);
+    const [DescripMod, setDescripMod] = useState("");
+  
+    const handleShowUpdate = ({ idTipoAlojamiento, Descripcion }) => {
+      setShowModalUpdate(true);
+      setIdMod(idTipoAlojamiento);
+      setDescripMod(Descripcion);
     };
   
     useEffect(() => {
@@ -48,8 +67,20 @@ function CrudTipos() {
           <TablaTipos
             tiposAlojamiento={tiposAlojamiento}
             fetchTiposAlojamiento={fetchTiposAlojamiento}
+            handleDelete={handleDelete}
+            handleShowUpdate={handleShowUpdate}
           />
         </div>
+        <td className={snack ? "mostrarSnack" : "ocultarSnack"}>
+        Tipo de alojamiento eliminado
+      </td>
+      <ModalUpdateTipos
+        show={showModalUpdate}
+        handleClose={handleCloseUpdate}
+        fetchTiposAlojamiento={fetchTiposAlojamiento}
+        id={IdMod}
+        descrip={DescripMod}
+      />
       </div>
     );
 }
