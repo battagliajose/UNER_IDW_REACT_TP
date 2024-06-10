@@ -6,7 +6,7 @@ function Alojamientos(){
 
     return (
         <div className='contenedor-alojamiento'>
-            <h2>Alojamiento de mi componente</h2>
+            <h2>CRUD de Servicios</h2>
         </div>
 
     );

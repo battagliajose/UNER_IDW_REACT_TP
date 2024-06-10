@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from 'react'
 import { Modal, Button, Form } from "react-bootstrap";
 import InputGroup from "react-bootstrap/InputGroup";
 import "../../../styles/modales.css";
@@ -6,6 +6,15 @@ import "../../../styles/modales.css";
 function ModalCreateTipos({ show, handleClose, fetchTiposAlojamiento }) {
   const [validated, setValidated] = useState(false);
   const [snack, setSnack] = useState(false);
+  const descripcionRef = useRef(null);
+
+  useEffect(() => {
+    // Enfoca el campo de texto cuando el modal se muestra
+    if (show) {
+      descripcionRef.current.focus();
+    }
+  }, [show]);
+
   const handleSubmit = (event) => {
     //validacion del input
     const form = event.currentTarget;
@@ -70,6 +79,7 @@ function ModalCreateTipos({ show, handleClose, fetchTiposAlojamiento }) {
               <Form.Label>Descripción</Form.Label>
               <InputGroup hasValidation>
                 <Form.Control
+                  ref={descripcionRef}
                   type="text"
                   required
                   placeholder="Ingresa una descripción"

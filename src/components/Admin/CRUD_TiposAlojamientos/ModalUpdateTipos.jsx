@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react'
 import { Modal, Button, Form } from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
 import '../../../styles/modales.css';
@@ -7,11 +7,19 @@ function ModalUpdateTipos({ show, handleClose, fetchTiposAlojamiento, id, descri
   const [validated, setValidated] = useState(false);
   const [snack, setSnack] = useState(false);
   const [descripcion, setDescripcion] = useState(""); // Inicializa descripción vacía
+  const descripcionRef = useRef(null);
 
   useEffect(() => {
     // Actualiza el estado de descripción con el valor de descrip cuando el componente se monta o cuando descrip cambia
     setDescripcion(descrip);
   }, [descrip]);
+
+  useEffect(() => {
+    // Enfoca el campo de texto cuando el modal se muestra
+    if (show) {
+      descripcionRef.current.focus();
+    }
+  }, [show]);
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -63,6 +71,7 @@ function ModalUpdateTipos({ show, handleClose, fetchTiposAlojamiento, id, descri
               <Form.Label>Descripción</Form.Label>
               <InputGroup hasValidation>
                 <Form.Control
+                  ref={descripcionRef}
                   value={descripcion}
                   type="text"
                   required
