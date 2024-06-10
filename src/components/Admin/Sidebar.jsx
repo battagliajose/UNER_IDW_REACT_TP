@@ -1,4 +1,4 @@
-import React, { Component, useState} from 'react'
+import React  from 'react'
 import { Button } from 'react-bootstrap'
 import "../../styles/sidebar.css";
 
@@ -17,7 +17,7 @@ function Sidebar({ setCrudToShow }) {
 
     return (
         <div className='sidebar-contenedor'>
-            <h2 class="sidetitulo">Administracion del usuario</h2>
+            <h2 className="sidetitulo">Administracion del usuario</h2>
             <div className='opciones'>
                 <Button name="alojamientos" onClick = {handleClick} className="botones btn-danger">Alojamientos</Button>
                 <Button name="tipos" onClick = {handleClick}className="botones btn-danger">Tipos de alojamientos</Button>

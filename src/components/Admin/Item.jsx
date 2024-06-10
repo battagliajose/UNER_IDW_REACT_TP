@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import "../../styles/modales.css";
 import "../../styles/filasTabla.css";
 
 function ItemTipo({ tipo, handleShowUpdate, handleDelete }) {
+  const id = Object.values(tipo)[0];
+  
   return (
     <tr>
       {Object.keys(tipo).map((key) => (
@@ -17,7 +19,7 @@ function ItemTipo({ tipo, handleShowUpdate, handleDelete }) {
       <td>
         <p
           className="bi bi-trash-fill icon-style-pers eliminar"
-          onClick={() => handleDelete(tipo.idTipoAlojamiento)}
+          onClick={() => handleDelete(id)}
         ></p>
       </td>
     </tr>

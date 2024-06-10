@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import ModalCreateTipos from "./ModalCreateTipos";
-import TablaTipos from "../TablaCrud";
+import TablaCrud from "../TablaCrud";
 import ModalUpdateTipos from "./ModalUpdateTipos";
 import * as API from "../API";
 
@@ -24,7 +24,7 @@ function CrudTipos() {
       }
     };
 
-    const handleDelete = async (id) => {
+    const deleteTipo = async (id) => {
       API.deleteItem("http://localhost:3001/tiposAlojamiento/deleteTipoAlojamiento/", id)
           
       setSnack(true);
@@ -64,10 +64,10 @@ function CrudTipos() {
             </button>
           </div>
           {/* Paso por props la lista de alojamiento cargada en la funcion fetchTiposAlojamiento, la funcion propia y una funcion para cambiar nombre de botón */}
-          <TablaTipos
+          <TablaCrud
             tiposAlojamiento={tiposAlojamiento}
             fetchTiposAlojamiento={fetchTiposAlojamiento}
-            handleDelete={handleDelete}
+            handleDelete={deleteTipo}
             handleShowUpdate={handleShowUpdate}
           />
         </div>

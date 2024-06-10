@@ -21,7 +21,7 @@ export const fetchData = async (url) => {
         }
       );
       if (!response.ok) {
-        throw new Error("Hubo un error al eliminar el tipo de alojamiento");
+        throw new Error("Hubo un error al eliminar el item " + id);
       } 
     } catch (error) {
       console.error("Error eliminando:", error);

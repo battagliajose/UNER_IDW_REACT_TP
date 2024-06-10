@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react'
 import '../../../styles/alojamiento.css'
 import * as API from '../API'
-import TablaTipos from '../TablaCrud'
+import TablaCrud from '../TablaCrud'
 
 function CrudServicios(){
 
     const [servicios, setServicios] = useState([])
+    const [snack, setSnack] = useState(false);
 
     const fetchServicios = async () => {
         const data = await API.fetchData("http://localhost:3001/servicio/getAllServicios");
@@ -19,13 +20,22 @@ function CrudServicios(){
         fetchServicios();
       }, []);
 
+      const deleteServicio = async (id) => {
+        API.deleteItem("http://localhost:3001/servicio/deleteServicio/", id)
+        setSnack(true);
+        setTimeout(() => {
+          setSnack(false);
+          fetchServicios(); // Actualizar la lista de tipos de alojamiento
+        }, 2000);
+      };
+
     return (
         <div className='contenedor-alojamiento'>
             <h2>CRUD de Servicios</h2>
-            <TablaTipos
+            <TablaCrud
             tiposAlojamiento={servicios}
             fetchTiposAlojamiento={fetchServicios}
-            handleDelete={fetchServicios}
+            handleDelete={deleteServicio}
             handleShowUpdate={fetchServicios}
           />
         </div>
