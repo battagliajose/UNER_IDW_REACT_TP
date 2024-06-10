@@ -8,7 +8,7 @@
 
 .adminContainer {
     display: flex;        
-    align-items: center; 
+    align-items: center;     
 }
 
 .contenedorTablaTipos {
@@ -106,3 +106,23 @@
     background-color: #f9f9f9;
     margin-top: 3%;
 }
+
+/*barra navegación de cruds*/
+
+.navbar-titulo {
+    margin: 8%;
+    text-align: center;
+    margin-bottom: 20px;        
+    }
+
+.navbar-contenedor {
+    background-color: #f8f9fa;
+    width: 100%;
+  }
+  
+  .navbar-titulo {
+    text-align: center;
+    margin-bottom: 20px;        
+    width: auto;    
+    }
+
