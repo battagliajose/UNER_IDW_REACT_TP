@@ -1,7 +1,11 @@
-import React, { useEffect, useState } from "react";
-import "../styles/contacto.css";
-import emailjs from '@emailjs/browser'
 
+import "../styles/contacto.css";
+import emailjs from '@emailjs/browser';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import React, { useRef } from 'react';
+
+function Contacto() {
 
 const form = useRef();
 
@@ -15,6 +19,7 @@ const sendEmail = (e) => {
     .then(
       () => {
         console.log('Email enviado!');
+
       },
       (error) => {
         console.log('Fallo al enviar mail...', error.text);
@@ -22,16 +27,14 @@ const sendEmail = (e) => {
     );
 };
 
-
-function Contacto() {
   return (
     <section className="contenedor-form">
       <h3 className="contacto">Contactanos</h3>
       <div className="container">
         <div className="row">
           <div className="col-md-6 formulario-form">           
-        <Form ref={form} onSubmit={sendEmail}>
-        <Form.Group controlId="formNombre">
+        <Form ref={form} onSubmit={sendEmail} className={{width: "26rem"}}>
+        <Form.Group controlId="formNombre" className="mt-3 form-label">
           <Form.Label>Nombre</Form.Label>
           <Form.Control
             type="text"
@@ -40,27 +43,24 @@ function Contacto() {
           />
         </Form.Group>
 
-        <Form.Group controlId="formEmail" className="mt-3">
+        <Form.Group controlId="formEmail" className="mt-3 form-label">
           <Form.Label>Email</Form.Label>
           <Form.Control
             type="email"
             placeholder="Introduce tu email"
-            name="email"
-            value='user_mail'
-            
+            name="email"                      
           />
         </Form.Group>
-        <Form.Group controlId="formEmail" className="mt-3">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Introduce tu email"
-            name="email"
-            value='message'            
-          />
-        </Form.Group>
+        <Form.Label className="mt-4">Mensaje</Form.Label>
+        <textarea 
+                  placeholder="Dejanos tu consulta y te contactaremos!"
+                  className="form-outline texto"
+                  id="formContacto3"
+                  rows="10"
+                  name='message'
+                ></textarea>
 
-        <Button variant="primary" type="submit" className="mt-3">
+        <Button type="submit" className="button-formulario">
           Enviar
         </Button>
       </Form>

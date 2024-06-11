@@ -10,6 +10,12 @@
     height: 85vh;
     margin-top: 15vh;
 }
+.texto{
+    width: 100%;
+    border:none;
+    border-radius: 10px;
+    padding:10px;
+}
 
 .formulario {
     display: flex;
@@ -45,6 +51,7 @@
     width: 120px;
     height: 40px;
     border-radius: 5px;
+    margin-top: 10px;
 }
 
 .contacto {
