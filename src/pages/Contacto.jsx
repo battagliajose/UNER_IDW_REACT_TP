@@ -1,5 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/contacto.css";
+import emailjs from '@emailjs/browser'
+
+
+const form = useRef();
+
+const sendEmail = (e) => {
+  e.preventDefault();
+
+  emailjs
+    .sendForm('alojamiento-react', 'template_k5noc5j', form.current, {
+      publicKey: 'ZwG3Oiy8kRlehl4ZQ',
+    })
+    .then(
+      () => {
+        console.log('Email enviado!');
+      },
+      (error) => {
+        console.log('Fallo al enviar mail...', error.text);
+      },
+    );
+};
+
 
 function Contacto() {
   return (
@@ -7,55 +29,41 @@ function Contacto() {
       <h3 className="contacto">Contactanos</h3>
       <div className="container">
         <div className="row">
-          <div className="col-md-6 formulario-form">
-            <form style={{ width: "26rem" }}>
-              {/* Name input */}
-              <div data-mdb-input-init className="form-outline mb-4">
-                <label className="form-label" htmlFor="formContacto1">
-                  Nombre
-                </label>
-                <input
-                  type="text"
-                  placeholder="Como te llamas?"
-                  id="formContacto1"
-                  className="form-control"
-                />
-              </div>
+          <div className="col-md-6 formulario-form">           
+        <Form ref={form} onSubmit={sendEmail}>
+        <Form.Group controlId="formNombre">
+          <Form.Label>Nombre</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Introduce tu nombre"
+            name='user_name'                        
+          />
+        </Form.Group>
 
-              {/* Email input */}
-              <div data-mdb-input-init className="form-outline mb-4">
-                <label className="form-label" htmlFor="formContacto2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  placeholder="Donde te escribimos?"
-                  id="formContacto2"
-                  className="form-control"
-                />
-              </div>
+        <Form.Group controlId="formEmail" className="mt-3">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Introduce tu email"
+            name="email"
+            value='user_mail'
+            
+          />
+        </Form.Group>
+        <Form.Group controlId="formEmail" className="mt-3">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Introduce tu email"
+            name="email"
+            value='message'            
+          />
+        </Form.Group>
 
-              {/* Message input */}
-              <div data-mdb-input-init className="form-outline mb-4">
-                <label className="form-label" htmlFor="formContacto3">
-                  Mensaje
-                </label>
-                <textarea
-                  placeholder="Dejanos tu consulta y te contactaremos!"
-                  className="form-control"
-                  id="formContacto3"
-                  rows="6"
-                ></textarea>
-              </div>
-
-              {/* Submit button */}
-              <button
-                type="button"
-                className="button-formulario btn-block mb-4"
-              >
-                Enviar
-              </button>
-            </form>
+        <Button variant="primary" type="submit" className="mt-3">
+          Enviar
+        </Button>
+      </Form>
           </div>
           <div className="col-md-6 formulario-mapa">
             <iframe
