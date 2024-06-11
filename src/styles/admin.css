@@ -22,21 +22,21 @@
     justify-content: end;
 }
 
-.tablaTipos {
+.tabla {
     border-collapse: collapse;
     border: 1px solid #242430b0;
     /* Establece el borde de la tabla */
 }
 
-.tablaTipos th,
-.tablaTipos td {
+.tabla th,
+.tabla td {
     border: 1px solid #242430b0;
     /* Establece el borde para las celdas de encabezado y datos */
     padding: 8px;
     /* Añade un espacio interno alrededor del contenido de las celdas */
 }
 
-.tablaTipos {
+.tabla {
     width: 100%;
     border-collapse: collapse;
     border: 1px solid#242430b0;
@@ -83,7 +83,7 @@
 
 
 
-.tablaTipos thead {
+.tabla thead {
     position: -webkit-sticky; /* Safari */
     position: sticky;
     top: 0;
@@ -91,7 +91,7 @@
     z-index: 1;
 }
 
-.tablaTipos th, .tablaTipos td {
+.tabla th, .tabla td {
     padding: 8px;
     text-align: left;
 }

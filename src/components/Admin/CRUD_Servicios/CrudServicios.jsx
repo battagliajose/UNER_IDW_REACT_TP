@@ -33,7 +33,7 @@ function CrudServicios(){
         <div className='contenedor-alojamiento'>
             <h2>CRUD de Servicios</h2>
             <TablaCrud
-            tiposAlojamiento={servicios}
+            registros={servicios}
             fetchTiposAlojamiento={fetchServicios}
             handleDelete={deleteServicio}
             handleShowUpdate={fetchServicios}

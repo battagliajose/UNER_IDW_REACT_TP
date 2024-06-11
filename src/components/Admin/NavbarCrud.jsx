@@ -2,8 +2,6 @@ import React  from 'react'
 import { Button } from 'react-bootstrap'
 import "../../styles/navbarcrud.css";
 
-
-
 function NavbarCrud({ setCrudToShow }) {
 
     function handleClick(event) {

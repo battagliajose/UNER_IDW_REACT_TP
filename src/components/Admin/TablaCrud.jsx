@@ -1,17 +1,17 @@
 import React from "react";
-import ItemTipo from "./Item";
+import Item from "./Item";
 
 import "../../styles/filasTabla.css";
 
-function TablaTipos({ tiposAlojamiento, handleDelete, handleShowUpdate }) {
+function TablaCrud({ registros, handleDelete, handleShowUpdate }) {
 
   // Obtener los encabezados de la tabla a partir de las claves del primer objeto
-  if (!tiposAlojamiento || tiposAlojamiento.length === 0 ) { return <h2>No data!</h2> }
-  const headers = Object.keys(tiposAlojamiento[0]);
+  if (!registros || registros.length === 0 ) { return <h2>No data!</h2> }
+  const headers = Object.keys(registros[0]);
   
   return (
     <div className="tabla-container">
-      <table className="tablaTipos" border="3">
+      <table className="tabla" border="3">
         <thead>
           <tr className="cabecera">
             {headers.map((header) => (
@@ -22,11 +22,11 @@ function TablaTipos({ tiposAlojamiento, handleDelete, handleShowUpdate }) {
           </tr>
         </thead>
         <tbody>
-          {tiposAlojamiento.map((tipo) => (
-            <ItemTipo
-              key={tipo.idTipoAlojamiento}
-              tipo={tipo}
-              handleShowUpdate={()=> {handleShowUpdate(tipo)}}
+          {registros.map((registro) => (
+            <Item
+              key={registro[0]}
+              item={registro}
+              handleShowUpdate={()=> {handleShowUpdate(registro)}}
               handleDelete={handleDelete}
             />
           ))}
@@ -36,4 +36,4 @@ function TablaTipos({ tiposAlojamiento, handleDelete, handleShowUpdate }) {
   );
 }
 
-export default TablaTipos;
+export default TablaCrud;

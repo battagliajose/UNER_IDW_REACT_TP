@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Modal, Button, Form } from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
+import * as API from '../API';
 import '../../../styles/modales.css';
 
 function ModalUpdateTipos({ show, handleClose, fetchTiposAlojamiento, id, descrip }) {
@@ -37,18 +38,13 @@ function ModalUpdateTipos({ show, handleClose, fetchTiposAlojamiento, id, descri
   };
 
   const createTipoModal = async () => {
-    const dataJson = {
+    const item = {
+      idTipoAlojamiento: id,
       Descripcion: descripcion,
     };
 
     try {
-      const response = await fetch(`http://localhost:3001/tiposAlojamiento/putTipoAlojamiento/${id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(dataJson),
-      });
+      const response = await API.updateItem(item, "http://localhost:3001/tiposAlojamiento/putTipoAlojamiento/")
       if (response.ok) {
         fetchTiposAlojamiento();
         setSnack(true);

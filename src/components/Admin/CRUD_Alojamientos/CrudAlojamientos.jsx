@@ -34,7 +34,7 @@ function Alojamientos(){
         <div className='contenedor-alojamiento'>
             <h2>CRUD de Alojamientos</h2>
             <TablaCrud
-            tiposAlojamiento={alojamientos}
+            registros={alojamientos}
             fetchTiposAlojamiento={fetchAlojamientos}
             handleDelete={deleteAlojamiento}
             handleShowUpdate={fetchAlojamientos}

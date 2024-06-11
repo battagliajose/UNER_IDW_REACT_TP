@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Modal, Button, Form } from "react-bootstrap";
 import InputGroup from "react-bootstrap/InputGroup";
 import "../../../styles/modales.css";
+import * as API from '../API';
 
 function ModalCreateTipos({ show, handleClose, fetchTiposAlojamiento }) {
   const [validated, setValidated] = useState(false);
@@ -34,22 +35,13 @@ function ModalCreateTipos({ show, handleClose, fetchTiposAlojamiento }) {
   const [descripcion, setDescripcion] = useState("");
 
   const createTipoModal = async () => {
-    const dataJson = {
+    const item = {
       Descripcion: descripcion,
     };
 
     try {
-      const response = await fetch(
-        "http://localhost:3001/tiposAlojamiento/createTipoAlojamiento",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(dataJson),
-        }
-      );
-      if (response.ok) {
+      const respuesta = await API.createItem(item, "http://localhost:3001/tiposAlojamiento/createTipoAlojamiento");
+      if (respuesta) {
         fetchTiposAlojamiento();
         setSnack(true);
         // Oculto el snack después de 3 segundos

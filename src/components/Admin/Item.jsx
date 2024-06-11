@@ -2,18 +2,18 @@ import React from "react";
 import "../../styles/modales.css";
 import "../../styles/filasTabla.css";
 
-function ItemTipo({ tipo, handleShowUpdate, handleDelete }) {
-  const id = Object.values(tipo)[0];
+function Item({ item, handleShowUpdate, handleDelete }) {
+  const id = Object.values(item)[0];
   
   return (
     <tr>
-      {Object.keys(tipo).map((key) => (
-        <td key={key}>{tipo[key]}</td>
+      {Object.keys(item).map((key) => (
+        <td key={key}>{item[key]}</td>
       ))}
       <td>
         <p
           className="bi bi-pencil-fill icon-style-pers editar"
-          onClick={() => handleShowUpdate(tipo.idTipoAlojamiento, tipo.Descripcion)}
+          onClick={() => handleShowUpdate(item)}
         ></p>
       </td>
       <td>
@@ -26,4 +26,4 @@ function ItemTipo({ tipo, handleShowUpdate, handleDelete }) {
   );
 }
 
-export default ItemTipo;
+export default Item;
