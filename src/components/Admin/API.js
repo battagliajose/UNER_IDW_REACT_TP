@@ -23,8 +23,10 @@ export const deleteItem = async (url, id) => {
     if (!response.ok) {
       throw new Error("Hubo un error al eliminar el item " + id);
     } 
+    return response;
   } catch (error) {
-    console.error("Error eliminando:", error);
+    console.error('Error eliminando:', error);
+    return false;
   }
 };
 
@@ -40,10 +42,10 @@ export const createItem = async (dataJson, url) => {
       }
     );
     if (response.ok) {
-      return true;
+      return response;
     }
   } catch (error) {
-    console.log("Error: " + error.message);
+    console.log('Error: ' + error.message);
     return false;
   }
 };
@@ -61,6 +63,7 @@ export const updateItem = async (dataJson, url) => {
     });
     return response;
   } catch (error) {
-    alert('Error: ' + error.message);
+    console.log('Error: ' + error.message);
+    return false;
   }
 };

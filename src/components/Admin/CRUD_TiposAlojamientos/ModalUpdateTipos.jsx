@@ -10,6 +10,10 @@ function ModalUpdateTipos({ show, handleClose, fetchTiposAlojamiento, id, descri
   const [descripcion, setDescripcion] = useState(""); // Inicializa descripción vacía
   const descripcionRef = useRef(null);
 
+  var create = false;
+
+  if (!id) {create = true;}
+
   useEffect(() => {
     // Actualiza el estado de descripción con el valor de descrip cuando el componente se monta o cuando descrip cambia
     setDescripcion(descrip);
@@ -38,13 +42,28 @@ function ModalUpdateTipos({ show, handleClose, fetchTiposAlojamiento, id, descri
   };
 
   const createTipoModal = async () => {
-    const item = {
-      idTipoAlojamiento: id,
-      Descripcion: descripcion,
-    };
+    var item = "";
+
+    if (create) {
+      item = {
+        Descripcion: descripcion,
+      }; 
+    } else {
+      item = {
+        idTipoAlojamiento: id,
+        Descripcion: descripcion,
+      };
+    }
 
     try {
-      const response = await API.updateItem(item, "http://localhost:3001/tiposAlojamiento/putTipoAlojamiento/")
+      console.log(create)
+      var response = "";
+      if (create) {
+        response = await API.createItem(item, "http://localhost:3001/tiposAlojamiento/createTipoAlojamiento");
+      } else {
+        response = await API.updateItem(item, "http://localhost:3001/tiposAlojamiento/putTipoAlojamiento/")
+      }
+
       if (response.ok) {
         fetchTiposAlojamiento();
         setSnack(true);
