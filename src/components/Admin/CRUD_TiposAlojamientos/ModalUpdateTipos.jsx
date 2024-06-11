@@ -42,18 +42,9 @@ function ModalUpdateTipos({ show, handleClose, fetchTiposAlojamiento, id, descri
   };
 
   const createTipoModal = async () => {
-    var item = "";
-
-    if (create) {
-      item = {
-        Descripcion: descripcion,
-      }; 
-    } else {
-      item = {
-        idTipoAlojamiento: id,
-        Descripcion: descripcion,
-      };
-    }
+    const item = create 
+    ? { Descripcion: descripcion } 
+    : { idTipoAlojamiento: id, Descripcion: descripcion };
 
     try {
       console.log(create)
