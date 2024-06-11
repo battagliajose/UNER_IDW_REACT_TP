@@ -27,11 +27,13 @@ function Admin() {
 
   return (
     <>
+    <div className="adminMarco">
     <NavbarCrud setCrudToShow={setCrudToShow} />
-    <div className="adminContainer">      
+    <div className=" d-flex flex-column flex-md-row justify-content-center adminContainer">      
       <div className="content">
         {renderComponent()}
       </div>
+    </div>
     </div>
     </>
   );

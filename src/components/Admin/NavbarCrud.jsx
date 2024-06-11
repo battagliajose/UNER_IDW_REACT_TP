@@ -18,10 +18,10 @@ function NavbarCrud({ setCrudToShow }) {
     return (
       <div className="navbar-contenedor container">
         <h2 className="navbar-titulo text-center my-3">Administracion del usuario</h2>
-        <div className="d-flex flex-column flex-md-row justify-content-around">
-          <Button name="alojamientos" onClick={handleClick} className="btn btn-danger mb-2 mb-md-0">Alojamientos</Button>
-          <Button name="tipos" onClick={handleClick} className="btn btn-danger mb-2 mb-md-0">Tipos de alojamientos</Button>
-          <Button name="servicios" onClick={handleClick} className="btn btn-danger mb-2 mb-md-0">Servicios</Button>
+        <div className="d-flex flex-column flex-md-row justify-content-center">
+          <Button name="alojamientos" onClick={handleClick} className="btn btn-danger mb-2 mb-md-0 mx-3">Alojamientos</Button>
+          <Button name="tipos" onClick={handleClick} className="btn btn-danger mb-2 mb-md-0 mx-3">Tipos de alojamientos</Button>
+          <Button name="servicios" onClick={handleClick} className="btn btn-danger mb-2 mb-md-0 mx-3">Servicios</Button>
         </div>
       </div>
     );

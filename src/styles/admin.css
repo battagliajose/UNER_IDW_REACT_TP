@@ -1,10 +1,19 @@
-.admin {
+.content{
+    display: flex;    
+    align-items: center;
+}
+
+.adminMarco{
+    padding: 5rem;
+    align-items: center;
+}
+/*.admin {
     display: flex;
     width: 100%;
     align-items: center;
     min-height: 100%;
     padding-top: 10%;
-}
+}*/
 
 .adminContainer {
     display: flex;        
@@ -77,7 +86,7 @@
 
 /*******************************************/
 .tabla-container {
-    max-height: 400px; /* Ajusta la altura según tus necesidades */
+    max-height: 20rem; /* Ajusta la altura según tus necesidades */
     overflow-y: auto;
 }
 
@@ -118,6 +127,7 @@
 .navbar-contenedor {
     background-color: #f8f9fa;
     width: 100%;
+    margin-bottom: 2rem;
   }
   
   .navbar-titulo {
