@@ -1,17 +1,11 @@
 import React, {useState, useEffect} from "react";
 import TablaCrud from "../TablaCrud";
-import ModalCreateTipos from "./ModalCreateTipos";
 import ModalUpdateTipos from "./ModalUpdateTipos";
 import * as API from "../API";
 
 function CrudTipos() {
     const [tiposAlojamiento, setTiposAlojamiento] = useState([]);
     const [showModalCreate, setShowModalCreate] = useState(false);
-
-    const handleShowCreate = () => setShowModalCreate(true);
-    const handleCloseCreate = () => setShowModalCreate(false);
-    
-    const handleCloseUpdate = () => setShowModalUpdate(false);
 
     const [snack, setSnack] = useState(false);
 
@@ -42,7 +36,16 @@ function CrudTipos() {
       setIdMod(idTipoAlojamiento);
       setDescripMod(Descripcion);
     };
+    const handleCloseUpdate = () => setShowModalUpdate(false);
   
+    const handleShowCreate = () => {
+      const itemNuevo = {
+        Descripcion: ""
+      }
+      handleShowUpdate(itemNuevo);
+    };
+    const handleCloseCreate = () => setShowModalCreate(false);
+
     useEffect(() => {
       // Obtener datos cuando el componente se monta
       fetchTiposAlojamiento();
@@ -50,11 +53,6 @@ function CrudTipos() {
   
     return (
       <div className="admin">
-        <ModalCreateTipos
-          show={showModalCreate}
-          handleClose={handleCloseCreate}
-          fetchTiposAlojamiento={fetchTiposAlojamiento}
-        />
         <div className="tablero">
           <h2 className="tituloTipos">Tipos de alojamientos</h2>
           <div className="contenedor-button">
