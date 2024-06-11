@@ -11,8 +11,16 @@ function CrudServicios(){
     const fetchServicios = async () => {
         const data = await API.fetchData("http://localhost:3001/servicio/getAllServicios");
         if (data) {
-            setServicios(data);
+
+          setServicios(transformData(data));
         }
+      };
+
+      const transformData = (data) => {
+        return data.map(item => ({
+          ID: item.idServicio,
+          Descripción: item.Nombre,
+        }));
       };
     
       useEffect(() => {

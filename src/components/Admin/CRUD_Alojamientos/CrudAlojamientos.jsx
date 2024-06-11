@@ -12,9 +12,23 @@ function Alojamientos(){
     const fetchAlojamientos = async () => {
         const data = await API.fetchData("http://localhost:3001/alojamiento/getAlojamientos");
         if (data) {
-            setAlojamientos(data);
+            setAlojamientos(transformData(data));
         }
     };
+
+    const transformData = (data) => {
+        return data.map(item => ({
+          ID: item.idAlojamiento,
+          Titulo: item.Titulo,
+          Descripción: item.Descripcion,
+          Latitud: item.Latitud,
+          Longitud: item.Longitud,
+          "Precio Por Dia": item.PrecioPorDia,
+          Baños: item.CantidadBanios,
+          Estado: item.Estado,
+          Tipo: item.idTipoAlojamiento,
+        }));
+      };
     
     const deleteAlojamiento = async (id) => {
         API.deleteItem("http://localhost:3001/alojamiento/deleteAlojamiento/", id)

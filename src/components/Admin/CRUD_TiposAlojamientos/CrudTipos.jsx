@@ -14,8 +14,15 @@ function CrudTipos() {
     const fetchTiposAlojamiento = async () => {
       const data = await API.fetchData("http://localhost:3001/tiposAlojamiento/getTiposAlojamiento");
       if (data) {
-        setTiposAlojamiento(data);
+        setTiposAlojamiento(transformData(data));
       }
+    };
+
+    const transformData = (data) => {
+      return data.map(item => ({
+        ID: item.idTipoAlojamiento,
+        Descripción: item.Descripcion,
+      }));
     };
 
     const deleteTipo = async (id) => {
