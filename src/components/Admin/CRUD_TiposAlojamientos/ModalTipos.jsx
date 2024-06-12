@@ -15,9 +15,13 @@ function ModalUpdateTipos({ show, handleClose, fetchTiposAlojamiento, id, descri
   if (!id) {create = true;}
 
   useEffect(() => {
-    // Actualiza el estado de descripción con el valor de descrip cuando el componente se monta o cuando descrip cambia
-    setDescripcion(descrip);
-  }, [descrip]);
+  // Actualiza el estado de descripción con el valor de descrip cuando el componente se monta o cuando descrip cambia
+  if (create) {
+    setDescripcion(""); // Si es uno nuevo lo setea a vacio
+  } else {
+    setDescripcion(descrip); // Si no a la descripción
+  }
+  }, [descrip, create]);
 
   useEffect(() => {
     // Enfoca el campo de texto cuando el modal se muestra

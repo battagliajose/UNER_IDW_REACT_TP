@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import TablaCrud from "../TablaCrud";
-import ModalUpdateTipos from "./ModalUpdateTipos";
+import ModalTipos from "./ModalTipos";
 import * as API from "../API";
 
 function CrudTipos() {
@@ -9,8 +9,26 @@ function CrudTipos() {
 
     const [snack, setSnack] = useState(false);
 
+    const [showModal, setShowModal] = useState(false);
+    const [IdMod, setIdMod] = useState(0);
+    const [DescripMod, setDescripMod] = useState("");
+  
+    const handleShowModal = ({ ID: idTipoAlojamiento, Descripción: Descripcion }) => {
+      setShowModal(true);
+      setIdMod(idTipoAlojamiento);
+      setDescripMod(Descripcion);
+    };
+    const handleCloseUpdate = () => setShowModal(false);
+  
+    const handleCreate = () => {
+      const itemNuevo = {
+        Descripcion: ""
+      }
+      handleShowModal(itemNuevo);
+    };
+    const handleCloseCreate = () => setShowModalCreate(false);
+
     // Función para obtener los datos de los tipos de alojamiento
-    
     const fetchTiposAlojamiento = async () => {
       const data = await API.fetchData("http://localhost:3001/tiposAlojamiento/getTiposAlojamiento");
       if (data) {
@@ -34,25 +52,6 @@ function CrudTipos() {
       }, 2000);
     };
 
-    const [showModalUpdate, setShowModalUpdate] = useState(false);
-    const [IdMod, setIdMod] = useState(0);
-    const [DescripMod, setDescripMod] = useState("");
-  
-    const handleShowUpdate = ({ ID: idTipoAlojamiento, Descripción: Descripcion }) => {
-      setShowModalUpdate(true);
-      setIdMod(idTipoAlojamiento);
-      setDescripMod(Descripcion);
-    };
-    const handleCloseUpdate = () => setShowModalUpdate(false);
-  
-    const handleShowCreate = () => {
-      const itemNuevo = {
-        Descripcion: ""
-      }
-      handleShowUpdate(itemNuevo);
-    };
-    const handleCloseCreate = () => setShowModalCreate(false);
-
     useEffect(() => {
       // Obtener datos cuando el componente se monta
       fetchTiposAlojamiento();
@@ -63,7 +62,7 @@ function CrudTipos() {
         <div className="tablero">
           <h2 className="tituloTipos">Tipos de alojamientos</h2>
           <div className="contenedor-button">
-            <button className="buttonNuevo" onClick={handleShowCreate}>
+            <button className="buttonNuevo" onClick={handleCreate}>
               +
             </button>
           </div>
@@ -72,14 +71,14 @@ function CrudTipos() {
             registros={tiposAlojamiento}
             fetchTiposAlojamiento={fetchTiposAlojamiento}
             handleDelete={deleteTipo}
-            handleShowUpdate={handleShowUpdate}
+            handleShowUpdate={handleShowModal}
           />
         </div>
         <td className={snack ? "mostrarSnack" : "ocultarSnack"}>
         Tipo de alojamiento eliminado
       </td>
-      <ModalUpdateTipos
-        show={showModalUpdate}
+      <ModalTipos
+        show={showModal}
         handleClose={handleCloseUpdate}
         fetchTiposAlojamiento={fetchTiposAlojamiento}
         id={IdMod}
