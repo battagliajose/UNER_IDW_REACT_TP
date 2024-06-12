@@ -18,6 +18,7 @@ function CrudTipos() {
       }
     };
 
+    // Cambia los nombres de las columnas para presentarlos en la Tabla
     const transformData = (data) => {
       return data.map(item => ({
         ID: item.idTipoAlojamiento,
