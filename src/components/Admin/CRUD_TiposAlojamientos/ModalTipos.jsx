@@ -12,7 +12,7 @@ function ModalUpdateTipos({ show, handleClose, fetchTiposAlojamiento, id, descri
 
   var create = false;
 
-  if (!id) {create = true;}
+  if (!id) {create = true;} //Verifica si recibe ID de un regisro a modificar o sino es un registro nuevo.
 
   useEffect(() => {
   // Actualiza el estado de descripción con el valor de descrip cuando el componente se monta o cuando descrip cambia
