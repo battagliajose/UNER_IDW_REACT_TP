@@ -38,7 +38,7 @@ function CrudTipos() {
     const [IdMod, setIdMod] = useState(0);
     const [DescripMod, setDescripMod] = useState("");
   
-    const handleShowUpdate = ({ idTipoAlojamiento, Descripcion }) => {
+    const handleShowUpdate = ({ ID: idTipoAlojamiento, Descripción: Descripcion }) => {
       setShowModalUpdate(true);
       setIdMod(idTipoAlojamiento);
       setDescripMod(Descripcion);

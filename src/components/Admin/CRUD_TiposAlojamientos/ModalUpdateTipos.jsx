@@ -47,7 +47,6 @@ function ModalUpdateTipos({ show, handleClose, fetchTiposAlojamiento, id, descri
     : { idTipoAlojamiento: id, Descripcion: descripcion };
 
     try {
-      console.log(create)
       var response = "";
       if (create) {
         response = await API.createItem(item, "http://localhost:3001/tiposAlojamiento/createTipoAlojamiento");
