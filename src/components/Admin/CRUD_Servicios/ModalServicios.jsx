@@ -4,7 +4,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import * as API from '../API';
 import '../../../styles/modales.css';
 
-function ModalTipos({ show, handleClose, fetchTiposAlojamiento, id, descrip }) {
+function ModalServicios({ show, handleClose, fetchTiposAlojamiento: fetchServicios, id, descrip }) {
   const [validated, setValidated] = useState(false);
   const [snack, setSnack] = useState(false);
   const [descripcion, setDescripcion] = useState(""); // Inicializa descripción vacía
@@ -40,26 +40,26 @@ function ModalTipos({ show, handleClose, fetchTiposAlojamiento, id, descrip }) {
       event.preventDefault();
       createTipoModal();
       handleClose();
-      fetchTiposAlojamiento();
+      fetchServicios();
       setValidated(false);
     }
   };
 
   const createTipoModal = async () => {
     const item = create 
-    ? { Descripcion: descripcion } 
-    : { idTipoAlojamiento: id, Descripcion: descripcion };
+    ? { Nombre: descripcion } 
+    : { idServicio: id, Nombre: descripcion };
 
     try {
       var response = "";
       if (create) {
-        response = await API.createItem(item, "http://localhost:3001/tiposAlojamiento/createTipoAlojamiento");
+        response = await API.createItem(item, "http://localhost:3001/servicio/createServicio");
       } else {
-        response = await API.updateItem(item, "http://localhost:3001/tiposAlojamiento/putTipoAlojamiento/")
+        response = await API.updateItem(item, "http://localhost:3001/servicio/updateServicio/")
       }
 
       if (response.ok) {
-        fetchTiposAlojamiento();
+        fetchServicios();
         setSnack(true);
         setTimeout(() => {
           setSnack(false);
@@ -95,9 +95,9 @@ function ModalTipos({ show, handleClose, fetchTiposAlojamiento, id, descrip }) {
           </Form>
         </Modal.Body>
       </Modal>
-      <div className={snack? 'mostrarSnack' : 'ocultarSnack'}>Tipo de alojamiento editado</div>
+      <div className={snack? 'mostrarSnack' : 'ocultarSnack'}>Servicio editado</div>
     </>
   );
 }
 
-export default ModalTipos;
+export default ModalServicios;
