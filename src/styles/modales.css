@@ -2,11 +2,30 @@
     background-color: #242430b0;
 }
 
+.inputGroup input {
+    width: 80% !important;
+    margin-bottom: 3% ;
+    margin-top: 2%;
+    
+}
+
+.flexRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.flexColumn {
+    display: flex;
+    flex-direction: column;
+}
+
 .form-modal {
+    display: flex;
+    flex-direction: column;
     background-color: #242430;
     color: white;
     border-radius: 5px;
-    padding: 40px;
+    padding: 20px;
 }
 
 .form-modal p {

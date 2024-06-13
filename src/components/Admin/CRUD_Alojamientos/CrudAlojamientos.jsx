@@ -11,11 +11,13 @@ function CrudAlojamientos() {
     const [showModal, setShowModal] = useState(false);
     const [IdMod, setIdMod] = useState(0);
     const [DescripMod, setDescripMod] = useState("");
+    const [objectMod, setObjectMod] = useState({})
 
-    const handleShowModal = ({ ID, Título }) => {
+    const handleShowModal = (item) => {
         setShowModal(true);
-        setIdMod(ID);
-        setDescripMod(Título);
+        setObjectMod(item);
+        setIdMod(item.ID);
+        setDescripMod(item.Título);
       };
     
     const handleCloseModal = () => setShowModal(false);
@@ -46,6 +48,7 @@ function CrudAlojamientos() {
                 Latitud: item.Latitud,
                 Longitud: item.Longitud,
                 "Precio Por Día": item.PrecioPorDia,
+                Dormitorios: item.CantidadDormitorios,
                 Baños: item.CantidadBanios,
                 Estado: item.Estado,
                 Tipo: tipo ? tipo.Descripcion : 'Desconocido',
@@ -92,6 +95,7 @@ function CrudAlojamientos() {
             show={showModal}
             handleClose={handleCloseModal}
             fetch={fetchAlojamientos}
+            item = {objectMod}
             id={IdMod}
             descrip={DescripMod}
           />
