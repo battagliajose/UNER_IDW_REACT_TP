@@ -1,13 +1,31 @@
 import React, { useEffect, useState } from 'react'
-import '../../../styles/alojamiento.css'
-import * as API from '../API'
 import TablaCrud from '../TablaCrud'
+import ModalAlojamientos from "./ModalAlojamientos";
+import * as API from '../API'
 
-function Alojamientos() {
-
+function CrudAlojamientos() {
     const [alojamientos, setAlojamientos] = useState([])
 
     const [snack, setSnack] = useState(false);
+
+    const [showModal, setShowModal] = useState(false);
+    const [IdMod, setIdMod] = useState(0);
+    const [DescripMod, setDescripMod] = useState("");
+
+    const handleShowModal = ({ ID, Título }) => {
+        setShowModal(true);
+        setIdMod(ID);
+        setDescripMod(Título);
+      };
+    
+    const handleCloseModal = () => setShowModal(false);
+
+    const handleCreate = () => {
+        const itemNuevo = {
+            Título: ""
+        }
+        handleShowModal(itemNuevo);
+    };
 
     const fetchAlojamientos = async () => {
         const dataAloj = await API.fetchData("http://localhost:3001/alojamiento/getAlojamientos");
@@ -17,12 +35,13 @@ function Alojamientos() {
         }
     };
 
+    // Cambia los nombres de las columnas para presentarlos en la Tabla
     const transformData = (dataAloj, dataTipos) => {
         const dataProcesada = dataAloj.map(item => {
             const tipo = dataTipos.find(tipo => tipo.idTipoAlojamiento === item.idTipoAlojamiento);
             return {
                 ID: item.idAlojamiento,
-                Titulo: item.Titulo,
+                Título: item.Titulo,
                 Descripción: item.Descripcion,
                 Latitud: item.Latitud,
                 Longitud: item.Longitud,
@@ -52,16 +71,32 @@ function Alojamientos() {
     }, []);
 
     return (
-        <div className='contenedor-alojamiento'>
-            <h2>CRUD de Alojamientos</h2>
+        <div className="admin">
+          <div className="tablero">
+            <h2 className="tituloTipos">CRUD de Alojamientos</h2>
+            <div className="contenedor-button">
+              <button className="buttonNuevo" onClick={handleCreate}>
+                +
+              </button>
+            </div>
             <TablaCrud
                 registros={alojamientos}
-                fetchTiposAlojamiento={fetchAlojamientos}
                 handleDelete={deleteAlojamiento}
-                handleShowUpdate={fetchAlojamientos}
+                handleShowUpdate={handleShowModal}
             />
+          </div>
+          <td className={snack ? "mostrarSnack" : "ocultarSnack"}>
+            Tipo de alojamiento eliminado
+          </td>
+          <ModalAlojamientos
+            show={showModal}
+            handleClose={handleCloseModal}
+            fetch={fetchAlojamientos}
+            id={IdMod}
+            descrip={DescripMod}
+          />
         </div>
-    );
+      );
 }
 
-export default Alojamientos;
+export default CrudAlojamientos;
