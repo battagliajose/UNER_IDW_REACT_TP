@@ -5,7 +5,6 @@ import * as API from "../API";
 
 function CrudTipos() {
     const [tiposAlojamiento, setTiposAlojamiento] = useState([]);
-    const [showModalCreate, setShowModalCreate] = useState(false);
 
     const [snack, setSnack] = useState(false);
 
@@ -13,12 +12,12 @@ function CrudTipos() {
     const [IdMod, setIdMod] = useState(0);
     const [DescripMod, setDescripMod] = useState("");
   
-    const handleShowModal = ({ ID: idTipoAlojamiento, Descripción: Descripcion }) => {
+    const handleShowModal = ({ ID, Descripción }) => {
       setShowModal(true);
-      setIdMod(idTipoAlojamiento);
-      setDescripMod(Descripcion);
+      setIdMod(ID);
+      setDescripMod(Descripción);
     };
-    const handleCloseUpdate = () => setShowModal(false);
+    const handleCloseModal = () => setShowModal(false);
   
     const handleCreate = () => {
       const itemNuevo = {
@@ -26,7 +25,6 @@ function CrudTipos() {
       }
       handleShowModal(itemNuevo);
     };
-    const handleCloseCreate = () => setShowModalCreate(false);
 
     // Función para obtener los datos de los tipos de alojamiento
     const fetchTiposAlojamiento = async () => {
@@ -49,7 +47,7 @@ function CrudTipos() {
       setSnack(true);
       setTimeout(() => {
         setSnack(false);
-        fetchTiposAlojamiento(); // Actualizar la lista de tipos de alojamiento
+        fetchTiposAlojamiento(); // Actualizar la lista de tipos de tipos
       }, 2000);
     };
 
@@ -67,24 +65,22 @@ function CrudTipos() {
               +
             </button>
           </div>
-          {/* Paso por props la lista de alojamiento cargada en la funcion fetchTiposAlojamiento, la funcion propia y una funcion para cambiar nombre de botón */}
           <TablaCrud
             registros={tiposAlojamiento}
-            fetchTiposAlojamiento={fetchTiposAlojamiento}
             handleDelete={deleteTipo}
             handleShowUpdate={handleShowModal}
           />
         </div>
         <td className={snack ? "mostrarSnack" : "ocultarSnack"}>
-        Tipo de alojamiento eliminado
-      </td>
-      <ModalTipos
-        show={showModal}
-        handleClose={handleCloseUpdate}
-        fetchTiposAlojamiento={fetchTiposAlojamiento}
-        id={IdMod}
-        descrip={DescripMod}
-      />
+          Tipo de alojamiento eliminado
+        </td>
+        <ModalTipos
+          show={showModal}
+          handleClose={handleCloseModal}
+          fetch={fetchTiposAlojamiento}
+          id={IdMod}
+          descrip={DescripMod}
+        />
       </div>
     );
 }

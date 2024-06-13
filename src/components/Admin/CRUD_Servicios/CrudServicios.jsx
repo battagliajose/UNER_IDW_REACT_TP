@@ -5,7 +5,6 @@ import * as API from "../API";
 
 function CrudServicios() {
     const [Servicios, setServicios] = useState([]);
-    const [showModalCreate, setShowModalCreate] = useState(false);
 
     const [snack, setSnack] = useState(false);
 
@@ -13,12 +12,12 @@ function CrudServicios() {
     const [IdMod, setIdMod] = useState(0);
     const [DescripMod, setDescripMod] = useState("");
   
-    const handleShowModal = ({ ID: idServicio, Descripción: Descripcion }) => {
+    const handleShowModal = ({ ID, Descripción }) => {
       setShowModal(true);
-      setIdMod(idServicio);
-      setDescripMod(Descripcion);
+      setIdMod(ID);
+      setDescripMod(Descripción);
     };
-    const handleCloseUpdate = () => setShowModal(false);
+    const handleCloseModal = () => setShowModal(false);
   
     const handleCreate = () => {
       const itemNuevo = {
@@ -26,7 +25,6 @@ function CrudServicios() {
       }
       handleShowModal(itemNuevo);
     };
-    const handleCloseCreate = () => setShowModalCreate(false);
 
     // Función para obtener los datos de los tipos de alojamiento
     const fetchServicios = async () => {
@@ -38,7 +36,6 @@ function CrudServicios() {
 
     // Cambia los nombres de las columnas para presentarlos en la Tabla
     const transformData = (data) => {
-      console.log(data);
       return data.map(item => ({
         ID: item.idServicio,
         Descripción: item.Nombre
@@ -68,24 +65,22 @@ function CrudServicios() {
               +
             </button>
           </div>
-          {/* Paso por props la lista de alojamiento cargada en la funcion fetchTiposAlojamiento, la funcion propia y una funcion para cambiar nombre de botón */}
           <TablaCrud
             registros={Servicios}
-            fetchTiposAlojamiento={fetchServicios}
             handleDelete={deleteTipo}
             handleShowUpdate={handleShowModal}
           />
         </div>
         <td className={snack ? "mostrarSnack" : "ocultarSnack"}>
-        Servicio eliminado
-      </td>
-      <ModalServicios
-        show={showModal}
-        handleClose={handleCloseUpdate}
-        fetchTiposAlojamiento={fetchServicios}
-        id={IdMod}
-        descrip={DescripMod}
-      />
+          Servicio eliminado
+        </td>
+        <ModalServicios
+          show={showModal}
+          handleClose={handleCloseModal}
+          fetch={fetchServicios}
+          id={IdMod}
+          descrip={DescripMod}
+        />
       </div>
     );
 }

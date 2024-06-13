@@ -4,7 +4,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import * as API from '../API';
 import '../../../styles/modales.css';
 
-function ModalTipos({ show, handleClose, fetchTiposAlojamiento, id, descrip }) {
+function ModalTipos({ show, handleClose, fetch, id, descrip }) {
   const [validated, setValidated] = useState(false);
   const [snack, setSnack] = useState(false);
   const [descripcion, setDescripcion] = useState(""); // Inicializa descripción vacía
@@ -15,12 +15,12 @@ function ModalTipos({ show, handleClose, fetchTiposAlojamiento, id, descrip }) {
   if (!id) {create = true;} //Verifica si recibe ID de un regisro a modificar o sino es un registro nuevo.
 
   useEffect(() => {
-  // Actualiza el estado de descripción con el valor de descrip cuando el componente se monta o cuando descrip cambia
-  if (create) {
-    setDescripcion(""); // Si es uno nuevo lo setea a vacio
-  } else {
-    setDescripcion(descrip); // Si no a la descripción
-  }
+    // Actualiza el estado de descripción con el valor de descrip cuando el componente se monta o cuando descrip cambia
+    if (create) {
+      setDescripcion(""); // Si es uno nuevo lo setea a vacio
+    } else {
+      setDescripcion(descrip); // Si no a la descripción
+    }
   }, [descrip, create]);
 
   useEffect(() => {
@@ -38,14 +38,14 @@ function ModalTipos({ show, handleClose, fetchTiposAlojamiento, id, descrip }) {
     } else {
       setValidated(true);
       event.preventDefault();
-      createTipoModal();
+      submitItem();
       handleClose();
-      fetchTiposAlojamiento();
+      fetch();
       setValidated(false);
     }
   };
 
-  const createTipoModal = async () => {
+  const submitItem = async () => {
     const item = create 
     ? { Descripcion: descripcion } 
     : { idTipoAlojamiento: id, Descripcion: descripcion };
@@ -59,7 +59,7 @@ function ModalTipos({ show, handleClose, fetchTiposAlojamiento, id, descrip }) {
       }
 
       if (response.ok) {
-        fetchTiposAlojamiento();
+        fetch();
         setSnack(true);
         setTimeout(() => {
           setSnack(false);
