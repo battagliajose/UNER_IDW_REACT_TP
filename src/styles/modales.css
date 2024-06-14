@@ -101,3 +101,9 @@
     align-items: center;
     box-shadow: 5px 3px 5px #616263;
 }
+
+.modal__botones {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}

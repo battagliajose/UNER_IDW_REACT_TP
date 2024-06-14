@@ -4,7 +4,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import * as API from '../API';
 import '../../../styles/modales.css';
 
-function ModalServicios({ show, handleClose, fetch, item}) {
+function ModalServicios({ show, handleClose, fetch, item, dataTipos}) {
   const [validated, setValidated] = useState(false);
   const [snack, setSnack] = useState(false);
   const [descripcion, setDescripcion] = useState(""); // Inicializa descripción vacía
@@ -13,7 +13,7 @@ function ModalServicios({ show, handleClose, fetch, item}) {
   var create = false;
 
   if (!item.id) {create = true;} //Verifica si recibe ID de un regisro a modificar o sino es un registro nuevo.
-
+ 
   useEffect(() => {
     // Actualiza el estado de descripción con el valor de descrip cuando el componente se monta o cuando descrip cambia
     if (create) {
@@ -87,7 +87,7 @@ function ModalServicios({ show, handleClose, fetch, item}) {
                   type="text"
                   required
                   placeholder="Ingresa una descripción"
-                  onChange={(e) => setDescripcion(e.target.value)}
+                  //onChange={(e) => setDescripcion(e.target.value)}
                 />
                 <Form.Label>Descripción</Form.Label>
                 <Form.Control
@@ -95,7 +95,7 @@ function ModalServicios({ show, handleClose, fetch, item}) {
                   type="text"
                   required
                   placeholder="Ingresa una descripción"
-                  onChange={(e) => setDescripcion(e.target.value)}
+                  //onChange={(e) => setDescripcion(e.target.value)}
                 />
                 <div className='flexRow'>
                   <div>
@@ -105,7 +105,7 @@ function ModalServicios({ show, handleClose, fetch, item}) {
                       type="text"
                       required
                       placeholder="Ingresa una descripción"
-                      onChange={(e) => setDescripcion(e.target.value)}
+                      //onChange={(e) => setDescripcion(e.target.value)}
                     />
                   </div>
                   <div>
@@ -115,7 +115,7 @@ function ModalServicios({ show, handleClose, fetch, item}) {
                       type="text"
                       required
                       placeholder="Ingresa una descripción"
-                      onChange={(e) => setDescripcion(e.target.value)}
+                      //onChange={(e) => setDescripcion(e.target.value)}
                     />
                   </div>
                 </div>
@@ -123,11 +123,11 @@ function ModalServicios({ show, handleClose, fetch, item}) {
                   <div>
                     <Form.Label>Precio por Día</Form.Label>
                     <Form.Control
-                      value={item.Precio}
+                      value={item["Precio Por Día"]}
                       type="text"
                       required
                       placeholder="Ingresa una descripción"
-                      onChange={(e) => setDescripcion(e.target.value)}
+                      //onChange={(e) => setDescripcion(e.target.value)}
                     />
                   </div>
                   <div>
@@ -137,7 +137,7 @@ function ModalServicios({ show, handleClose, fetch, item}) {
                       type="text"
                       required
                       placeholder="Ingresa una descripción"
-                      onChange={(e) => setDescripcion(e.target.value)}
+                      //onChange={(e) => setDescripcion(e.target.value)}
                     />
                   </div>
                   <div>
@@ -147,35 +147,35 @@ function ModalServicios({ show, handleClose, fetch, item}) {
                       type="text"
                       required
                       placeholder="Ingresa una descripción"
-                      onChange={(e) => setDescripcion(e.target.value)}
+                      //onChange={(e) => setDescripcion(e.target.value)}
                     />
                   </div>
                 </div>
                 <div className='flexRow'>
                   <div>
                     <Form.Label>Tipo</Form.Label>
-                    <Form.Control
+                    <Form.Select
                       value={item.Tipo}
-                      type="text"
                       required
-                      placeholder="Ingresa una descripción"
-                      onChange={(e) => setDescripcion(e.target.value)}
-                    />
+                      //onChange={(e) => setDescripcion(e.target.value)}
+                    >
+                      {dataTipos.map((tipo, index) => (<option key={index} value={tipo.Descripcion}>{tipo.Descripcion}</option>))}
+                    </Form.Select>
+                    
                   </div>
                   <div>
                     <Form.Label>Disponibilidad</Form.Label>
                     <Form.Select
-                      ref={descripcionRef}
                       value={item.Estado}
                       required
-                      onChange={(e) => setDescripcion(e.target.value)}
+                      //onChange={(e) => setDescripcion(e.target.value)}
                     >
                       <option value="Disponible">Disponible</option>
                       <option value="Reservado">Reservado</option>
                     </Form.Select>
                   </div>
                 </div>
-                <div>
+                <div className='modal__botones'>
                   <Button className='button-cancelar' onClick={handleClose}>Cancelar</Button>
                   <Button className='button-Aceptar' onClick={handleSubmit}>Aceptar</Button>
                 </div>

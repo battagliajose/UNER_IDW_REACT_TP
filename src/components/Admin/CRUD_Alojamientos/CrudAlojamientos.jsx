@@ -5,6 +5,7 @@ import * as API from '../API'
 
 function CrudAlojamientos() {
     const [alojamientos, setAlojamientos] = useState([])
+    const [dataTipos, setDataTipos] = useState([]);
 
     const [snack, setSnack] = useState(false);
 
@@ -13,6 +14,7 @@ function CrudAlojamientos() {
     const [DescripMod, setDescripMod] = useState("");
     const [objectMod, setObjectMod] = useState({})
 
+   
     const handleShowModal = (item) => {
         setShowModal(true);
         setObjectMod(item);
@@ -29,11 +31,16 @@ function CrudAlojamientos() {
         handleShowModal(itemNuevo);
     };
 
-    const fetchAlojamientos = async () => {
+    const fetchDataTipos = async () => {
+      const tipos = await API.fetchData("http://localhost:3001/tiposAlojamiento/getTiposAlojamiento");
+      setDataTipos(tipos);
+      return tipos;
+    };
+
+    const fetchAlojamientos = async (tipos) => {
         const dataAloj = await API.fetchData("http://localhost:3001/alojamiento/getAlojamientos");
-        const dataTipos = await API.fetchData("http://localhost:3001/tiposAlojamiento/getTiposAlojamiento");
-        if (dataAloj && dataTipos) {
-            setAlojamientos(transformData(dataAloj, dataTipos));
+        if (dataAloj && tipos.length > 0) {
+            setAlojamientos(transformData(dataAloj, tipos));
         }
     };
 
@@ -51,13 +58,12 @@ function CrudAlojamientos() {
                 Dormitorios: item.CantidadDormitorios,
                 Baños: item.CantidadBanios,
                 Estado: item.Estado,
-                Tipo: tipo ? tipo.Descripcion : 'Desconocido',
+                Tipo: tipo ? tipo.Descripcion : 'Desconocido'
             };
         });
 
         return dataProcesada;
     };
-
 
     const deleteAlojamiento = async (id) => {
         API.deleteItem("http://localhost:3001/alojamiento/deleteAlojamiento/", id)
@@ -69,8 +75,12 @@ function CrudAlojamientos() {
     };
 
     useEffect(() => {
-        // Obtener datos cuando el componente se monta
-        fetchAlojamientos();
+      const fetchData = async () => {  
+      // Obtener datos cuando el componente se monta
+        const tipos = await fetchDataTipos();
+        await fetchAlojamientos(tipos);
+      }
+      fetchData();      
     }, []);
 
     return (
@@ -96,8 +106,7 @@ function CrudAlojamientos() {
             handleClose={handleCloseModal}
             fetch={fetchAlojamientos}
             item = {objectMod}
-            id={IdMod}
-            descrip={DescripMod}
+            dataTipos = {dataTipos}
           />
         </div>
       );
