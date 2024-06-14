@@ -4,22 +4,50 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import * as API from '../API';
 import '../../../styles/modales.css';
 
-function ModalServicios({ show, handleClose, fetch, item, dataTipos}) {
+function ModalAlojamientos({ show, handleClose, fetch, item, dataTipos}) {
   const [validated, setValidated] = useState(false);
   const [snack, setSnack] = useState(false);
-  const [descripcion, setDescripcion] = useState(""); // Inicializa descripción vacía
+  
   const descripcionRef = useRef(null);
+
+  const [titulo, setTitulo] = useState(item.Título);
+  const [descripcion, setDescripcion] = useState(item.Descripción);
+  const [latitud, setLatitud] = useState(item.Latitud);
+  const [longitud, setLongitud] = useState(item.Longitud);
+  const [precio, setPrecio] = useState(item["Precio Por Día"]);
+  const [dormitorios, setDormitorios] = useState(item.Dormitorios);
+  const [banios, setBanios] = useState(item.Baños);
+  const [tipo, setTipo] = useState(item.Tipo);
+  const [estado, setEstado] = useState(item.Estado);
 
   var create = false;
 
-  if (!item.id) {create = true;} //Verifica si recibe ID de un regisro a modificar o sino es un registro nuevo.
+  if (!item.ID) {create = true;} //Verifica si recibe ID de un regisro a modificar o sino es un registro nuevo.
  
   useEffect(() => {
     // Actualiza el estado de descripción con el valor de descrip cuando el componente se monta o cuando descrip cambia
     if (create) {
       setDescripcion(""); // Si es uno nuevo lo setea a vacio
+      setTitulo("");
+      setDescripcion("");
+      setLatitud("");
+      setLongitud("");
+      setPrecio("");
+      setDormitorios("");
+      setBanios("");
+      setTipo("");
+      setEstado("");
     } else {
+      console.log(item);
       setDescripcion(item.Descripción); // Si no a la descripción
+      setTitulo(item.Título);
+      setLatitud(item.Latitud);
+      setLongitud(item.Longitud);
+      setPrecio(item["Precio Por Día"]);
+      setDormitorios(item.Dormitorios);
+      setBanios(item.Baños);
+      setTipo(item.Tipo);
+      setEstado(item.Estado);
     }
   }, [item, create]);
 
@@ -46,16 +74,36 @@ function ModalServicios({ show, handleClose, fetch, item, dataTipos}) {
   };
 
   const submitItem = async () => {
-    const item = create 
-    ? { Nombre: item.Descripción } 
-    : { idServicio: item.ID, Nombre: item.Descripción };
+    const submitItem = create 
+    ? { 
+      "Titulo": titulo,
+      "Descripcion": descripcion,
+      "idTipoAlojamiento": tipo,
+      "Latitud": latitud,
+      "Longitud": longitud,
+      "PrecioPorDia": precio,
+      "CantidadDormitorios": dormitorios,
+      "CantidadBanios": banios,
+      "Estado": estado
+    } : {
+      "idAlojamiento": item.ID,
+      "Titulo": titulo,
+      "Descripcion": descripcion,
+      "idTipoAlojamiento": tipo,
+      "Latitud": latitud,
+      "Longitud": longitud,
+      "PrecioPorDia": precio,
+      "CantidadDormitorios": dormitorios,
+      "CantidadBanios": banios,
+      "Estado": estado
+    }
 
     try {
       var response = "";
       if (create) {
-        response = await API.createItem(item, "http://localhost:3001/servicio/createServicio");
+        response = await API.createItem(submitItem, "http://localhost:3001/alojamiento/createAlojamiento");
       } else {
-        response = await API.updateItem(item, "http://localhost:3001/servicio/updateServicio/")
+        response = await API.updateItem(submitItem, "http://localhost:3001/alojamiento/putAlojamiento/")
       }
 
       if (response.ok) {
@@ -83,39 +131,39 @@ function ModalServicios({ show, handleClose, fetch, item, dataTipos}) {
               <InputGroup className='inputGroup flexColumn' hasValidation>
                 <Form.Control
                   ref={descripcionRef}
-                  value={item.Título}
+                  value={titulo}
                   type="text"
                   required
                   placeholder="Ingresa una descripción"
-                  //onChange={(e) => setDescripcion(e.target.value)}
+                  onChange={(e) => setTitulo(e.target.value)}
                 />
                 <Form.Label>Descripción</Form.Label>
                 <Form.Control
-                  value={item.Descripción}
+                  value={descripcion}
                   type="text"
                   required
                   placeholder="Ingresa una descripción"
-                  //onChange={(e) => setDescripcion(e.target.value)}
+                  onChange={(e) => setDescripcion(e.target.value)}
                 />
                 <div className='flexRow'>
                   <div>
                     <Form.Label>Latitud</Form.Label>
                     <Form.Control
-                      value={item.Latitud}
+                      value={latitud}
                       type="text"
                       required
                       placeholder="Ingresa una descripción"
-                      //onChange={(e) => setDescripcion(e.target.value)}
+                      onChange={(e) => setLatitud(e.target.value)}
                     />
                   </div>
                   <div>
                     <Form.Label>Longitud</Form.Label>
                     <Form.Control
-                      value={item.Longitud}
+                      value={longitud}
                       type="text"
                       required
                       placeholder="Ingresa una descripción"
-                      //onChange={(e) => setDescripcion(e.target.value)}
+                      onChange={(e) => setLongitud(e.target.value)}
                     />
                   </div>
                 </div>
@@ -123,31 +171,31 @@ function ModalServicios({ show, handleClose, fetch, item, dataTipos}) {
                   <div>
                     <Form.Label>Precio por Día</Form.Label>
                     <Form.Control
-                      value={item["Precio Por Día"]}
+                      value={precio}
                       type="text"
                       required
                       placeholder="Ingresa una descripción"
-                      //onChange={(e) => setDescripcion(e.target.value)}
+                      onChange={(e) => setPrecio(e.target.value)}
                     />
                   </div>
                   <div>
                     <Form.Label>Dormitorios</Form.Label>
                     <Form.Control
-                      value={item.Dormitorios}
+                      value={dormitorios}
                       type="text"
                       required
                       placeholder="Ingresa una descripción"
-                      //onChange={(e) => setDescripcion(e.target.value)}
+                      onChange={(e) => setDormitorios(e.target.value)}
                     />
                   </div>
                   <div>
                     <Form.Label>Baños</Form.Label>
                     <Form.Control
-                      value={item.Baños}
+                      value={banios}
                       type="text"
                       required
                       placeholder="Ingresa una descripción"
-                      //onChange={(e) => setDescripcion(e.target.value)}
+                      onChange={(e) => setBanios(e.target.value)}
                     />
                   </div>
                 </div>
@@ -155,23 +203,23 @@ function ModalServicios({ show, handleClose, fetch, item, dataTipos}) {
                   <div>
                     <Form.Label>Tipo</Form.Label>
                     <Form.Select
-                      value={item.Tipo}
+                      value={tipo}
                       required
-                      //onChange={(e) => setDescripcion(e.target.value)}
+                      onChange={(e) => setTipo(e.target.value)}
                     >
-                      {dataTipos.map((tipo, index) => (<option key={index} value={tipo.Descripcion}>{tipo.Descripcion}</option>))}
+                      {dataTipos.map((tipo, index) => (<option key={index} value={index}>{tipo.Descripcion}</option>))}
                     </Form.Select>
                     
                   </div>
                   <div>
                     <Form.Label>Disponibilidad</Form.Label>
                     <Form.Select
-                      value={item.Estado}
+                      value={estado}
                       required
-                      //onChange={(e) => setDescripcion(e.target.value)}
+                      onChange={(e) => setEstado(e.target.value)}
                     >
-                      <option value="Disponible">Disponible</option>
-                      <option value="Reservado">Reservado</option>
+                      <option value="0">Disponible</option>
+                      <option value="1">Reservado</option>
                     </Form.Select>
                   </div>
                 </div>
@@ -190,4 +238,4 @@ function ModalServicios({ show, handleClose, fetch, item, dataTipos}) {
   );
 }
 
-export default ModalServicios;
+export default ModalAlojamientos;

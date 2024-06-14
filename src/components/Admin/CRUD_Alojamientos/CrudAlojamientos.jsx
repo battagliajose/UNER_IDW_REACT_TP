@@ -10,16 +10,12 @@ function CrudAlojamientos() {
     const [snack, setSnack] = useState(false);
 
     const [showModal, setShowModal] = useState(false);
-    const [IdMod, setIdMod] = useState(0);
-    const [DescripMod, setDescripMod] = useState("");
     const [objectMod, setObjectMod] = useState({})
 
    
     const handleShowModal = (item) => {
         setShowModal(true);
         setObjectMod(item);
-        setIdMod(item.ID);
-        setDescripMod(item.Título);
       };
     
     const handleCloseModal = () => setShowModal(false);
@@ -39,7 +35,7 @@ function CrudAlojamientos() {
 
     const fetchAlojamientos = async (tipos) => {
         const dataAloj = await API.fetchData("http://localhost:3001/alojamiento/getAlojamientos");
-        if (dataAloj && tipos.length > 0) {
+        if (dataAloj && tipos && tipos.length > 0) {
             setAlojamientos(transformData(dataAloj, tipos));
         }
     };
