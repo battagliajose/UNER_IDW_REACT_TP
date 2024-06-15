@@ -1,12 +1,13 @@
-.content{
-    display: flex;    
+.content {
+    display: flex;
     align-items: center;
 }
 
-.adminMarco{
+.adminMarco {
     padding: 5rem;
     align-items: center;
 }
+
 /*.admin {
     display: flex;
     width: 100%;
@@ -16,8 +17,8 @@
 }*/
 
 .adminContainer {
-    display: flex;        
-    align-items: center;     
+    display: flex;
+    align-items: center;
 }
 
 .contenedorTablaTipos {
@@ -49,7 +50,7 @@
     width: 100%;
     border-collapse: collapse;
     border: 1px solid#242430b0;
-    /* Establece el borde de la tabla */    
+    /* Establece el borde de la tabla */
 }
 
 .form-container {
@@ -84,30 +85,46 @@
     flex-direction: column;
 }
 
+
 /*******************************************/
-.tabla-container {
-    max-height: 20rem; /* Ajusta la altura según tus necesidades */
-    overflow-y: auto;
+@media screen and (max-width: 768px) {
+    .tabla-container {
+        max-height: 20rem;        
+        overflow-y: auto;
+        overflow-x: auto;
+        max-width: 20rem;
+        align-self: center;
+        margin-bottom: 5rem;
+    }
 }
 
-
+.tabla-container {
+    max-height: 20rem;
+    /* Ajusta la altura hasta 20rem para que no se desborde debajo del footer */
+    overflow-y: auto;
+    overflow-x: auto;    
+    align-self: center;
+}
 
 .tabla thead {
-    position: -webkit-sticky; /* Safari */
+    position: -webkit-sticky;
+    /* Safari */
     position: sticky;
     top: 0;
     background: white;
     z-index: 1;
 }
 
-.tabla th, .tabla td {
+.tabla th,
+.tabla td {
     padding: 8px;
     text-align: left;
 }
 
 .cabecera th {
-    color:aliceblue;
-    background-color: #f36969; /* Color de fondo de la cabecera */
+    color: aliceblue;
+    background-color: #f36969;
+    /* Color de fondo de la cabecera */
     padding-top: 2%;
 }
 
@@ -121,18 +138,17 @@
 .navbar-titulo {
     margin: 8%;
     text-align: center;
-    margin-bottom: 20px;        
-    }
+    margin-bottom: 20px;
+}
 
 .navbar-contenedor {
     background-color: #f8f9fa;
     width: 100%;
     margin-bottom: 2rem;
-  }
-  
-  .navbar-titulo {
-    text-align: center;
-    margin-bottom: 20px;        
-    width: auto;    
-    }
+}
 
+.navbar-titulo {
+    text-align: center;
+    margin-bottom: 20px;
+    width: auto;
+}
