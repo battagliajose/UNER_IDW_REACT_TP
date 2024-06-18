@@ -15,16 +15,35 @@ function CrudAlojamientos() {
    
     const handleShowModal = (item) => {
         setShowModal(true);
-        setObjectMod(item);
+
+        if (item.ID) { //Verifica si es una modificación o creación.
+          // Se vuelve a modificar Tipo al ID en lugar de la descripción para el select del modal.
+          const itemAModificar = { ...item };
+          itemAModificar.Tipo = dataTipos.find(tipo => tipo.Descripcion === item.Tipo).idTipoAlojamiento;
+          setObjectMod(itemAModificar);
+        } 
+        else {
+          setObjectMod(item);
+        }
       };
     
     const handleCloseModal = () => setShowModal(false);
 
     const handleCreate = () => {
-        const itemNuevo = {
-            Título: ""
+      const itemNuevo = {
+            Título: "",
+            Descripción: "",
+            Latitud: 0.00,
+            Longitud: 0.00,
+            Precio: 0,
+            Dormitorios: 1,
+            "Precio Por Día": 0,
+            Baños: 1,
+            Tipo: dataTipos[0].idTipoAlojamiento, // Selecciona por defecto el primer tipo de alojamiento.
+            Estado: "Reservado"
         }
-        handleShowModal(itemNuevo);
+      console.log(itemNuevo);
+      handleShowModal(itemNuevo);
     };
 
     const fetchDataTipos = async () => {
@@ -66,16 +85,17 @@ function CrudAlojamientos() {
         setSnack(true);
         setTimeout(() => {
             setSnack(false);
-            fetchAlojamientos(); // Actualizar la lista de tipos de alojamiento
+            fetchData(); // Actualizar la lista de tipos de alojamiento
         }, 2000);
     };
 
-    useEffect(() => {
-      const fetchData = async () => {  
-      // Obtener datos cuando el componente se monta
+    const fetchData = async () => {  
         const tipos = await fetchDataTipos();
         await fetchAlojamientos(tipos);
-      }
+    }
+
+    useEffect(() => {
+      // Obtener datos cuando el componente se monta
       fetchData();      
     }, []);
 
@@ -100,7 +120,7 @@ function CrudAlojamientos() {
           <ModalAlojamientos
             show={showModal}
             handleClose={handleCloseModal}
-            fetch={fetchAlojamientos}
+            fetch={fetchData}
             item = {objectMod}
             dataTipos = {dataTipos}
           />

@@ -26,19 +26,6 @@ function ModalAlojamientos({ show, handleClose, fetch, item, dataTipos}) {
  
   useEffect(() => {
     // Actualiza el estado de descripción con el valor de descrip cuando el componente se monta o cuando descrip cambia
-    if (create) {
-      setDescripcion(""); // Si es uno nuevo lo setea a vacio
-      setTitulo("");
-      setDescripcion("");
-      setLatitud("");
-      setLongitud("");
-      setPrecio("");
-      setDormitorios("");
-      setBanios("");
-      setTipo("");
-      setEstado("");
-    } else {
-      console.log(item);
       setDescripcion(item.Descripción); // Si no a la descripción
       setTitulo(item.Título);
       setLatitud(item.Latitud);
@@ -48,7 +35,6 @@ function ModalAlojamientos({ show, handleClose, fetch, item, dataTipos}) {
       setBanios(item.Baños);
       setTipo(item.Tipo);
       setEstado(item.Estado);
-    }
   }, [item, create]);
 
   useEffect(() => {
@@ -97,7 +83,6 @@ function ModalAlojamientos({ show, handleClose, fetch, item, dataTipos}) {
       "CantidadBanios": banios,
       "Estado": estado
     }
-
     try {
       var response = "";
       if (create) {
@@ -207,7 +192,7 @@ function ModalAlojamientos({ show, handleClose, fetch, item, dataTipos}) {
                       required
                       onChange={(e) => setTipo(e.target.value)}
                     >
-                      {dataTipos.map((tipo, index) => (<option key={index} value={index}>{tipo.Descripcion}</option>))}
+                      {dataTipos.map((tipo) => (<option key={tipo.idTipoAlojamiento} value={tipo.idTipoAlojamiento}>{tipo.Descripcion}</option>))}
                     </Form.Select>
                     
                   </div>
@@ -218,8 +203,8 @@ function ModalAlojamientos({ show, handleClose, fetch, item, dataTipos}) {
                       required
                       onChange={(e) => setEstado(e.target.value)}
                     >
-                      <option value="0">Disponible</option>
-                      <option value="1">Reservado</option>
+                      <option value="Disponible">Disponible</option>
+                      <option value="Reservado">Reservado</option>
                     </Form.Select>
                   </div>
                 </div>
