@@ -115,7 +115,7 @@ function CrudAlojamientos() {
             />
           </div>
           <td className={snack ? "mostrarSnack" : "ocultarSnack"}>
-            Tipo de alojamiento eliminado
+            Alojamiento eliminado
           </td>
           <ModalAlojamientos
             show={showModal}

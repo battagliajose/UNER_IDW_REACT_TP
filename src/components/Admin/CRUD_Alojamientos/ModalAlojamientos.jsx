@@ -218,7 +218,7 @@ function ModalAlojamientos({ show, handleClose, fetch, item, dataTipos}) {
           </Form>
         </Modal.Body>
       </Modal>
-      <div className={snack? 'mostrarSnack' : 'ocultarSnack'}>Servicio editado</div>
+      <div className={snack? 'mostrarSnack' : 'ocultarSnack'}>Alojamiento editado</div>
     </>
   );
 }
