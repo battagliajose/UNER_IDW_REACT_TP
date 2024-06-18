@@ -59,6 +59,11 @@ function CrudAlojamientos() {
         }
     };
 
+    const fetchData = async () => {  
+      const tipos = await fetchDataTipos();
+      await fetchAlojamientos(tipos);
+    }
+
     // Cambia los nombres de las columnas para presentarlos en la Tabla
     const transformData = (dataAloj, dataTipos) => {
         const dataProcesada = dataAloj.map(item => {
@@ -88,11 +93,6 @@ function CrudAlojamientos() {
             fetchData(); // Actualizar la lista de tipos de alojamiento
         }, 2000);
     };
-
-    const fetchData = async () => {  
-        const tipos = await fetchDataTipos();
-        await fetchAlojamientos(tipos);
-    }
 
     useEffect(() => {
       // Obtener datos cuando el componente se monta

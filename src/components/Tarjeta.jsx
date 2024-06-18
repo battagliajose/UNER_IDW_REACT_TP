@@ -6,27 +6,27 @@ import HeartFull from "../assets/tarjetas/heart-Full.png";
 import bath from "../assets/tarjetas/banera.png";
 import dorm from "../assets/tarjetas/dormitorio.png";
 
-function Tarjeta(props) {
+function Tarjeta({ alojamiento: {imagen, PrecioPorDia, CantidadDormitorios, CantidadBanios, Titulo, Descripcion, oferta}, image}) {
   const [like, setLike] = useState(false);
 
   return (
     <div className="tarjeta">
-      <img src={props.imagen} alt="tarjeta" />
+      <img src={image} alt="tarjeta" />
       <div className="tarjetafavoriteIcon" onClick={(e) => setLike(!like)}>
         <img src={like ? HeartFull : HeartTransp} alt="favorito" />
       </div>
-      <p className="tarjetaPrecioDia">${props.precio}</p>
+      <p className="tarjetaPrecioDia">${PrecioPorDia}</p>
       <div className="tarjetaInfoIcons">
         <img src={dorm} alt="Dormitorios" />
-        <p>{props.dormitorios}</p>
+        <p>{CantidadDormitorios}</p>
         <img src={bath} alt="Baños" />
-        <p>{props.banios}</p>
+        <p>{CantidadBanios}</p>
       </div>
       <div className="tarjetaContenido">
-        <h4 className="tarjetaTitulo">{props.titulo}</h4>
-        <p className="tarjetaDescripcion">{props.descripcion}</p>
+        <h4 className="tarjetaTitulo">{Titulo}</h4>
+        <p className="tarjetaDescripcion">{Descripcion}</p>
         <div className="tarjetaPie">
-          <p className="tarjetaPieOferta">Oferta! {props.oferta}</p>
+          <p className="tarjetaPieOferta">Oferta! {oferta}</p>
           <Link className="tarjetaPieBoton" to="/">
             ¡Reserva Ya!
           </Link>
