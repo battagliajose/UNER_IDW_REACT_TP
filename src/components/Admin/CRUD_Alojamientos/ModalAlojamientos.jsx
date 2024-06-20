@@ -20,29 +20,79 @@ function ModalAlojamientos({ show, handleClose, fetch, item, dataTipos}) {
   const [tipo, setTipo] = useState(item.Tipo);
   const [estado, setEstado] = useState(item.Estado);
 
+  
   var create = false;
-
+  
   if (!item.ID) {create = true;} //Verifica si recibe ID de un regisro a modificar o sino es un registro nuevo.
- 
+  
   useEffect(() => {
     // Actualiza el estado de descripción con el valor de descrip cuando el componente se monta o cuando descrip cambia
-      setDescripcion(item.Descripción); // Si no a la descripción
-      setTitulo(item.Título);
-      setLatitud(item.Latitud);
-      setLongitud(item.Longitud);
-      setPrecio(item["Precio Por Día"]);
-      setDormitorios(item.Dormitorios);
-      setBanios(item.Baños);
-      setTipo(item.Tipo);
-      setEstado(item.Estado);
+    setDescripcion(item.Descripción); // Si no a la descripción
+    setTitulo(item.Título);
+    setLatitud(item.Latitud);
+    setLongitud(item.Longitud);
+    setPrecio(item["Precio Por Día"]);
+    setDormitorios(item.Dormitorios);
+    setBanios(item.Baños);
+    setTipo(item.Tipo);
+    setEstado(item.Estado);
   }, [item, create]);
-
+  
   useEffect(() => {
     // Enfoca el campo de texto cuando el modal se muestra
     if (show) {
       descripcionRef.current.focus();
     }
   }, [show]);
+  
+  // Todo imagen
+  const [image, setImage] = useState(0);  // Nuevo estado para la imagen
+  const [imageUrl, setImageUrl] = useState('');  // Nuevo estado para la URL de la imagen subida
+
+//   const handleImageChange = (event) => {  
+//   const file = event.target.files[0];
+//   console.log("La paso el valor con el setFile" ,file);
+//   setImage(file);  
+//   console.log("Mi imagen ",image);
+
+// };
+
+const uploadImage = async () => {
+
+  if (!image) {
+    alert('Por favor, selecciona una imagen primero.');
+    return;
+  }
+  
+  const formData = new FormData();
+  formData.append("image", image);
+
+  console.log("muestro el formData ",formData);
+
+  try {
+  const response = await fetch('https://api.imgbb.com/1/upload?expiration=600&key=b2ecec4761e2107581a1f3c3d1baf7f0', {
+  method: 'POST',
+  body: formData 
+  });
+    console.log("la respuestas que tuve fue ",response);
+
+
+
+    const data = await response.json();
+    if (data.success) {
+      setImageUrl(data.data.url);
+      alert('Subio.');
+    } else {
+      alert('No subio.');
+    }
+  } catch (error) {
+    alert('Error: ' + error.message);
+  }
+};
+//Fin Imagen
+
+
+
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -70,7 +120,8 @@ function ModalAlojamientos({ show, handleClose, fetch, item, dataTipos}) {
       "PrecioPorDia": precio,
       "CantidadDormitorios": dormitorios,
       "CantidadBanios": banios,
-      "Estado": estado
+      "Estado": estado,
+      "ImageUrl": imageUrl // Añadir la URL de la imagen subida
     } : {
       "idAlojamiento": item.ID,
       "Titulo": titulo,
@@ -81,7 +132,8 @@ function ModalAlojamientos({ show, handleClose, fetch, item, dataTipos}) {
       "PrecioPorDia": precio,
       "CantidadDormitorios": dormitorios,
       "CantidadBanios": banios,
-      "Estado": estado
+      "Estado": estado,
+      "ImageUrl": imageUrl // Añadir la URL de la imagen subida
     }
     try {
       var response = "";
@@ -206,6 +258,15 @@ function ModalAlojamientos({ show, handleClose, fetch, item, dataTipos}) {
                       <option value="Disponible">Disponible</option>
                       <option value="Reservado">Reservado</option>
                     </Form.Select>
+                  </div>
+                  <div>
+                    <Form.Label>Imagen</Form.Label>
+                    <Form.Control
+                      type="file"
+                      accept="image/*"
+                      onChange={e=> setImage(e.target.files[0])}
+                    />
+                    <Button className='button-upload' onClick={uploadImage}>Subir Imagen</Button>
                   </div>
                 </div>
                 <div className='modal__botones'>
