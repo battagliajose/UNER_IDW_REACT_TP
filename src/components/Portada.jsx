@@ -1,4 +1,5 @@
 import React from "react";
+import { Form } from 'react-bootstrap';
 import "../styles/portada.css";
 import portadaImagen from "../assets/portada/friends-planning-travel-looking-at-map-article-032822_wide.jpg";
 
@@ -12,16 +13,22 @@ function Portada(props) {
           alt="friends friends-planning-travel-looking-at-map-article-032822"
         />
         <div className="botonera">
-          <input
+          <Form.Select
             className="inputPortada"
             type="text"
-            placeholder="Donde quieres viajar?"
-          />
-          <input
+          >
+            <option value="-1">Que buscas?</option>
+            <option value="Hotel">Hotel</option>
+            <option value="Casa">Casa</option>
+          </Form.Select>
+          <Form.Select
             className="inputPortada"
             type="text"
-            placeholder="Elije una fecha.."
-          />
+          >
+            <option value="-1">Cuantos dormitorios?</option>
+            <option value="1">1 Dormitorio</option>
+            <option value="2">2 Dormitorios</option>
+          </Form.Select>
           <div className="btnPortada">Encontrar!</div>
         </div>
       </div>
