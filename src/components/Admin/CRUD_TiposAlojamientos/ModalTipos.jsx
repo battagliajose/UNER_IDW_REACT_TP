@@ -4,7 +4,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import * as API from '../API';
 import '../../../styles/modales.css';
 
-function ModalTipos({ show, handleClose, fetch, id, descrip }) {
+function ModalTipos({ show, handleClose, fetchDatos, id, descrip }) {
   const [validated, setValidated] = useState(false);
   const [snack, setSnack] = useState(false);
   const [descripcion, setDescripcion] = useState(""); // Inicializa descripción vacía
@@ -40,7 +40,7 @@ function ModalTipos({ show, handleClose, fetch, id, descrip }) {
       event.preventDefault();
       submitItem();
       handleClose();
-      fetch();
+      fetchDatos();
       setValidated(false);
     }
   };
@@ -59,7 +59,7 @@ function ModalTipos({ show, handleClose, fetch, id, descrip }) {
       }
 
       if (response.ok) {
-        fetch();
+        fetchDatos();
         setSnack(true);
         setTimeout(() => {
           setSnack(false);

@@ -77,7 +77,7 @@ function CrudTipos() {
         <ModalTipos
           show={showModal}
           handleClose={handleCloseModal}
-          fetch={fetchTiposAlojamiento}
+          fetchDatos={fetchTiposAlojamiento}
           id={IdMod}
           descrip={DescripMod}
         />

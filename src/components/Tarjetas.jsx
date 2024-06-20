@@ -25,10 +25,9 @@ function Tarjetas() {
   return (
     <div className="tarjetas">
       {rangoRandom.map((alojamiento) => {
-        console.log(alojamiento);
-        console.log(images);
+        const image = images.find(image => image.idAlojamiento === alojamiento.idAlojamiento);
         return (
-          <Tarjeta key={alojamiento.id} alojamiento={alojamiento} image={images.find(image => image.idAlojamiento === alojamiento.idAlojamiento).RutaArchivo}/>
+          <Tarjeta key={alojamiento.id} alojamiento={alojamiento} image={image ? image.RutaArchivo : null}/>
         );
       })}
     </div>

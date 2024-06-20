@@ -1,9 +1,14 @@
+.form_img_Container{
+    display: flex;
+    flex-direction: row;
+}
+
 .modal-blur {
     background-color: #242430b0;
 }
 
 .inputGroup input {
-    width: 80% !important;
+    width: 95% !important;
     margin-bottom: 3% ;
     margin-top: 2%;
     

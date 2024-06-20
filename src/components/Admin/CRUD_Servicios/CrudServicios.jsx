@@ -77,7 +77,7 @@ function CrudServicios() {
         <ModalServicios
           show={showModal}
           handleClose={handleCloseModal}
-          fetch={fetchServicios}
+          fetchDatos={fetchServicios}
           id={IdMod}
           descrip={DescripMod}
         />
