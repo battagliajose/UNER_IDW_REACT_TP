@@ -57,27 +57,23 @@ function ModalAlojamientos({ show, handleClose, fetch, item, dataTipos}) {
 
 // };
 
-const uploadImage = async () => {
-
+const uploadImage = async (e) => {
+  e.preventDefault();
   if (!image) {
     alert('Por favor, selecciona una imagen primero.');
     return;
   }
-  
+  console.log('La imagen que le voy a pasar', image);
+  const apibb = "https://api.imgbb.com/1/upload?key=b2ecec4761e2107581a1f3c3d1baf7f0&name=${image.name}";
   const formData = new FormData();
   formData.append("image", image);
 
-  console.log("muestro el formData ",formData);
-
   try {
-  const response = await fetch('https://api.imgbb.com/1/upload?expiration=600&key=b2ecec4761e2107581a1f3c3d1baf7f0', {
-  method: 'POST',
-  body: formData 
-  });
-    console.log("la respuestas que tuve fue ",response);
-
-
-
+  const response = await fetch(apibb, {
+    method: 'POST',
+    body: formData 
+    });
+    
     const data = await response.json();
     if (data.success) {
       setImageUrl(data.data.url);
