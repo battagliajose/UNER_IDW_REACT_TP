@@ -4,7 +4,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import * as API from '../API';
 import '../../../styles/modales.css';
 
-function ModalAlojamientos({ show, handleClose, fetch, item, dataTipos}) {
+function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTipos, deleteImageHandle}) {
   const [validated, setValidated] = useState(false);
   const [snack, setSnack] = useState(false);
   
@@ -20,6 +20,7 @@ function ModalAlojamientos({ show, handleClose, fetch, item, dataTipos}) {
   const [tipo, setTipo] = useState(item.Tipo);
   const [estado, setEstado] = useState(item.Estado);
 
+  const [imgAloj , setImgAloj] = useState("");
   
   var create = false;
   
@@ -36,6 +37,7 @@ function ModalAlojamientos({ show, handleClose, fetch, item, dataTipos}) {
     setBanios(item.Baños);
     setTipo(item.Tipo);
     setEstado(item.Estado);
+    setImgAloj(imagen);
   }, [item, create]);
   
   useEffect(() => {
@@ -45,51 +47,6 @@ function ModalAlojamientos({ show, handleClose, fetch, item, dataTipos}) {
     }
   }, [show]);
   
-  // Todo imagen
-  const [image, setImage] = useState(0);  // Nuevo estado para la imagen
-  const [imageUrl, setImageUrl] = useState('');  // Nuevo estado para la URL de la imagen subida
-
-//   const handleImageChange = (event) => {  
-//   const file = event.target.files[0];
-//   console.log("La paso el valor con el setFile" ,file);
-//   setImage(file);  
-//   console.log("Mi imagen ",image);
-
-// };
-
-const uploadImage = async (e) => {
-  e.preventDefault();
-  if (!image) {
-    alert('Por favor, selecciona una imagen primero.');
-    return;
-  }
-  console.log('La imagen que le voy a pasar', image);
-  const apibb = "https://api.imgbb.com/1/upload?key=b2ecec4761e2107581a1f3c3d1baf7f0&name=${image.name}";
-  const formData = new FormData();
-  formData.append("image", image);
-
-  try {
-  const response = await fetch(apibb, {
-    method: 'POST',
-    body: formData 
-    });
-    
-    const data = await response.json();
-    if (data.success) {
-      setImageUrl(data.data.url);
-      alert('Subio.');
-    } else {
-      alert('No subio.');
-    }
-  } catch (error) {
-    alert('Error: ' + error.message);
-  }
-};
-//Fin Imagen
-
-
-
-
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -100,7 +57,7 @@ const uploadImage = async (e) => {
       event.preventDefault();
       submitItem();
       handleClose();
-      fetch();
+      fetchDatos();
       setValidated(false);
     }
   };
@@ -117,7 +74,6 @@ const uploadImage = async (e) => {
       "CantidadDormitorios": dormitorios,
       "CantidadBanios": banios,
       "Estado": estado,
-      "ImageUrl": imageUrl // Añadir la URL de la imagen subida
     } : {
       "idAlojamiento": item.ID,
       "Titulo": titulo,
@@ -129,7 +85,6 @@ const uploadImage = async (e) => {
       "CantidadDormitorios": dormitorios,
       "CantidadBanios": banios,
       "Estado": estado,
-      "ImageUrl": imageUrl // Añadir la URL de la imagen subida
     }
     try {
       var response = "";
@@ -140,7 +95,7 @@ const uploadImage = async (e) => {
       }
 
       if (response.ok) {
-        fetch();
+        fetchDatos();
         setSnack(true);
         setTimeout(() => {
           setSnack(false);
@@ -151,11 +106,49 @@ const uploadImage = async (e) => {
     }
   };
 
+  const deleteImage = (id) => {
+    deleteImageHandle(id);
+    setImgAloj(null);
+  }
+  const handleImageSelected = (e) => {
+
+  }
+  
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append('image', file);
+    setImgAloj(URL.createObjectURL(file));
+
+    try {
+      const response = await fetch('https://api.imgbb.com/1/upload?key=8ae73ed418d9c5b532e34d98e047fd64', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error('Upload failed');
+      }
+
+      const data = await response.json();
+      //setImgAloj(data.data.url);
+      const submitItem = {
+        "idAlojamiento": item.ID,
+        "RutaArchivo": data.data.url
+    }
+    
+    API.createItem(submitItem, 'http://localhost:3001/imagen/createImagen');
+    } catch (error) {
+      console.error('Error uploading image:', error);
+    }
+  };
+
   return (
     <>
       <Modal className='modal-blur' show={show} onHide={handleClose} aria-labelledby="contained-modal-title-vcenter" centered>
         <Modal.Body className='form-modal'>
           <p>Tipo de alojamiento</p>
+          <div className='form_img_Container'>
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
           <Form.Label>ID: {item.ID}</Form.Label>
             <Form.Group controlId="formDescription">
@@ -255,15 +248,7 @@ const uploadImage = async (e) => {
                       <option value="Reservado">Reservado</option>
                     </Form.Select>
                   </div>
-                  <div>
-                    <Form.Label>Imagen</Form.Label>
-                    <Form.Control
-                      type="file"
-                      accept="image/*"
-                      onChange={e=> setImage(e.target.files[0])}
-                    />
-                    <Button className='button-upload' onClick={uploadImage}>Subir Imagen</Button>
-                  </div>
+                  
                 </div>
                 <div className='modal__botones'>
                   <Button className='button-cancelar' onClick={handleClose}>Cancelar</Button>
@@ -273,6 +258,17 @@ const uploadImage = async (e) => {
               </InputGroup>
             </Form.Group>
           </Form>
+          <div>
+            <Form.Label>Imagen</Form.Label>
+            <Form.Control
+                type="file"
+                accept="image/*"
+                onChange={handleImageUpload}
+            />
+        </div>
+          {imgAloj === null ? <p>Sin Imagen</p> : <img src={imgAloj} alt="IMAGENACTUAL" style={{ maxWidth: '200px', maxHeight: '200px'}}/>}
+          <Button onClick={() => { deleteImage(item.ID) }}>X</Button>
+          </div>
         </Modal.Body>
       </Modal>
       <div className={snack? 'mostrarSnack' : 'ocultarSnack'}>Alojamiento editado</div>

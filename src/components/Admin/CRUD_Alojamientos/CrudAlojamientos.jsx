@@ -4,15 +4,16 @@ import ModalAlojamientos from "./ModalAlojamientos";
 import * as API from '../API'
 
 function CrudAlojamientos() {
-    const [alojamientos, setAlojamientos] = useState([])
+    const [alojamientos, setAlojamientos] = useState([]);
     const [dataTipos, setDataTipos] = useState([]);
+    const [imagenes, setImagenes] = useState([]);
 
     const [snack, setSnack] = useState(false);
 
     const [showModal, setShowModal] = useState(false);
-    const [objectMod, setObjectMod] = useState({})
+    const [objectMod, setObjectMod] = useState({});
+    const [imagenMod, setImagenMod] = useState({});
 
-   
     const handleShowModal = (item) => {
         setShowModal(true);
 
@@ -21,13 +22,19 @@ function CrudAlojamientos() {
           const itemAModificar = { ...item };
           itemAModificar.Tipo = dataTipos.find(tipo => tipo.Descripcion === item.Tipo).idTipoAlojamiento;
           setObjectMod(itemAModificar);
+          const imgAModificar = imagenes.find(imagen => imagen.idAlojamiento === item.ID)
+          if (imgAModificar) setImagenMod(imgAModificar.RutaArchivo);
         } 
         else {
           setObjectMod(item);
         }
       };
     
-    const handleCloseModal = () => setShowModal(false);
+    const handleCloseModal = () => {
+      setShowModal(false)
+      setImagenMod(null);
+      fetchData();
+    };
 
     const handleCreate = () => {
       const itemNuevo = {
@@ -42,7 +49,6 @@ function CrudAlojamientos() {
             Tipo: dataTipos[0].idTipoAlojamiento, // Selecciona por defecto el primer tipo de alojamiento.
             Estado: "Reservado"
         }
-      console.log(itemNuevo);
       handleShowModal(itemNuevo);
     };
 
@@ -59,10 +65,25 @@ function CrudAlojamientos() {
         }
     };
 
+    const fetchImagenes = async () => {
+      const imagenes = await API.fetchData("http://localhost:3001/imagen/getAllImagenes");
+      if (imagenes) {
+        setImagenes(imagenes);
+      }
+    };
+
+    const deleteImageHandle = async(id) => {
+        const imgAEliminar = imagenes.find(imagen => imagen.idAlojamiento === id); // Se elimina imagen por clave foranea
+        if (imgAEliminar) {
+         const response = await API.deleteItem("http://localhost:3001/imagen/deleteImagen/", imgAEliminar.idImagen)
+        }
+    }
+
     const fetchData = async () => {  
       const tipos = await fetchDataTipos();
       await fetchAlojamientos(tipos);
-    }
+      await fetchImagenes();
+    };
 
     // Cambia los nombres de las columnas para presentarlos en la Tabla
     const transformData = (dataAloj, dataTipos) => {
@@ -81,12 +102,12 @@ function CrudAlojamientos() {
                 Tipo: tipo ? tipo.Descripcion : 'Desconocido'
             };
         });
-
         return dataProcesada;
     };
 
     const deleteAlojamiento = async (id) => {
-        API.deleteItem("http://localhost:3001/alojamiento/deleteAlojamiento/", id)
+        await deleteImageHandle(id);
+        API.deleteItem("http://localhost:3001/alojamiento/deleteAlojamiento/", id);
         setSnack(true);
         setTimeout(() => {
             setSnack(false);
@@ -120,8 +141,10 @@ function CrudAlojamientos() {
           <ModalAlojamientos
             show={showModal}
             handleClose={handleCloseModal}
-            fetch={fetchData}
+            fetchDatos={fetchData}
+            deleteImageHandle={deleteImageHandle}
             item = {objectMod}
+            imagen = {imagenMod}
             dataTipos = {dataTipos}
           />
         </div>
