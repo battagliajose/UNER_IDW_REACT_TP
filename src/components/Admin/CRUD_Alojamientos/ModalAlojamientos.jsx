@@ -151,133 +151,134 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTi
 
   return (
     <>
-      <Modal className='modal-blur' show={show} onHide={handleClose} aria-labelledby="contained-modal-title-vcenter" centered>
-    <Modal.Body className='form-modal'>
-        <p>Tipo de alojamiento</p>
-        <Form noValidate validated={validated} onSubmit={handleSubmit}>
+      <Modal className='modal-lg modal-blur' show={show} onHide={handleClose} aria-labelledby="contained-modal-title-vcenter" centered>
+        <Modal.Body className='form-modal'>
+          <p>Tipo de alojamiento</p>
+          <Form noValidate validated={validated} onSubmit={handleSubmit}>
             {/*<Form.Label>ID: {item.ID}</Form.Label>*/}
             <div className='formContainer'>
-                <div className='leftColumn'>
-                    <Form.Group controlId="formDescription">
-                        <Form.Label>Título</Form.Label>
-                        <InputGroup className='inputGroup flexColumn' hasValidation>
-                            <Form.Control
-                                ref={descripcionRef}
-                                value={titulo}
-                                type="text"
-                                required
-                                placeholder="Ingresa un título"
-                                onChange={(e) => setTitulo(e.target.value)}
-                            />
-                            <Form.Label>Descripción</Form.Label>
-                            <Form.Control
-                                value={descripcion}
-                                type="text"
-                                required
-                                placeholder="Ingresa una descripción"
-                                onChange={(e) => setDescripcion(e.target.value)}
-                            />
-                            <div className='flexRow'>
-                                <div>
-                                    <Form.Label>Latitud</Form.Label>
-                                    <Form.Control
-                                        value={latitud}
-                                        type="text"
-                                        required
-                                        placeholder="Ingresa la latitud"
-                                        onChange={(e) => setLatitud(e.target.value)}
-                                    />
-                                </div>
-                                <div>
-                                    <Form.Label>Longitud</Form.Label>
-                                    <Form.Control
-                                        value={longitud}
-                                        type="text"
-                                        required
-                                        placeholder="Ingresa la longitud"
-                                        onChange={(e) => setLongitud(e.target.value)}
-                                    />
-                                </div>
-                            </div>
-                            <Form.Label>Precio por Día</Form.Label>
-                            <Form.Control
-                                value={precio}
-                                type="text"
-                                required
-                                placeholder="Ingresa el precio por día"
-                                onChange={(e) => setPrecio(e.target.value)}
-                            />
-                            <div className='flexRow'>
-                                <div>
-                                    <Form.Label>Dormitorios</Form.Label>
-                                    <Form.Control
-                                        value={dormitorios}
-                                        type="text"
-                                        required
-                                        placeholder="Ingresa la cantidad de dormitorios"
-                                        onChange={(e) => setDormitorios(e.target.value)}
-                                    />
-                                </div>
-                                <div>
-                                    <Form.Label>Baños</Form.Label>
-                                    <Form.Control
-                                        value={banios}
-                                        type="text"
-                                        required
-                                        placeholder="Ingresa la cantidad de baños"
-                                        onChange={(e) => setBanios(e.target.value)}
-                                    />
-                                </div>
-                            </div>
-                            <div className='flexRow'>
-                                <div className='flexItem'>
-                                    <Form.Label>Tipo</Form.Label>
-                                    <Form.Select
-                                        value={tipo}
-                                        required
-                                        onChange={(e) => setTipo(e.target.value)}
-                                    >
-                                        {dataTipos.map((tipo) => (
-                                            <option key={tipo.idTipoAlojamiento} value={tipo.idTipoAlojamiento}>{tipo.Descripcion}</option>
-                                        ))}
-                                    </Form.Select>
-                                </div>
-                                <div className='flexItem'>
-                                    <Form.Label>Disponibilidad</Form.Label>
-                                    <Form.Select
-                                        value={estado}
-                                        required
-                                        onChange={(e) => setEstado(e.target.value)}
-                                    >
-                                        <option value="Disponible">Disponible</option>
-                                        <option value="Reservado">Reservado</option>
-                                    </Form.Select>
-                                </div>
-                            </div>
-                            <Form.Control.Feedback type="invalid">Debe llenar este campo</Form.Control.Feedback>
-                        </InputGroup>
-                    </Form.Group>
-                </div>
-                <div className='rightColumn'>
-                    <Form.Group controlId="formImage">
-                        <Form.Label>Imagen</Form.Label>
+              <div className='leftColumn'>
+                <Form.Group controlId="formDescription">
+                  <Form.Label>Título</Form.Label>
+                  <InputGroup className='inputGroup flexColumn' hasValidation>
+                    <Form.Control
+                      ref={descripcionRef}
+                      value={titulo}
+                      type="text"
+                      required
+                      placeholder="Ingresa un título"
+                      onChange={(e) => setTitulo(e.target.value)}
+                    />
+                    <Form.Label>Descripción</Form.Label>
+                    <Form.Control
+                      value={descripcion}
+                      type="text"
+                      required
+                      placeholder="Ingresa una descripción"
+                      onChange={(e) => setDescripcion(e.target.value)}
+                    />
+                    <div className='flexRow'>
+                      <div className='flexItem'>
+                        <Form.Label>Latitud</Form.Label>
                         <Form.Control
-                            type="file"
-                            accept="image/*"
-                            onChange={handleImageSelected}
+                          value={latitud}
+                          type="text"
+                          required
+                          placeholder="Ingresa la latitud"
+                          onChange={(e) => setLatitud(e.target.value)}
                         />
-                    </Form.Group>
-                    {imgAloj === null ? <p>Sin Imagen</p> : <img src={imgAloj} alt="IMAGENACTUAL" style={{ maxWidth: '200px', maxHeight: '200px' }} />}
-                    <Button className='btn btn-danger' onClick={() => { deleteImage(item.ID) }}>X</Button>
-                </div>
+                      </div>
+                      <div className='flexItem'>
+                        <Form.Label>Longitud</Form.Label>
+                        <Form.Control
+                          value={longitud}
+                          type="text"
+                          required
+                          placeholder="Ingresa la longitud"
+                          onChange={(e) => setLongitud(e.target.value)}
+                        />
+                      </div>
+                    </div>
+                    <Form.Label>Precio por Día</Form.Label>
+                    <Form.Control
+                      value={precio}
+                      type="text"
+                      required
+                      placeholder="Ingresa el precio por día"
+                      onChange={(e) => setPrecio(e.target.value)}
+                    />
+                    <div className='flexRow'>
+                      <div className='flexItem'>
+                        <Form.Label>Dormitorios</Form.Label>
+                        <Form.Control
+                          value={dormitorios}
+                          type="text"
+                          required
+                          placeholder="Ingresa la cantidad de dormitorios"
+                          onChange={(e) => setDormitorios(e.target.value)}
+                        />
+                      </div>
+                      <div className='flexItem'>
+                        <Form.Label>Baños</Form.Label>
+                        <Form.Control
+                          value={banios}
+                          type="text"
+                          required
+                          placeholder="Ingresa la cantidad de baños"
+                          onChange={(e) => setBanios(e.target.value)}
+                        />
+                      </div>
+                    </div>
+                    <div className='flexRow'>
+                      <div className='flexItem'>
+                        <Form.Label>Tipo</Form.Label>
+                        <Form.Select
+                          value={tipo}
+                          required
+                          onChange={(e) => setTipo(e.target.value)}
+                        >
+                          {dataTipos.map((tipo) => (
+                            <option key={tipo.idTipoAlojamiento} value={tipo.idTipoAlojamiento}>{tipo.Descripcion}</option>
+                          ))}
+                        </Form.Select>
+                      </div>
+                      <div className='flexItem'>
+                        <Form.Label>Disponibilidad</Form.Label>
+                        <Form.Select
+                          value={estado}
+                          required
+                          onChange={(e) => setEstado(e.target.value)}
+                        >
+                          <option value="Disponible">Disponible</option>
+                          <option value="Reservado">Reservado</option>
+                        </Form.Select>
+                      </div>
+                    </div>
+                    <Form.Control.Feedback type="invalid">Debe llenar este campo</Form.Control.Feedback>
+                  </InputGroup>
+                </Form.Group>
+              </div>
+              <div className='rightColumn'>
+                <Form.Group controlId="formImage">
+                  <Form.Label>Imagen</Form.Label>
+                  <Form.Control
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageSelected}
+                  />
+                </Form.Group>
+                {imgAloj === null ? <p>Sin Imagen</p> : <img src={imgAloj} alt="IMAGENACTUAL" style={{ maxWidth: '200px', maxHeight: '200px' }} />}
+                <Button className='btn btn-danger' onClick={() => { deleteImage(item.ID) }}>X</Button>
+              </div>
             </div>
-            <div className='modal__botones'> 
-                <Button className='btn btn-danger button-cancelar' onClick={handleClose}>Cancelar</Button>
-                <Button className='btn btn-danger button-aceptar' type="submit">Aceptar</Button>
+            <div className='modal__botones'>
+              <Button className='btn btn-danger button-cancelar' onClick={handleClose}>Cancelar</Button>
+              <Button className='btn btn-danger button-aceptar' type="submit">Aceptar</Button>
             </div>
-        </Form>
-    </Modal.Body>
-</Modal>
+          </Form>
+        </Modal.Body>
+      </Modal>
+
 
 
 
