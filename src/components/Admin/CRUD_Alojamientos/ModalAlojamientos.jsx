@@ -21,7 +21,8 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTi
   const [estado, setEstado] = useState(item.Estado);
 
   const [imgAloj , setImgAloj] = useState("");
-  
+  const [imgFile, setImgFile] = useState("");
+
   var create = false;
   
   if (!item.ID) {create = true;} //Verifica si recibe ID de un regisro a modificar o sino es un registro nuevo.
@@ -56,6 +57,7 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTi
       setValidated(true);
       event.preventDefault();
       submitItem();
+      handleImageUpload();
       handleClose();
       fetchDatos();
       setValidated(false);
@@ -106,20 +108,24 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTi
     }
   };
 
-  const deleteImage = (id) => {
-    deleteImageHandle(id);
+  const deleteImage = async (id) => {
+    await deleteImageHandle(id);
     setImgAloj(null);
   }
-  const handleImageSelected = (e) => {
 
+  const handleImageSelected = (e) => {
+    const file = e.target.files[0];
+    setImgAloj(URL.createObjectURL(file));
+    setImgFile(file);
   }
   
-  const handleImageUpload = async (e) => {
-    const file = e.target.files[0];
-    const formData = new FormData();
-    formData.append('image', file);
-    setImgAloj(URL.createObjectURL(file));
+  const handleImageUpload = async () => {
+    
+    deleteImageHandle(item.ID);
 
+    const formData = new FormData();
+    formData.append('image', imgFile);
+    
     try {
       const response = await fetch('https://api.imgbb.com/1/upload?key=8ae73ed418d9c5b532e34d98e047fd64', {
         method: 'POST',
@@ -134,7 +140,7 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTi
       //setImgAloj(data.data.url);
       const submitItem = {
         "idAlojamiento": item.ID,
-        "RutaArchivo": data.data.url
+        "RutaArchivo": imgAloj
     }
     
     API.createItem(submitItem, 'http://localhost:3001/imagen/createImagen');
@@ -263,7 +269,7 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTi
             <Form.Control
                 type="file"
                 accept="image/*"
-                onChange={handleImageUpload}
+                onChange={handleImageSelected}
             />
         </div>
           {imgAloj === null ? <p>Sin Imagen</p> : <img src={imgAloj} alt="IMAGENACTUAL" style={{ maxWidth: '200px', maxHeight: '200px'}}/>}
