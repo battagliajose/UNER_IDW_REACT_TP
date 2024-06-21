@@ -1,0 +1,114 @@
+.form_img_Container{
+    display: flex;
+    flex-direction: row;
+}
+
+.modal-blur {
+    background-color: #242430b0;
+}
+
+.inputGroup input {
+    width: 95% !important;
+    margin-bottom: 3% ;
+    margin-top: 2%;
+    
+}
+
+.flexRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.flexColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-modal {
+    display: flex;
+    flex-direction: column;
+    background-color: #242430;
+    color: white;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.form-modal p {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.form-modal input {
+    border: none;
+}
+
+.form-modal input:focus,
+.form-modal input:active {
+    border: none;
+    box-shadow: 0 0 0 0.1rem rgba(255, 87, 51, 0.5);
+}
+
+.button-Aceptar {
+    background-color: #e6260c;
+    border: none;
+}
+
+.button-cancelar {
+    background-color: #616263;
+    border: none;
+}
+
+.button-Aceptar:hover {
+    background-color: #e6260c;
+}
+
+.button-cancelar:hover {
+    background-color: #616263;
+}
+
+.button-Aceptar:active {
+    background-color: #e6260c;
+}
+
+.button-cancelar:focus,
+.button-cancelar:active {
+    background-color: #e6260c !important;
+    /* Cambia este color por el que prefieras */
+    border-color: #e6260c !important;
+    /* Cambia este color por el que prefieras */
+}
+
+.button-aceptar:focus,
+.button-aceptar:active {
+    background-color: #e6260c !important;
+    /* Cambia este color por el que prefieras */
+    border-color: #e6260c !important;
+    /* Cambia este color por el que prefieras */
+}
+
+.ocultarSnack {
+    display: none;
+}
+
+.mostrarSnack {
+    display: block;
+    background-color: #e6260c;
+    width: 400px;
+    height: 40px;
+    color: white;
+    position: absolute;
+    top: 120px;
+    right: 60px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 3px 5px #616263;
+}
+
+.modal__botones {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
