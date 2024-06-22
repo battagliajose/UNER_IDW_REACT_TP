@@ -1,32 +1,37 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import { Form } from 'react-bootstrap';
 import "../styles/portada.css";
 import portadaImagen from "../assets/portada/friends-planning-travel-looking-at-map-article-032822_wide.jpg";
 
-function Portada({setSelectedTipo, setSelectedDormitorios}) {
+function Portada({ setSelectedTipo, setSelectedDormitorios }) {
 
-  //Variables para filtar el Array de Alojamiento
- const [tipo, setTipo] = useState("");
- const [dormitorios, setDormitorios] = useState("");
+  const [tipo, setTipo] = useState("");
+  const [dormitorios, setDormitorios] = useState("");
 
-  //Caturar y setear el Tipo
   const handleTipoChange = (e) => {
     setTipo(e.target.value);
     setSelectedTipo(e.target.value);
   };
-//Caturar y setear la cant de Dormitorios
+
   const handleDormitoriosChange = (e) => {
     setDormitorios(e.target.value);
     setSelectedDormitorios(e.target.value);
   };
 
-  //Evento boton despues de ser selecionado
   const handleButtonClick = () => {
     const tarjetasElement = document.querySelector(".tarjetas");
     if (tarjetasElement) {
       tarjetasElement.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  useEffect(() => {
+    console.log(tipo); // Mover el log aquí para que se ejecute después de que el estado se actualice
+  }, [tipo]);
+
+  useEffect(() => {
+    console.log(dormitorios); // Y aquí para dormitorios
+  }, [dormitorios]);
 
   return (
     <section className="portada">
@@ -39,7 +44,6 @@ function Portada({setSelectedTipo, setSelectedDormitorios}) {
         <div className="botonera">
           <Form.Select
             className="inputPortada"
-            type="text" 
             value={tipo}        
             onChange={handleTipoChange}
           >
@@ -49,7 +53,6 @@ function Portada({setSelectedTipo, setSelectedDormitorios}) {
           </Form.Select>
           <Form.Select
             className="inputPortada"
-            type="text" 
             value={dormitorios}         
             onChange={handleDormitoriosChange}
           >

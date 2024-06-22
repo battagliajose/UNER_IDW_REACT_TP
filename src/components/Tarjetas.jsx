@@ -3,7 +3,7 @@ import Tarjeta from "./Tarjeta";
 import "../styles/tarjetas.css";
 import * as API from "./Admin/API";
 
-function Tarjetas(props) {
+function Tarjetas({selectedTipo,selectedDormitorios}) {
   const [alojamientos, setAlojamientos] = useState([]);
   const [images, setImages] = useState([]);
 
@@ -15,8 +15,8 @@ function Tarjetas(props) {
         setImages(images);
     };
 
-    console.log("Tipo selecionado ", props.selectedTipo);
-    console.log("Cantidad de dormitorios", props.selectedDormitorios);
+    console.log("Tipo selecionado ", {selectedTipo});
+    console.log("Cantidad de dormitorios", {selectedDormitorios});
 
     fetchCards();
   }, []);
