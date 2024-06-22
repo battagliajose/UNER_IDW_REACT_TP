@@ -153,7 +153,7 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTi
     <>
       <Modal className='modal-lg modal-blur' show={show} onHide={handleClose} aria-labelledby="contained-modal-title-vcenter" centered>
         <Modal.Body className='form-modal'>
-          <p>Tipo de alojamiento</p>
+          <p>Alojamientos</p>
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
             {/*<Form.Label>ID: {item.ID}</Form.Label>*/}
             <div className='formContainer'>

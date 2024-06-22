@@ -12,7 +12,7 @@ function ModalServicios({ show, handleClose, fetchDatos, id, descrip }) {
 
   var create = false;
 
-  if (!id) {create = true;} //Verifica si recibe ID de un regisro a modificar o sino es un registro nuevo.
+  if (!id) { create = true; } //Verifica si recibe ID de un regisro a modificar o sino es un registro nuevo.
 
   useEffect(() => {
     // Actualiza el estado de descripción con el valor de descrip cuando el componente se monta o cuando descrip cambia
@@ -46,9 +46,9 @@ function ModalServicios({ show, handleClose, fetchDatos, id, descrip }) {
   };
 
   const submitItem = async () => {
-    const item = create 
-    ? { Nombre: descripcion } 
-    : { idServicio: id, Nombre: descripcion };
+    const item = create
+      ? { Nombre: descripcion }
+      : { idServicio: id, Nombre: descripcion };
 
     try {
       var response = "";
@@ -87,15 +87,17 @@ function ModalServicios({ show, handleClose, fetchDatos, id, descrip }) {
                   placeholder="Ingresa una descripción"
                   onChange={(e) => setDescripcion(e.target.value)}
                 />
-                <Button className='button-cancelar' onClick={handleClose}>Cancelar</Button>
-                <Button className='button-Aceptar' onClick={handleSubmit}>Aceptar</Button>
+                <div className='modal__botones'>
+                  <Button className='btn btn-danger button-cancelar' onClick={handleClose}>Cancelar</Button>
+                  <Button className='btn btn-danger button-aceptar' type="submit">Aceptar</Button>
+                </div>                
                 <Form.Control.Feedback type="invalid">Debe llenar este campo</Form.Control.Feedback>
               </InputGroup>
             </Form.Group>
           </Form>
         </Modal.Body>
       </Modal>
-      <div className={snack? 'mostrarSnack' : 'ocultarSnack'}>Servicio editado</div>
+      <div className={snack ? 'mostrarSnack' : 'ocultarSnack'}>Servicio editado</div>
     </>
   );
 }
