@@ -10,7 +10,7 @@ function TablaCrud({ registros, handleDelete, handleShowUpdate }) {
   const headers = Object.keys(registros[0]);
   
   return (
-    <div className="tabla-container">
+    <div className="tabla-container reducible">
       <table className="tabla" border="3">
         <thead>
           <tr className="cabecera">
