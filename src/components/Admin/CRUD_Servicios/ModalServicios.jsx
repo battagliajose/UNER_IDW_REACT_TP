@@ -74,7 +74,7 @@ function ModalServicios({ show, handleClose, fetchDatos, id, descrip }) {
     <>
       <Modal className='modal-blur' show={show} onHide={handleClose} aria-labelledby="contained-modal-title-vcenter" centered>
         <Modal.Body className='form-modal'>
-          <p>Tipo de alojamiento</p>
+          <p>Tipo de servicio</p>
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Form.Group controlId="formDescription">
               <Form.Label>Descripción</Form.Label>

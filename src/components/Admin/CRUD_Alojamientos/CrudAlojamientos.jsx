@@ -123,7 +123,7 @@ function CrudAlojamientos() {
     return (
         <div className="admin">
           <div className="tablero">
-            <h2 className="tituloTipos">CRUD de Alojamientos</h2>
+            <h2 className="tituloTipos">Alojamientos</h2>
             <div className="contenedor-button">
               <button className="buttonNuevo" onClick={handleCreate}>
                 +

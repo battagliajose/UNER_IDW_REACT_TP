@@ -59,7 +59,7 @@ function CrudServicios() {
     return (
       <div className="admin">
         <div className="tablero">
-          <h2 className="tituloTipos">Tipos de alojamientos</h2>
+          <h2 className="tituloTipos">Tipos de servicios</h2>
           <div className="contenedor-button">
             <button className="buttonNuevo" onClick={handleCreate}>
               +
