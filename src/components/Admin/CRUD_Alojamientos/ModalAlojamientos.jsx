@@ -267,7 +267,7 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTi
                     onChange={handleImageSelected}
                   />
                 </Form.Group>
-                {imgAloj === null ? <p>Sin Imagen</p> : <img src={imgAloj} alt="IMAGENACTUAL" />}
+                {imgAloj === null ? <p>Sin Imagen</p> : <img className="imgModal" src={imgAloj} alt="IMAGENACTUAL" />}
                 <Button className='btn btn-danger' onClick={() => { deleteImage(item.ID) }}>X</Button>
               </div>
             </div>
