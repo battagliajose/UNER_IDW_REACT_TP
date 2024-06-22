@@ -89,12 +89,16 @@
 /*******************************************/
 @media screen and (max-width: 768px) {
     .tabla-container {
-        max-height: 20rem;        
+        max-height: 20rem !important;        
         overflow-y: auto;
         overflow-x: auto;
         max-width: 20rem;
         align-self: center;
         margin-bottom: 5rem;
+    }
+    .reducible {
+        transform: scale(0.6);
+        transform-origin: top center;
     }
 }
 
