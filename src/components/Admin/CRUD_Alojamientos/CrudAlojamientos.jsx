@@ -7,6 +7,7 @@ function CrudAlojamientos() {
     const [alojamientos, setAlojamientos] = useState([]);
     const [dataTipos, setDataTipos] = useState([]);
     const [imagenes, setImagenes] = useState([]);
+    const [servicios, setServicios] = useState([]);
 
     const [snack, setSnack] = useState(false);
 
@@ -72,6 +73,13 @@ function CrudAlojamientos() {
       }
     };
 
+    const fetchServicios = async () => {
+      const servicios = await API.fetchData("http://localhost:3001/servicio/getAllServicios");
+      if (servicios) {
+        setServicios(servicios)
+      }
+    }
+
     const deleteImageHandle = async(id) => {
         const imgAEliminar = imagenes.find(imagen => imagen.idAlojamiento === id); // Se elimina imagen por clave foranea
         if (imgAEliminar) {
@@ -83,6 +91,7 @@ function CrudAlojamientos() {
       const tipos = await fetchDataTipos();
       await fetchAlojamientos(tipos);
       await fetchImagenes();
+      await fetchServicios();
     };
 
     // Cambia los nombres de las columnas para presentarlos en la Tabla
@@ -146,6 +155,7 @@ function CrudAlojamientos() {
             item = {objectMod}
             imagen = {imagenMod}
             dataTipos = {dataTipos}
+            dataServicios = {servicios}
           />
         </div>
       );
