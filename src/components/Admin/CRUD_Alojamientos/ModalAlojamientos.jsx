@@ -111,6 +111,7 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTi
   const deleteImage = async (id) => {
     await deleteImageHandle(id);
     setImgAloj(null);
+    setImgFile(null);
   }
 
   const handleImageSelected = (e) => {
@@ -123,29 +124,31 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTi
 
     deleteImageHandle(item.ID);
 
-    const formData = new FormData();
-    formData.append('image', imgFile);
+    if(imgFile) {
+      const formData = new FormData();
+      formData.append('image', imgFile);
 
-    try {
-      const response = await fetch('https://api.imgbb.com/1/upload?key=8ae73ed418d9c5b532e34d98e047fd64', {
-        method: 'POST',
-        body: formData,
-      });
+      try {
+        const response = await fetch('https://api.imgbb.com/1/upload?key=8ae73ed418d9c5b532e34d98e047fd64', {
+          method: 'POST',
+          body: formData,
+        });
 
-      if (!response.ok) {
-        throw new Error('Upload failed');
+        if (!response.ok) {
+          throw new Error('Upload failed');
+        }
+
+        const data = await response.json();
+        
+        const submitItem = {
+          "idAlojamiento": item.ID,
+          "RutaArchivo": data.data.url
+        }
+
+        API.createItem(submitItem, 'http://localhost:3001/imagen/createImagen');
+      } catch (error) {
+        console.error('Error uploading image:', error);
       }
-
-      const data = await response.json();
-      //setImgAloj(data.data.url);
-      const submitItem = {
-        "idAlojamiento": item.ID,
-        "RutaArchivo": imgAloj
-      }
-
-      API.createItem(submitItem, 'http://localhost:3001/imagen/createImagen');
-    } catch (error) {
-      console.error('Error uploading image:', error);
     }
   };
 
