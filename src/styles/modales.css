@@ -124,7 +124,10 @@
 img {
     border-style: none;
     margin-top: 5%;
+    max-width: 200px ;
+    max-height: 200px;    
 }
+
 
 .modal-blur {
     background-color: #242430b0;
