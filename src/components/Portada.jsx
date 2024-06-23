@@ -37,10 +37,11 @@ function Portada({ setSelectedTipo, setSelectedDormitorios,setbtnBuscarHome}) {
     const fetchTiposAlojamiento=async () => {
       const dataTipoAlojamiento = await API.fetchData("http://localhost:3001/tiposAlojamiento/getTiposAlojamiento");      
       setTipoAlojamiento(dataTipoAlojamiento);
+
     };
 
     fetchTiposAlojamiento();
-   
+   console.log("los datos de tipos alojamient", tipoAlojamiento);
   }, []);
 
   return (
