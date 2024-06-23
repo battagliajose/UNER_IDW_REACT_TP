@@ -12,17 +12,19 @@ function Home(props) {
 
   const [selectedTipo, setSelectedTipo] = useState("");
   const [selectedDormitorios, setSelectedDormitorios] = useState("");
-  
+  const [btnBuscar, setbtnBuscarHome] = useState(false); 
   return (
     <div>
       <Portada       
          setSelectedTipo={setSelectedTipo} 
          setSelectedDormitorios={setSelectedDormitorios}
+         setbtnBuscarHome={setbtnBuscarHome}
       />
       <Beneficios />
       <Tarjetas 
         selectedTipo={selectedTipo}
         selectedDormitorios={selectedDormitorios} 
+        btnBuscar={btnBuscar}
        />
       <Seccion5 imagen={sessionImagen} />
     </div>
