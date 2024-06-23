@@ -27,7 +27,7 @@ const Footer = () => {
       <footer
         className={
           footerBottom
-            ? "footer_Bottom bg-dark text-white pt-3 pb-3"
+            ? "footer_Bottom bg-dark text-white pt-3 pb-3 fixed-bottom"
             : "bg-dark text-white pt-3 pb-3"
         }
       >

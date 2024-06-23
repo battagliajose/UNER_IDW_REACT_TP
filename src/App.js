@@ -19,7 +19,9 @@ import Home from "./pages/Home";
 import Contacto from "./pages/Contacto";
 import Nosotros from "./pages/Nosotros";
 import Admin from "./pages/Admin";
+
 import NotFound from "./components/NotFound";
+
 
 function App() {
   return (

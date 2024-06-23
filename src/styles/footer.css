@@ -16,7 +16,7 @@
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
-
+/*
 .footer_Bottom {
   position: absolute;
   bottom: 0;
@@ -31,4 +31,9 @@
     width: 100%;
     clear: both;
   }
+}*/
+
+.footer {
+  height: 100px; 
+  margin-top: 5rem;
 }

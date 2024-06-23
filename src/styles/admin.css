@@ -1,10 +1,24 @@
-.admin {
+.content {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+}
+
+.adminMarco {
+    padding: 5rem;
+    align-items: center;
+}
+
+/*.admin {
+    display: flex;
     width: 100%;
     align-items: center;
     min-height: 100%;
     padding-top: 10%;
+}*/
+
+.adminContainer {
+    display: flex;
+    align-items: center;
 }
 
 .contenedorTablaTipos {
@@ -14,26 +28,26 @@
 }
 
 .contenedor-button {
-
     display: flex;
     justify-content: end;
 }
 
-.tablaTipos {
+.tabla {
     border-collapse: collapse;
     border: 1px solid #242430b0;
     /* Establece el borde de la tabla */
 }
 
-.tablaTipos th,
-.tablaTipos td {
+.tabla th,
+.tabla td {
     border: 1px solid #242430b0;
     /* Establece el borde para las celdas de encabezado y datos */
     padding: 8px;
     /* Añade un espacio interno alrededor del contenido de las celdas */
 }
 
-.tablaTipos {
+.tabla {
+    width: 100%;
     border-collapse: collapse;
     border: 1px solid#242430b0;
     /* Establece el borde de la tabla */
@@ -69,4 +83,76 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+}
+
+
+/*******************************************/
+@media screen and (max-width: 768px) {
+    .tabla-container {
+        max-height: 20rem !important;        
+        overflow-y: auto;
+        overflow-x: auto;
+        max-width: 20rem;
+        align-self: center;
+        margin-bottom: 5rem;
+    }
+    .reducible {
+        transform: scale(0.8);
+        transform-origin: top center;
+    }
+}
+
+.tabla-container {
+    max-height: 20rem;
+    /* Ajusta la altura hasta 20rem para que no se desborde debajo del footer */
+    overflow-y: auto;
+    overflow-x: auto;    
+    align-self: center;
+}
+
+.tabla thead {
+    position: -webkit-sticky;
+    /* Safari */
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 1;
+}
+
+.tabla th,
+.tabla td {
+    padding: 8px;
+    text-align: left;
+}
+
+.cabecera th {
+    color: aliceblue;
+    background-color: #f36969;
+    /* Color de fondo de la cabecera */
+    padding-top: 2%;
+}
+
+.cuerpo tr:nth-child(even) {
+    background-color: #f9f9f9;
+    margin-top: 3%;
+}
+
+/*barra navegación de cruds*/
+
+.navbar-titulo {
+    margin: 8%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.navbar-contenedor {
+    background-color: #f8f9fa;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.navbar-titulo {
+    text-align: center;
+    margin-bottom: 20px;
+    width: auto;
 }

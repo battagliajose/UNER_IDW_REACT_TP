@@ -9,7 +9,6 @@
     <li>Luis Sanchez</li>
     <li>José Battaglia</li>
     <li>Cristian Seltenreich</li>
-    <li>Mariela Yael Alarcon</li>
 </ul>
 
 <h3>Como trabajamos el proyecto:</h2>

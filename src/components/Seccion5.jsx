@@ -20,11 +20,11 @@ function Seccion5(props) {
             nuestros restaurantes de clase mundial y sumérgete en la serenidad
             de nuestros spa de primera categoría.
           </p>
-          <div className="contenedor-button">
-            <Link to="/contacto">
+          <Link to="/contacto" >
+            <div className="contenedor-button">
               <button className="button-seccion5">Contactanos</button>
-            </Link>
-          </div>
+            </div>
+          </Link>
         </div>
       </div>
       <div className="row contenedor">

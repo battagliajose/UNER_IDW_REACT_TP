@@ -10,6 +10,30 @@
     height: 85vh;
     margin-top: 15vh;
 }
+@media screen and (max-width: 768px) {
+.contenedor-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(222, 218, 218, 0.8)), url("../../public/img/contacto/1140-road-trip-apps.jpg");
+    background-size: cover;
+    text-align: center;
+    width: 100%;
+    height: 85vh;
+    margin-top: 15vh;
+    margin-bottom: 30%; /*evita que se esconda en pantalla pequeñas bajo footer*/
+}
+}
+
+
+
+.texto{
+    width: 100%;
+    border:none;
+    border-radius: 10px;
+    padding:10px;
+}
 
 .formulario {
     display: flex;
@@ -45,6 +69,7 @@
     width: 120px;
     height: 40px;
     border-radius: 5px;
+    margin-top: 10px;
 }
 
 .contacto {

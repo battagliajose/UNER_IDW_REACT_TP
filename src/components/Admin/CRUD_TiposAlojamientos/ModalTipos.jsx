@@ -1,17 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react'
 import { Modal, Button, Form } from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
+import * as API from '../API';
 import '../../../styles/modales.css';
 
-function ModalUpdateTipos({ show, handleClose, fetchTiposAlojamiento, id, descrip }) {
+function ModalTipos({ show, handleClose, fetchDatos, id, descrip }) {
   const [validated, setValidated] = useState(false);
   const [snack, setSnack] = useState(false);
   const [descripcion, setDescripcion] = useState(""); // Inicializa descripción vacía
+  const descripcionRef = useRef(null);
+
+  var create = false;
+
+  if (!id) { create = true; } //Verifica si recibe ID de un regisro a modificar o sino es un registro nuevo.
 
   useEffect(() => {
     // Actualiza el estado de descripción con el valor de descrip cuando el componente se monta o cuando descrip cambia
-    setDescripcion(descrip);
-  }, [descrip]);
+    if (create) {
+      setDescripcion(""); // Si es uno nuevo lo setea a vacio
+    } else {
+      setDescripcion(descrip); // Si no a la descripción
+    }
+  }, [descrip, create]);
+
+  useEffect(() => {
+    // Enfoca el campo de texto cuando el modal se muestra
+    if (show) {
+      descripcionRef.current.focus();
+    }
+  }, [show]);
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -21,28 +38,28 @@ function ModalUpdateTipos({ show, handleClose, fetchTiposAlojamiento, id, descri
     } else {
       setValidated(true);
       event.preventDefault();
-      createTipoModal();
+      submitItem();
       handleClose();
-      fetchTiposAlojamiento();
+      fetchDatos();
       setValidated(false);
     }
   };
 
-  const createTipoModal = async () => {
-    const dataJson = {
-      Descripcion: descripcion,
-    };
+  const submitItem = async () => {
+    const item = create
+      ? { Descripcion: descripcion }
+      : { idTipoAlojamiento: id, Descripcion: descripcion };
 
     try {
-      const response = await fetch(`http://localhost:3001/tiposAlojamiento/putTipoAlojamiento/${id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(dataJson),
-      });
+      var response = "";
+      if (create) {
+        response = await API.createItem(item, "http://localhost:3001/tiposAlojamiento/createTipoAlojamiento");
+      } else {
+        response = await API.updateItem(item, "http://localhost:3001/tiposAlojamiento/putTipoAlojamiento/", item.idTipoAlojamiento)
+      }
+
       if (response.ok) {
-        fetchTiposAlojamiento();
+        fetchDatos();
         setSnack(true);
         setTimeout(() => {
           setSnack(false);
@@ -63,23 +80,26 @@ function ModalUpdateTipos({ show, handleClose, fetchTiposAlojamiento, id, descri
               <Form.Label>Descripción</Form.Label>
               <InputGroup hasValidation>
                 <Form.Control
+                  ref={descripcionRef}
                   value={descripcion}
                   type="text"
                   required
                   placeholder="Ingresa una descripción"
                   onChange={(e) => setDescripcion(e.target.value)}
                 />
-                <Button className='button-cancelar' onClick={handleClose}>Cancelar</Button>
-                <Button className='button-Aceptar' onClick={handleSubmit}>Aceptar</Button>
+                <div className='modal__botones'>
+                  <Button className='btn btn-danger button-cancelar' onClick={handleClose}>Cancelar</Button>
+                  <Button className='btn btn-danger button-aceptar' type="submit">Aceptar</Button>
+                </div>                
                 <Form.Control.Feedback type="invalid">Debe llenar este campo</Form.Control.Feedback>
               </InputGroup>
             </Form.Group>
           </Form>
         </Modal.Body>
       </Modal>
-      <div className={snack? 'mostrarSnack' : 'ocultarSnack'}>Tipo de alojamiento editado</div>
+      <div className={snack ? 'mostrarSnack' : 'ocultarSnack'}>Tipo de alojamiento editado</div>
     </>
   );
 }
 
-export default ModalUpdateTipos;
+export default ModalTipos;

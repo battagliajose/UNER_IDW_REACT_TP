@@ -1,60 +1,41 @@
-import React, { useState, useEffect } from "react";
-import TablaTipos from "../components/Admin/TiposAlojamientos/TablaTipos";
-import ModalCreateTipos from "../components/Admin/TiposAlojamientos/ModalCreateTipos";
+import React, { useState } from "react";
+
+/*import SideBar from "../components/Admin/Sidebar";*/
+import NavbarCrud from "../components/Admin/NavbarCrud";
+import CrudTipos from "../components/Admin/CRUD_TiposAlojamientos/CrudTipos"
+import CrudAlojamientos from "../components/Admin/CRUD_Alojamientos/CrudAlojamientos";
+import CrudServicios from "../components/Admin/CRUD_Servicios/CrudServicios"
+
 import "../styles/admin.css";
 
 function Admin() {
-  const [tiposAlojamiento, setTiposAlojamiento] = useState([]);
+  //El menu cambia el valor de crudToShow y se renderiza el componente correspondiente.
+  const [crudToShow, setCrudToShow] = useState(0);
 
-  // Función para obtener los datos de los tipos de alojamiento
-  const fetchTiposAlojamiento = async () => {
-    try {
-      const response = await fetch(
-        "http://localhost:3001/tiposAlojamiento/getTiposAlojamiento"
-      );
-      if (!response.ok) {
-        throw new Error("Hubo un error al obtener los datos");
-      }
-      const data = await response.json();
-      setTiposAlojamiento(data);
-    } catch (error) {
-      console.error(error);
+  const renderComponent = () => {
+    switch (crudToShow) {
+      case 0:
+        return <CrudAlojamientos />;
+      case 1:
+        return <CrudTipos />;
+      case 2:
+        return <CrudServicios />;
+      default:
+        return <CrudAlojamientos />;
     }
   };
 
-  useEffect(() => {
-    // Obtener datos cuando el componente se monta
-    fetchTiposAlojamiento();
-  }, []);
-
-  const [showModalCreate, setShowModalCreate] = useState(false);
-  const handleShowCreate = () => setShowModalCreate(true);
-  const handleCloseCreate = () => setShowModalCreate(false);
-
   return (
-    <div className="admin">
-      <ModalCreateTipos
-        show={showModalCreate}
-        handleClose={handleCloseCreate}
-        fetchTiposAlojamiento={fetchTiposAlojamiento}
-      />
-      <div className="tablero">
-        <h2 className="tituloTipos">Tipos de alojamientos</h2>
-        <div className="contenedor-button">
-          <button className="buttonNuevo" onClick={handleShowCreate}>
-            +
-          </button>
-
-        </div>
-        {/* Paso por props la lista de alojamiento cargada en la funcion fetchTiposAlojamiento, la funcion propia y una funcion para cambiar nombre de botón */}
-        <div className="contenedorTablaTipos">
-        <TablaTipos
-          tiposAlojamiento={tiposAlojamiento}
-          fetchTiposAlojamiento={fetchTiposAlojamiento}
-        />
-        </div>
+    <>
+    <div className="adminMarco">
+    <NavbarCrud setCrudToShow={setCrudToShow} />
+    <div className=" d-flex flex-column flex-md-row justify-content-center adminContainer">      
+      <div className="content">
+        {renderComponent()}
       </div>
     </div>
+    </div>
+    </>
   );
 }
 
