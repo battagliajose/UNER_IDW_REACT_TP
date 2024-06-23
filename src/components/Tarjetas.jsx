@@ -6,7 +6,7 @@ import * as API from "./Admin/API";
 function Tarjetas({selectedTipo,selectedDormitorios,btnBuscar}) {
   const [alojamientos, setAlojamientos] = useState([]);
   const [images, setImages] = useState([]);
-
+  
 
   useEffect(() => {
     const fetchCards = async () => {
@@ -17,22 +17,27 @@ function Tarjetas({selectedTipo,selectedDormitorios,btnBuscar}) {
          
           // variable aux para filtrar
           let alojamientoFiltrado = [];
-       
-          if (btnBuscar && selectedTipo!== "" && selectedDormitorios!== "") {
+          
+
+          if ((selectedTipo!== "-1" || selectedDormitorios!== "-1") && btnBuscar && selectedTipo!== "" && selectedDormitorios!== "") {
             alojamientoFiltrado = dataAloj.filter(alojamiento => {
               return (
-                (alojamiento.idAlojamiento === parseInt(selectedTipo)) &&
+                (alojamiento.idTipoAlojamiento === parseInt(selectedTipo)) &&
                 (alojamiento.CantidadDormitorios === parseInt(selectedDormitorios))
               );
             });
                      
              setAlojamientos(alojamientoFiltrado);
-          } else {
-            // Sino hay datos en selectedTipo, selectedDormitorios hago un random de 5 item
-            const maxIndex = Math.max(0, dataAloj.length - 5);
-            const i = Math.floor(Math.random() * (maxIndex + 1));
-            const rangoRandom = dataAloj.slice(i, i + 5);
-            setAlojamientos(rangoRandom);
+             console.log('tipo recibido ',selectedTipo);
+             console.log('dormitorios recibido ',selectedDormitorios);
+             console.log('alojamientos',alojamientos )
+          } else {                         
+              // Sino hay datos en selectedTipo, selectedDormitorios hago un random de 5 item
+              const maxIndex = Math.max(0, dataAloj.length - 5);
+              const i = Math.floor(Math.random() * (maxIndex + 1));
+              const rangoRandom = dataAloj.slice(i, i + 5);
+              setAlojamientos(rangoRandom);
+            
           }
           setImages(images);
     };
