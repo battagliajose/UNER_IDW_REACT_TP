@@ -50,9 +50,8 @@ export const createItem = async (dataJson, url) => {
   }
 };
 
-export const updateItem = async (dataJson, url) => {
-  const id = Object.values(dataJson)[0];
-
+export const updateItem = async (dataJson, url, id) => {
+  
   try {
     const response = await fetch(url + id, {
       method: 'PUT',

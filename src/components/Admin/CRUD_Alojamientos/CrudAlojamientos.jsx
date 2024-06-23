@@ -31,8 +31,7 @@ function CrudAlojamientos() {
           // Busca los servicios del Alojamiento a editar
           const serviciosAlojActual = serviciosAloj.filter(servicio => servicio.idAlojamiento === item.ID)
           if (serviciosAlojActual) {
-            const arrayServAloj = serviciosAlojActual.map(servicio => servicio.idServicio); // Lo convierte a un array con los id de los servicios
-            setSelectedServicios(arrayServAloj)
+            setSelectedServicios(serviciosAlojActual)
           }
         } 
         else {
@@ -43,6 +42,7 @@ function CrudAlojamientos() {
     const handleCloseModal = () => {
       setShowModal(false)
       setImagenMod(null);
+      setSelectedServicios([]);
       fetchData();
     };
 
@@ -131,9 +131,18 @@ function CrudAlojamientos() {
         return dataProcesada;
     };
 
+    const deleteServicios = async (id) => {
+      const serviciosAlojActual = serviciosAloj.filter(servicio => servicio.idAlojamiento === id)
+
+      serviciosAlojActual.map( (servicio) => {
+        const response =  API.deleteItem("http://localhost:3001/alojamientosServicios/deleteAlojamientoServicio/", servicio.idAlojamientoServicio)
+      })
+    };
+
     const deleteAlojamiento = async (id) => {
         await deleteImageHandle(id);
-        API.deleteItem("http://localhost:3001/alojamiento/deleteAlojamiento/", id);
+        await deleteServicios(id);
+        await API.deleteItem("http://localhost:3001/alojamiento/deleteAlojamiento/", id);
         setSnack(true);
         setTimeout(() => {
             setSnack(false);
@@ -169,12 +178,12 @@ function CrudAlojamientos() {
             handleClose={handleCloseModal}
             fetchDatos={fetchData}
             deleteImageHandle={deleteImageHandle}
+            alojamientos = {alojamientos}
             item = {objectMod}
             imagen = {imagenMod}
             dataTipos = {dataTipos}
             dataServicios = {servicios}
             selectedServicios = {selectedServicios}
-            setSelectedServicios = {setSelectedServicios}
           />
         </div>
       );

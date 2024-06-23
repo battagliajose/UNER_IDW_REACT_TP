@@ -5,7 +5,7 @@ import * as API from '../API';
 import '../../../styles/modales.css';
 import ChecksServicios from './ChecksServicios';
 
-function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTipos, dataServicios, deleteImageHandle, selectedServicios, setSelectedServicios }) {
+function ModalAlojamientos({ show, handleClose, fetchDatos, alojamientos, item, imagen, dataTipos, dataServicios, deleteImageHandle, selectedServicios }) {
   const [validated, setValidated] = useState(false);
   const [snack, setSnack] = useState(false);
 
@@ -24,6 +24,11 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTi
   const [imgAloj, setImgAloj] = useState("");
   const [imgFile, setImgFile] = useState("");
 
+  // Lo convierte a un array con los id de los servicios
+  const [arrayServAloj, setArrayServAloj] = useState();
+
+  const [idAlojNuevo, setIdAlojNuevo] = useState();
+
   var create = false;
 
   if (!item.ID) { create = true; } //Verifica si recibe ID de un regisro a modificar o sino es un registro nuevo.
@@ -40,6 +45,7 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTi
     setTipo(item.Tipo);
     setEstado(item.Estado);
     setImgAloj(imagen);
+    setArrayServAloj(selectedServicios.map(servicio => servicio.idServicio));
   }, [item, create]);
 
   useEffect(() => {
@@ -49,7 +55,7 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTi
     }
   }, [show]);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
@@ -57,44 +63,75 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTi
     } else {
       setValidated(true);
       event.preventDefault();
-      submitItem();
-      handleImageUpload();
+      await submitItem();
+      //handleImageUpload();
+      //updateServicios();
       handleClose();
       fetchDatos();
       setValidated(false);
     }
   };
 
-  const submitItem = async () => {
-    const submitItem = create
-      ? {
-        "Titulo": titulo,
-        "Descripcion": descripcion,
-        "idTipoAlojamiento": tipo,
-        "Latitud": latitud,
-        "Longitud": longitud,
-        "PrecioPorDia": precio,
-        "CantidadDormitorios": dormitorios,
-        "CantidadBanios": banios,
-        "Estado": estado,
-      } : {
-        "idAlojamiento": item.ID,
-        "Titulo": titulo,
-        "Descripcion": descripcion,
-        "idTipoAlojamiento": tipo,
-        "Latitud": latitud,
-        "Longitud": longitud,
-        "PrecioPorDia": precio,
-        "CantidadDormitorios": dormitorios,
-        "CantidadBanios": banios,
-        "Estado": estado,
+  useEffect(() => {
+      updateServicios();
+      handleImageUpload();
+  }, [idAlojNuevo]);
+  
+
+  const updateServicios = async () => {
+    selectedServicios.map( (servicio) => {
+      const response =  API.deleteItem("http://localhost:3001/alojamientosServicios/deleteAlojamientoServicio/", servicio.idAlojamientoServicio)
+    })
+
+    let idAlojServicios = "";
+
+    if (!item.ID) {
+      idAlojServicios = idAlojNuevo;
+    } else {
+      idAlojServicios = item.ID;
+    }
+
+    if(arrayServAloj) {
+    arrayServAloj.map ( (servicio) => {
+      const submitServicioAloj = {
+        "idAlojamiento": idAlojServicios,
+        "idServicio": servicio
       }
+      const response = API.createItem(submitServicioAloj, 'http://localhost:3001/alojamientosServicios/createAlojamientoServicio')
+    });
+  }
+  }
+
+  const submitItem = async () => {
+    const commonData = {
+      Titulo: titulo,
+      Descripcion: descripcion,
+      idTipoAlojamiento: tipo,
+      Latitud: latitud,
+      Longitud: longitud,
+      PrecioPorDia: precio,
+      CantidadDormitorios: dormitorios,
+      CantidadBanios: banios,
+      Estado: estado,
+    };
+    
+    const submitItem = create 
+      ? commonData 
+      : { ...commonData, idAlojamiento: item.ID };
+
     try {
       var response = "";
       if (create) {
         response = await API.createItem(submitItem, "http://localhost:3001/alojamiento/createAlojamiento");
+        if (response.ok) {
+          const responseData = await response.json();
+          setIdAlojNuevo(responseData.id);
+        }
       } else {
-        response = await API.updateItem(submitItem, "http://localhost:3001/alojamiento/putAlojamiento/")
+        response = await API.updateItem(submitItem, "http://localhost:3001/alojamiento/putAlojamiento/", submitItem.idAlojamiento);
+        console.log(submitItem);
+        updateServicios();
+        handleImageUpload();
       }
 
       if (response.ok) {
@@ -141,8 +178,15 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTi
 
         const data = await response.json();
         
+        let idImagenAloj = "";
+        if (!item.ID) {
+          idImagenAloj = idAlojNuevo;
+        }
+        else {
+          idImagenAloj = item.ID;
+        }
         const submitItem = {
-          "idAlojamiento": item.ID,
+          "idAlojamiento": idImagenAloj,
           "RutaArchivo": data.data.url
         }
 
@@ -274,7 +318,7 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTi
                 {imgAloj === null ? <p>Sin Imagen</p> : <img className="imgModal" src={imgAloj} alt="IMAGENACTUAL" />}
                 <Button className='btn btn-danger' onClick={() => { deleteImage(item.ID) }}>Eliminar Imagen</Button>
                 <p>Servicios</p>
-                <ChecksServicios dataServicios={dataServicios} selectedServicios={selectedServicios} setSelectedServicios={setSelectedServicios}/>
+                <ChecksServicios dataServicios={dataServicios} selectedServicios={arrayServAloj} setSelectedServicios={setArrayServAloj}/>
               </div>
             </div>
             <div className='modal__botones'>

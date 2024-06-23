@@ -14,7 +14,6 @@ function ChecksServicios({dataServicios, selectedServicios, setSelectedServicios
       setSelectedServicios([...selectedServicios, valor]);
     }
   };
-  console.log(selectedServicios);
   return(
         <div style={{overflowY: "scroll"}}>
                   { dataServicios.map(servicio => {
@@ -32,7 +31,6 @@ function ChecksServicios({dataServicios, selectedServicios, setSelectedServicios
                       )
                     })
                   }
-                  <p>{selectedServicios}</p>
                 </div>
     );
 }

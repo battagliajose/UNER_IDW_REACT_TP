@@ -55,7 +55,7 @@ function ModalTipos({ show, handleClose, fetchDatos, id, descrip }) {
       if (create) {
         response = await API.createItem(item, "http://localhost:3001/tiposAlojamiento/createTipoAlojamiento");
       } else {
-        response = await API.updateItem(item, "http://localhost:3001/tiposAlojamiento/putTipoAlojamiento/")
+        response = await API.updateItem(item, "http://localhost:3001/tiposAlojamiento/putTipoAlojamiento/", item.idTipoAlojamiento)
       }
 
       if (response.ok) {

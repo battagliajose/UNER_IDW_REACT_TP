@@ -55,7 +55,7 @@ function ModalServicios({ show, handleClose, fetchDatos, id, descrip }) {
       if (create) {
         response = await API.createItem(item, "http://localhost:3001/servicio/createServicio");
       } else {
-        response = await API.updateItem(item, "http://localhost:3001/servicio/updateServicio/")
+        response = await API.updateItem(item, "http://localhost:3001/servicio/updateServicio/", item.idServicio)
       }
 
       if (response.ok) {
