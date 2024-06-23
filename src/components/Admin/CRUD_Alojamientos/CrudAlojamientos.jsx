@@ -8,12 +8,14 @@ function CrudAlojamientos() {
     const [dataTipos, setDataTipos] = useState([]);
     const [imagenes, setImagenes] = useState([]);
     const [servicios, setServicios] = useState([]);
+    const [serviciosAloj, setServiciosAloj] = useState([]);
 
     const [snack, setSnack] = useState(false);
 
     const [showModal, setShowModal] = useState(false);
     const [objectMod, setObjectMod] = useState({});
     const [imagenMod, setImagenMod] = useState({});
+    const [selectedServicios, setSelectedServicios] = useState([])
 
     const handleShowModal = (item) => {
         setShowModal(true);
@@ -23,8 +25,15 @@ function CrudAlojamientos() {
           const itemAModificar = { ...item };
           itemAModificar.Tipo = dataTipos.find(tipo => tipo.Descripcion === item.Tipo).idTipoAlojamiento;
           setObjectMod(itemAModificar);
+          // Busca la imagen correspondiente al alojamiento a editar
           const imgAModificar = imagenes.find(imagen => imagen.idAlojamiento === item.ID)
           if (imgAModificar) setImagenMod(imgAModificar.RutaArchivo);
+          // Busca los servicios del Alojamiento a editar
+          const serviciosAlojActual = serviciosAloj.filter(servicio => servicio.idAlojamiento === item.ID)
+          if (serviciosAlojActual) {
+            const arrayServAloj = serviciosAlojActual.map(servicio => servicio.idServicio); // Lo convierte a un array con los id de los servicios
+            setSelectedServicios(arrayServAloj)
+          }
         } 
         else {
           setObjectMod(item);
@@ -80,6 +89,13 @@ function CrudAlojamientos() {
       }
     }
 
+    const fetchServiciosAloj = async () => {
+      const serviciosAlojamientos = await API.fetchData("http://localhost:3001/alojamientosServicios/getallAlojamientoServicios");
+       if (serviciosAlojamientos) {
+         setServiciosAloj(serviciosAlojamientos);
+      }
+    }
+
     const deleteImageHandle = async(id) => {
         const imgAEliminar = imagenes.find(imagen => imagen.idAlojamiento === id); // Se elimina imagen por clave foranea
         if (imgAEliminar) {
@@ -92,6 +108,7 @@ function CrudAlojamientos() {
       await fetchAlojamientos(tipos);
       await fetchImagenes();
       await fetchServicios();
+      await fetchServiciosAloj();
     };
 
     // Cambia los nombres de las columnas para presentarlos en la Tabla
@@ -156,6 +173,8 @@ function CrudAlojamientos() {
             imagen = {imagenMod}
             dataTipos = {dataTipos}
             dataServicios = {servicios}
+            selectedServicios = {selectedServicios}
+            setSelectedServicios = {setSelectedServicios}
           />
         </div>
       );

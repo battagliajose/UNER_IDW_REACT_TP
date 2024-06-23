@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Modal, Button, Form } from 'react-bootstrap';
+import { Modal, Form, Button } from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
 import * as API from '../API';
 import '../../../styles/modales.css';
+import ChecksServicios from './ChecksServicios';
 
-function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTipos, deleteImageHandle }) {
+function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTipos, dataServicios, deleteImageHandle, selectedServicios, setSelectedServicios }) {
   const [validated, setValidated] = useState(false);
   const [snack, setSnack] = useState(false);
 
@@ -151,7 +152,7 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTi
       }
     }
   };
-
+  
   return (
     <>
       <Modal className='modal-lg modal-blur' show={show} onHide={handleClose} aria-labelledby="contained-modal-title-vcenter" centered>
@@ -271,7 +272,9 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTi
                   />
                 </Form.Group>
                 {imgAloj === null ? <p>Sin Imagen</p> : <img className="imgModal" src={imgAloj} alt="IMAGENACTUAL" />}
-                <Button className='btn btn-danger' onClick={() => { deleteImage(item.ID) }}>X</Button>
+                <Button className='btn btn-danger' onClick={() => { deleteImage(item.ID) }}>Eliminar Imagen</Button>
+                <p>Servicios</p>
+                <ChecksServicios dataServicios={dataServicios} selectedServicios={selectedServicios} setSelectedServicios={setSelectedServicios}/>
               </div>
             </div>
             <div className='modal__botones'>
@@ -281,10 +284,6 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTi
           </Form>
         </Modal.Body>
       </Modal>
-
-
-
-
       <div className={snack ? 'mostrarSnack' : 'ocultarSnack'}>Alojamiento editado</div>
     </>
   );
