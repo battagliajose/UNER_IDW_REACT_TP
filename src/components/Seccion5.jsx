@@ -2,7 +2,6 @@ import React from "react";
 import "../styles/seccion5.css";
 import { Link } from "react-router-dom";
 
-
 function Seccion5(props) {
   return (
     <div className="container-fluid contenedorSeccion5">
