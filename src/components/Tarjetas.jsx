@@ -3,34 +3,49 @@ import Tarjeta from "./Tarjeta";
 import "../styles/tarjetas.css";
 import * as API from "./Admin/API";
 
-function Tarjetas({selectedTipo,selectedDormitorios}) {
+function Tarjetas({selectedTipo,selectedDormitorios,btnBuscar}) {
   const [alojamientos, setAlojamientos] = useState([]);
   const [images, setImages] = useState([]);
 
+
   useEffect(() => {
     const fetchCards = async () => {
-        const dataAloj = await API.fetchData("http://localhost:3001/alojamiento/getAlojamientos");
-        const images = await API.fetchData("http://localhost:3001/imagen/getAllImagenes");
-        setAlojamientos(dataAloj);
-        setImages(images);
+      
+       
+          const dataAloj = await API.fetchData("http://localhost:3001/alojamiento/getAlojamientos");
+          const images = await API.fetchData("http://localhost:3001/imagen/getAllImagenes");     
+         
+          // variable aux para filtrar
+          let alojamientoFiltrado = [];
+       
+          if (btnBuscar && selectedTipo!== "" && selectedDormitorios!== "") {
+            alojamientoFiltrado = dataAloj.filter(alojamiento => {
+              return (
+                (alojamiento.idAlojamiento === parseInt(selectedTipo)) &&
+                (alojamiento.CantidadDormitorios === parseInt(selectedDormitorios))
+              );
+            });
+                     
+             setAlojamientos(alojamientoFiltrado);
+          } else {
+            // Sino hay datos en selectedTipo, selectedDormitorios hago un random de 5 item
+            const maxIndex = Math.max(0, dataAloj.length - 5);
+            const i = Math.floor(Math.random() * (maxIndex + 1));
+            const rangoRandom = dataAloj.slice(i, i + 5);
+            setAlojamientos(rangoRandom);
+          }
+          setImages(images);
     };
 
-    console.log("Tipo selecionado ", {selectedTipo});
-    console.log("Cantidad de dormitorios", {selectedDormitorios});
-
     fetchCards();
-  }, []);
-
-  const maxIndex = Math.max(0, alojamientos.length - 5);
-  const i = Math.floor(Math.random() * (maxIndex + 1));
-  const rangoRandom = alojamientos.slice(i, i + 5);
+  }, [selectedTipo, selectedDormitorios,btnBuscar]);
 
   return (
     <div className="tarjetas">
-      {rangoRandom.map((alojamiento) => {
+      {alojamientos.map((alojamiento) => {
         const image = images.find(image => image.idAlojamiento === alojamiento.idAlojamiento);
         return (
-          <Tarjeta key={alojamiento.id} alojamiento={alojamiento} image={image ? image.RutaArchivo : null}/>
+          <Tarjeta key={alojamiento.id} alojamiento={alojamiento} image={image? image.RutaArchivo : null}/>
         );
       })}
     </div>

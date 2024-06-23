@@ -2,36 +2,46 @@ import React, { useState, useEffect } from "react";
 import { Form } from 'react-bootstrap';
 import "../styles/portada.css";
 import portadaImagen from "../assets/portada/friends-planning-travel-looking-at-map-article-032822_wide.jpg";
+import * as API from "./Admin/API";
 
-function Portada({ setSelectedTipo, setSelectedDormitorios }) {
+function Portada({ setSelectedTipo, setSelectedDormitorios,setbtnBuscarHome}) {
 
+  const [tipoAlojamiento,setTipoAlojamiento]=useState([])
   const [tipo, setTipo] = useState("");
-  const [dormitorios, setDormitorios] = useState("");
+  const [dormitorios, setDormitorios] = useState("");  
+  const [btnBuscar, setbtnBuscar] = useState(false);
 
   const handleTipoChange = (e) => {
-    setTipo(e.target.value);
-    setSelectedTipo(e.target.value);
+    const selectedIdTipo = e.target.options[e.target.selectedIndex].value;
+    setTipo(selectedIdTipo);
+    setSelectedTipo(selectedIdTipo);
+    setbtnBuscar(false);
   };
 
   const handleDormitoriosChange = (e) => {
     setDormitorios(e.target.value);
     setSelectedDormitorios(e.target.value);
+    setbtnBuscar(false);
   };
 
   const handleButtonClick = () => {
-    const tarjetasElement = document.querySelector(".tarjetas");
-    if (tarjetasElement) {
-      tarjetasElement.scrollIntoView({ behavior: "smooth" });
-    }
+    setbtnBuscarHome(true);
+    const tarjetasElement = document.querySelector(".tarjetas");  
+    tarjetasElement.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
   useEffect(() => {
-    console.log(tipo); // Mover el log aquí para que se ejecute después de que el estado se actualice
-  }, [tipo]);
+    setSelectedTipo(tipo);
+    setSelectedDormitorios(dormitorios);
 
-  useEffect(() => {
-    console.log(dormitorios); // Y aquí para dormitorios
-  }, [dormitorios]);
+    const fetchTiposAlojamiento=async () => {
+      const dataTipoAlojamiento = await API.fetchData("http://localhost:3001/tiposAlojamiento/getTiposAlojamiento");      
+      setTipoAlojamiento(dataTipoAlojamiento);
+    };
+
+    fetchTiposAlojamiento();
+   
+  }, []);
 
   return (
     <section className="portada">
@@ -47,9 +57,14 @@ function Portada({ setSelectedTipo, setSelectedDormitorios }) {
             value={tipo}        
             onChange={handleTipoChange}
           >
-            <option value="-1">Que buscas?</option>
-            <option value="Hotel">Hotel</option>
-            <option value="Casa">Casa</option>
+             <option value="-1">¿Qué buscas?</option>
+             {tipoAlojamiento.map((tipoAloj, index) => (
+              <option key={tipoAloj.idTipoAlojamiento} value={tipoAloj.idTipoAlojamiento}>
+            {tipoAloj.Descripcion}
+            </option>
+  ))}
+
+
           </Form.Select>
           <Form.Select
             className="inputPortada"
