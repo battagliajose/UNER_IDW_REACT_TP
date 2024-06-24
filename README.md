@@ -1,4 +1,5 @@
 <img src="https://secretariaextension.uner.edu.ar/wp-content/uploads/2021/04/logo-original-maschico.png" alt="">
+
 # Tecnicatura Universitaria en Desarrollo Web
 
 ## Trabajo Práctico de Introducción al Desarrollo WEB
@@ -27,7 +28,9 @@ Este proyecto consistió en la migración de todas las páginas y secciones a co
 
 ## Ejecución del Proyecto
 
-Para ejecutar el servidor, sigue estos pasos:
+Se incluye un dump de la base de datos para importar antes de correr el servidor.
+
+Para ejecutar el servidor, ejecute estos comandos:
 
 ``` bash
 npm install
