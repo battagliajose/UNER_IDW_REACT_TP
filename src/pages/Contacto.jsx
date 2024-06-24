@@ -3,9 +3,11 @@ import "../styles/contacto.css";
 import emailjs from '@emailjs/browser';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 
 function Contacto() {
+
+  const [confirmacion, setConfirmacion] = useState(false);
 
 const form = useRef();
 
@@ -19,6 +21,7 @@ const sendEmail = (e) => {
     .then(
       () => {
         console.log('Email enviado!');
+        setConfirmacion(true);
       },
       (error) => {
         console.log('Fallo al enviar mail...', error.text);
@@ -76,8 +79,10 @@ const sendEmail = (e) => {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
+            
           </div>
           <div className="row texto-formulario">
+          {confirmacion ? <h2>Mensaje Enviado! nos comunicaremos con ud a la brevedad!</h2> : null}
             <div className="col">
               <p className="text-fin">
                 ¡Gracias por ponerte en contacto con nosotros! En HotelFlix,
