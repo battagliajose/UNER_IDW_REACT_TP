@@ -42,7 +42,8 @@ Para mayor limpieza y compresion del codigo se ha creado un archivo llamado API.
 interactuar con la api.
 Se movio toda la logica de conexion a este archivo y desde los componentes solo nos encargamos de usar los metodos y recibir lo
 retornado pasando por parametros los endpoint expuestos.
-##Diagrama de Interacciones
+
+## Diagrama de Interacciones
 A continuacion mostramos un diagrama del CRUD Alojamientos que resulto ser el más complejo</p>
 <img src="public/IDW - Diagrama CRUD Aloj.png">Diagrama</img>
 
