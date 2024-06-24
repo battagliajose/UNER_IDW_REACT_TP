@@ -15,18 +15,19 @@ function ChecksServicios({dataServicios, selectedServicios, setSelectedServicios
     }
   };
   return(
-        <div style={{overflowY: "scroll"}}>
+        <div className="divServicios">                  
                   { dataServicios.map(servicio => {
                       return(
-                        <div style={{display: "flex"}}>
-                          <label class="container">{servicio.Nombre}</label>
-                          <input 
+                        <div className="container checkServ">                          
+                          <input className="inputCheck"
                             value={servicio.idServicio} 
                             checked={selectedServicios.includes(servicio.idServicio)} 
-                            style={{maxWidth: "1rem"}} 
+                            
                             type="checkbox" 
                             onChange={checkBoxClickHandler}
                           />
+                          <label className="labelServ">{servicio.Nombre}</label>
+                          
                         </div>
                       )
                     })

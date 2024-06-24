@@ -300,8 +300,12 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, alojamientos, item, 
                           <option value="Disponible">Disponible</option>
                           <option value="Reservado">Reservado</option>
                         </Form.Select>
-                      </div>
+                      </div>                      
                     </div>
+                    <div className='modal__botones'>
+                        <Button className='btn btn-danger button-cancelar' onClick={handleClose}>Cancelar</Button>
+                        <Button className='btn btn-danger button-aceptar' type="submit">Aceptar</Button>
+                      </div>
                     <Form.Control.Feedback type="invalid">Debe llenar este campo</Form.Control.Feedback>
                   </InputGroup>
                 </Form.Group>
@@ -317,14 +321,11 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, alojamientos, item, 
                 </Form.Group>
                 {imgAloj === null ? <p>Sin Imagen</p> : <img className="imgModal" src={imgAloj} alt="IMAGENACTUAL" />}
                 <Button className='btn btn-danger' onClick={() => { deleteImage(item.ID) }}>Eliminar Imagen</Button>
-                <p>Servicios</p>
-                <ChecksServicios dataServicios={dataServicios} selectedServicios={arrayServAloj} setSelectedServicios={setArrayServAloj}/>
+                <p className='tagServcio'>Servicios</p>
+                <ChecksServicios dataServicios={dataServicios} selectedServicios={arrayServAloj} setSelectedServicios={setArrayServAloj} />
               </div>
             </div>
-            <div className='modal__botones'>
-              <Button className='btn btn-danger button-cancelar' onClick={handleClose}>Cancelar</Button>
-              <Button className='btn btn-danger button-aceptar' type="submit">Aceptar</Button>
-            </div>
+
           </Form>
         </Modal.Body>
       </Modal>

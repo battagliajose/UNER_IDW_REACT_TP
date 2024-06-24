@@ -156,3 +156,29 @@
     margin-bottom: 20px;
     width: auto;
 }
+
+.checkServ{
+    display: "flex"
+}
+
+.divServicios{    
+    overflow-y: scroll;    
+    max-height: 8rem;
+    transform: scale(0.95);
+    transform-origin: top center;
+}
+
+.tagServcio{
+    margin-top: 1rem;
+}
+.inputCheck{
+    max-width: 1rem;    
+}
+
+.checkServ{
+    width: 8.5rem;
+}
+
+.labelServ{
+    margin-left: 1rem;
+}
