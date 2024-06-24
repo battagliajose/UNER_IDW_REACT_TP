@@ -39,11 +39,11 @@ function CrudAlojamientos() {
         }
       };
     
-    const handleCloseModal = () => {
+    const handleCloseModal = async () => {
       setShowModal(false)
       setImagenMod(null);
       setSelectedServicios([]);
-      fetchData();
+      await fetchData();
     };
 
     const handleCreate = () => {

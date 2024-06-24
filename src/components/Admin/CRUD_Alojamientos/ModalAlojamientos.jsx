@@ -30,6 +30,7 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTi
   const [idAlojNuevo, setIdAlojNuevo] = useState();
 
   const [FlagEliminarImgAnterior, setFlagEliminarImgAnterior] = useState();
+  const [actualizando, setActualizando] = useState(false);
 
   var create = false;
 
@@ -65,17 +66,20 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTi
     } else {
       setValidated(true);
       event.preventDefault();
+      setActualizando(true);
       await submitItem();
-      await updateServicios();
       await fetchDatos();
       handleClose();
       setValidated(false);
+      setActualizando(false);
     }
   };
 
   useEffect(() => {
+    if (idAlojNuevo) {
       updateServicios();
       handleImageUpload();
+    }
   }, [idAlojNuevo]);
   
 
@@ -130,12 +134,12 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTi
         }
       } else {
         response = await API.updateItem(submitItem, "http://localhost:3001/alojamiento/putAlojamiento/", submitItem.idAlojamiento);
-        updateServicios();
-        handleImageUpload();
+        await updateServicios();
+        await handleImageUpload();
       }
 
       if (response.ok) {
-        fetchDatos();
+        await fetchDatos();
         setSnack(true);
         setTimeout(() => {
           setSnack(false);
@@ -161,39 +165,42 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTi
 
   const handleImageUpload = async () => {
 
-    if (FlagEliminarImgAnterior) deleteImageHandle(item.ID);
+    if (FlagEliminarImgAnterior) 
+    {
+      deleteImageHandle(item.ID);
 
-    if(imgFile) {
-      const formData = new FormData();
-      formData.append('image', imgFile);
+      if(imgFile) {
+        const formData = new FormData();
+        formData.append('image', imgFile);
 
-      try {
-        const response = await fetch('https://api.imgbb.com/1/upload?key=8ae73ed418d9c5b532e34d98e047fd64', {
-          method: 'POST',
-          body: formData,
-        });
+        try {
+          const response = await fetch('https://api.imgbb.com/1/upload?key=8ae73ed418d9c5b532e34d98e047fd64', {
+            method: 'POST',
+            body: formData,
+          });
 
-        if (!response.ok) {
-          throw new Error('Upload failed');
+          if (!response.ok) {
+            throw new Error('Upload failed');
+          }
+
+          const data = await response.json();
+          
+          let idImagenAloj = "";
+          if (!item.ID) {
+            idImagenAloj = idAlojNuevo;
+          }
+          else {
+            idImagenAloj = item.ID;
+          }
+          const submitItem = {
+            "idAlojamiento": idImagenAloj,
+            "RutaArchivo": data.data.url
+          }
+
+          API.createItem(submitItem, 'http://localhost:3001/imagen/createImagen');
+        } catch (error) {
+          
         }
-
-        const data = await response.json();
-        
-        let idImagenAloj = "";
-        if (!item.ID) {
-          idImagenAloj = idAlojNuevo;
-        }
-        else {
-          idImagenAloj = item.ID;
-        }
-        const submitItem = {
-          "idAlojamiento": idImagenAloj,
-          "RutaArchivo": data.data.url
-        }
-
-        API.createItem(submitItem, 'http://localhost:3001/imagen/createImagen');
-      } catch (error) {
-        
       }
     }
   };
@@ -326,6 +333,7 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTi
               <Button className='btn btn-danger button-cancelar' onClick={handleClose}>Cancelar</Button>
               <Button className='btn btn-danger button-aceptar' type="submit">Aceptar</Button>
             </div>
+            {actualizando && <div className='modal__botones'><p>Actualizando...</p></div>}
           </Form>
         </Modal.Body>
       </Modal>
