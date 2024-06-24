@@ -29,8 +29,10 @@ Este proyecto consistió en la migración de todas las páginas y secciones a co
 
 Para ejecutar el servidor, sigue estos pasos:
 
+``` bash
 npm install
 npm start
+```
 
 ## API:
 La Api no está incluida en el repositorio, se espera que esté corriendo en el puerto 3001 para las consultas.
