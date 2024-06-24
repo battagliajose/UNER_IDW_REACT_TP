@@ -28,7 +28,7 @@ Este proyecto consistió en la migración de todas las páginas y secciones a co
 
 ## Ejecución del Proyecto
 
-Se incluye un dump de la base de datos para importar antes de correr el servidor.
+Se incluye un **dump de la base de datos** para importar antes de correr el servidor.
 
 Para ejecutar el servidor, ejecute estos comandos:
 
