@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'react-bootstrap';
 
 import HeartTransp from "../assets/tarjetas/heart-transp.png";
 import HeartFull from "../assets/tarjetas/heart-Full.png";
 import bath from "../assets/tarjetas/banera.png";
 import dorm from "../assets/tarjetas/dormitorio.png";
 
-function Tarjeta({ alojamiento: {imagen, PrecioPorDia, CantidadDormitorios, CantidadBanios, Titulo, Descripcion, oferta}, image}) {
+function Tarjeta({ alojamiento: {PrecioPorDia, CantidadDormitorios, CantidadBanios, Titulo, Descripcion}, image, serviciosAlojamiento }) {
   const [like, setLike] = useState(false);
+
+  const serviciosAlojamientoConValor = serviciosAlojamiento && serviciosAlojamiento.length > 0 
+  ? serviciosAlojamiento 
+  : ["No dispone de servicios adicionales"];
 
   return (
     <div className="tarjeta">
@@ -26,8 +31,22 @@ function Tarjeta({ alojamiento: {imagen, PrecioPorDia, CantidadDormitorios, Cant
         <h4 className="tarjetaTitulo">{Titulo}</h4>
         <p className="tarjetaDescripcion">{Descripcion}</p>
         <div className="tarjetaPie">
-          <p className="tarjetaPieOferta">Oferta! {oferta}</p>
-          <Link className="tarjetaPieBoton" to="/">
+        
+          <Dropdown >
+            <DropdownToggle caret>
+              Servicios
+            </DropdownToggle>
+            <DropdownMenu>
+              {serviciosAlojamientoConValor.map((servicio, index) => (
+                <DropdownItem key={index}>
+                  {servicio}
+                </DropdownItem>
+              ))}
+            </DropdownMenu>
+          </Dropdown>
+                  
+          <p className="tarjetaPieOferta"></p>
+          <Link className="tarjetaPieBoton" to="/contacto">
             ¡Reserva Ya!
           </Link>
         </div>
