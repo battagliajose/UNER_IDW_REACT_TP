@@ -5,7 +5,7 @@ import * as API from '../API';
 import '../../../styles/modales.css';
 import ChecksServicios from './ChecksServicios';
 
-function ModalAlojamientos({ show, handleClose, fetchDatos, alojamientos, item, imagen, dataTipos, dataServicios, deleteImageHandle, selectedServicios }) {
+function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTipos, dataServicios, deleteImageHandle, selectedServicios }) {
   const [validated, setValidated] = useState(false);
   const [snack, setSnack] = useState(false);
 
@@ -28,6 +28,8 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, alojamientos, item, 
   const [arrayServAloj, setArrayServAloj] = useState();
 
   const [idAlojNuevo, setIdAlojNuevo] = useState();
+
+  const [FlagEliminarImgAnterior, setFlagEliminarImgAnterior] = useState();
 
   var create = false;
 
@@ -64,10 +66,9 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, alojamientos, item, 
       setValidated(true);
       event.preventDefault();
       await submitItem();
-      //handleImageUpload();
-      //updateServicios();
+      await updateServicios();
+      await fetchDatos();
       handleClose();
-      fetchDatos();
       setValidated(false);
     }
   };
@@ -79,7 +80,7 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, alojamientos, item, 
   
 
   const updateServicios = async () => {
-    selectedServicios.map( (servicio) => {
+    await selectedServicios.map( (servicio) => {
       const response =  API.deleteItem("http://localhost:3001/alojamientosServicios/deleteAlojamientoServicio/", servicio.idAlojamientoServicio)
     })
 
@@ -92,7 +93,7 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, alojamientos, item, 
     }
 
     if(arrayServAloj) {
-    arrayServAloj.map ( (servicio) => {
+    await arrayServAloj.map ( (servicio) => {
       const submitServicioAloj = {
         "idAlojamiento": idAlojServicios,
         "idServicio": servicio
@@ -129,7 +130,6 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, alojamientos, item, 
         }
       } else {
         response = await API.updateItem(submitItem, "http://localhost:3001/alojamiento/putAlojamiento/", submitItem.idAlojamiento);
-        console.log(submitItem);
         updateServicios();
         handleImageUpload();
       }
@@ -156,11 +156,12 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, alojamientos, item, 
     const file = e.target.files[0];
     setImgAloj(URL.createObjectURL(file));
     setImgFile(file);
+    setFlagEliminarImgAnterior(true);
   }
 
   const handleImageUpload = async () => {
 
-    deleteImageHandle(item.ID);
+    if (FlagEliminarImgAnterior) deleteImageHandle(item.ID);
 
     if(imgFile) {
       const formData = new FormData();
