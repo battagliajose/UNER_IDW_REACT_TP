@@ -7,8 +7,6 @@
 }
 
 .tarjeta {
-    display: flex; 
-    flex-direction: column;
     margin: 0.8vw;
     border-radius: 5px;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
@@ -16,17 +14,15 @@
     max-width: 18vw;
     background-color: #E9E0B4;
     position: relative;
-    padding-bottom: 0vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px; /* Ajusta según sea necesario */
 }
 
 .tarjeta:hover {
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
     transition: box-shadow 0.3s ease;
-    min-width: 280px;
-    max-width: 18vw;
-    background-color: #E9E0B4;
-    position: relative;
-    padding-bottom: 1%;
     cursor: pointer;
 }
 
@@ -97,21 +93,13 @@
 
 .tarjetaPie {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    padding: 1vh;
+    padding: 0.5vh; /* Reduce el padding para acercar los botones al borde */
     font-size: 0.8rem;
-    position: absolute;
-    bottom: 10px;
-    width: 90%;
-    margin-top: auto;
-}
-
-.tarjetaPieOferta {
-    font-weight: 700;
-    text-align: center;
-    text-wrap: wrap;
-    height: 0.1vw;
+    position: relative;
+    width: 100%;
+    margin-top: auto; /* Asegura que el pie esté en la parte inferior */
 }
 
 .tarjetaPieBoton {
@@ -133,6 +121,7 @@
     padding: 0.5rem;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
 }
+
 .tarjetaPieBoton:hover {
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8);
     transition: box-shadow 0.3s ease;
