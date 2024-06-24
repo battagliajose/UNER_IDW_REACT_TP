@@ -156,3 +156,18 @@
     margin-bottom: 20px;
     width: auto;
 }
+
+.checkServ{
+    display: "flex"
+}
+
+.divServicios{    
+    overflow-y: scroll;    
+    max-height: 8rem;
+    transform: scale(0.95);
+    transform-origin: top center;
+}
+
+.tagServcio{
+    margin-top: 0.5rem;
+}

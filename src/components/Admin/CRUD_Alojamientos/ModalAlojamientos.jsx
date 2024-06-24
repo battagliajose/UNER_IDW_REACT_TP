@@ -317,7 +317,7 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, alojamientos, item, 
                 </Form.Group>
                 {imgAloj === null ? <p>Sin Imagen</p> : <img className="imgModal" src={imgAloj} alt="IMAGENACTUAL" />}
                 <Button className='btn btn-danger' onClick={() => { deleteImage(item.ID) }}>Eliminar Imagen</Button>
-                <p>Servicios</p>
+                <p className='tagServcio'>Servicios</p>
                 <ChecksServicios dataServicios={dataServicios} selectedServicios={arrayServAloj} setSelectedServicios={setArrayServAloj}/>
               </div>
             </div>

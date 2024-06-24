@@ -15,10 +15,10 @@ function ChecksServicios({dataServicios, selectedServicios, setSelectedServicios
     }
   };
   return(
-        <div style={{overflowY: "scroll"}}>
+        <div className="divServicios">                  
                   { dataServicios.map(servicio => {
                       return(
-                        <div style={{display: "flex"}}>
+                        <div className="checkServ">                          
                           <label class="container">{servicio.Nombre}</label>
                           <input 
                             value={servicio.idServicio} 
