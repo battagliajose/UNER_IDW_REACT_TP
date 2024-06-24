@@ -15,23 +15,24 @@ function ChecksServicios({dataServicios, selectedServicios, setSelectedServicios
     }
   };
   return(
-        <div className="divServicios"> 
-          { dataServicios.map(servicio => {
-              return(
-                <div className="checkServ">                          
-                  <label class="container">{servicio.Nombre}</label>
-                  <input 
-                    value={servicio.idServicio} 
-                    checked={selectedServicios.includes(servicio.idServicio)} 
-                    style={{maxWidth: "1rem"}} 
-                    type="checkbox" 
-                    onChange={checkBoxClickHandler}
-                  />
+        <div className="divServicios">                  
+                  { dataServicios.map(servicio => {
+                      return(
+                        <div className="container checkServ">                          
+                          <input className="inputCheck"
+                            value={servicio.idServicio} 
+                            checked={selectedServicios.includes(servicio.idServicio)} 
+                            
+                            type="checkbox" 
+                            onChange={checkBoxClickHandler}
+                          />
+                          <label className="labelServ">{servicio.Nombre}</label>
+                          
+                        </div>
+                      )
+                    })
+                  }
                 </div>
-              )
-            })
-          }
-        </div>
     );
 }
 

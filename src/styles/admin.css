@@ -169,5 +169,16 @@
 }
 
 .tagServcio{
-    margin-top: 0.5rem;
+    margin-top: 1rem;
+}
+.inputCheck{
+    max-width: 1rem;    
+}
+
+.checkServ{
+    width: 8.5rem;
+}
+
+.labelServ{
+    margin-left: 1rem;
 }
