@@ -7,12 +7,12 @@ import HeartFull from "../assets/tarjetas/heart-Full.png";
 import bath from "../assets/tarjetas/banera.png";
 import dorm from "../assets/tarjetas/dormitorio.png";
 
-function Tarjeta({ alojamiento: {PrecioPorDia, CantidadDormitorios, CantidadBanios, Titulo, Descripcion}, image, serviciosAlojamiento }) {
+function Tarjeta({ alojamiento: { PrecioPorDia, CantidadDormitorios, CantidadBanios, Titulo, Descripcion }, image, serviciosAlojamiento }) {
   const [like, setLike] = useState(false);
 
-  const serviciosAlojamientoConValor = serviciosAlojamiento && serviciosAlojamiento.length > 0 
-  ? serviciosAlojamiento 
-  : ["No dispone de servicios adicionales"];
+  const serviciosAlojamientoConValor = serviciosAlojamiento && serviciosAlojamiento.length > 0
+    ? serviciosAlojamiento
+    : ["No dispone de servicios adicionales"];
 
   return (
     <div className="tarjeta">
@@ -30,26 +30,33 @@ function Tarjeta({ alojamiento: {PrecioPorDia, CantidadDormitorios, CantidadBani
       <div className="tarjetaContenido">
         <h4 className="tarjetaTitulo">{Titulo}</h4>
         <p className="tarjetaDescripcion">{Descripcion}</p>
-        <div className="tarjetaPie">
-        
-          <Dropdown >
-            <DropdownToggle caret>
-              Servicios
-            </DropdownToggle>
-            <DropdownMenu>
-              {serviciosAlojamientoConValor.map((servicio, index) => (
-                <DropdownItem key={index}>
-                  {servicio}
-                </DropdownItem>
-              ))}
-            </DropdownMenu>
-          </Dropdown>
-                  
-          <p className="tarjetaPieOferta"></p>
-          <Link className="tarjetaPieBoton" to="/contacto">
-            ¡Reserva Ya!
-          </Link>
-        </div>
+
+        <div className="botonesTarj container center-container">
+          <div className="row justify-content-center">
+          <div className="col-md-3 text-center">
+            <Dropdown >
+              <DropdownToggle className="tarjetaPieBotonServ btn  btn-dark"caret>
+                Servicios
+              </DropdownToggle>
+              <DropdownMenu>
+                {serviciosAlojamientoConValor.map((servicio, index) => (
+                  <DropdownItem key={index}>
+                    {servicio}
+                  </DropdownItem>
+                ))}
+              </DropdownMenu>
+            </Dropdown>
+            </div>
+
+
+            <div className="col-md-3 text-center"></div>
+            <Link className="tarjetaPieBoton btn btn-danger" to="/contacto">
+              ¡Reserva Ya!
+            </Link>
+            </div>
+          </div>
+
+
       </div>
     </div>
   );
