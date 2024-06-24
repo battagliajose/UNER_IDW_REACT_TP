@@ -17,7 +17,7 @@ Este proyecto consistió en la migración de todas las páginas y secciones a co
 ### Funcionalidades:
 - **Migración a React:** Todas las páginas y secciones fueron migradas a componentes de React.
 - **CRUD de Alojamientos, Servicios y Tipos de Alojamientos:** Se creó una sección de administración para gestionar estos elementos utilizando modales para la entrada de datos.
-- **Carga de Imágenes:** Las imágenes se cargan desde la edición de Alojamientos y se suben a ImgBB. No se implementó la eliminación de imágenes en el hosting debido a limitaciones de la API.
+- **Carga de Imágenes:** Las imágenes se cargan desde la edición de Alojamientos y se suben a ImgBB. No se implementó la eliminación de imágenes en el hosting debido al requerimiento de almacenar una DeleteURL al momento de subir la imagen, no pudiendo lograrse con la implementación actual de la API.
 - **Generación de Tarjetas:** Las tarjetas de los alojamientos se generan a partir de los datos cargados en la base de datos a través de los CRUDs correspondientes.
 - **Ramas de Trabajo:** Trabajamos principalmente en la rama `devAdmin` y al final hicimos merge a la rama `main`.
 
