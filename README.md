@@ -29,15 +29,15 @@ Este proyecto consistió en la migración de todas las páginas y secciones a co
 
 Para ejecutar el servidor, sigue estos pasos:
 
-```bash
+``` bash
 npm install
 npm start
+```
 
-##API:
+## API:
 La Api no está incluida en el repositorio, se espera que esté corriendo en el puerto 3001 para las consultas.
 
-##Componente API
-
+## Componente API
 Para mayor limpieza y compresion del codigo se ha creado un archivo llamado API.js que se importa en todos los componentes en los que se necesita
 interactuar con la api.
 Se movio toda la logica de conexion a este archivo y desde los componentes solo nos encargamos de usar los metodos y recibir lo
