@@ -10,8 +10,7 @@ function Tarjetas({selectedTipo,selectedDormitorios,btnBuscar}) {
 
   useEffect(() => {
     const fetchCards = async () => {
-      
-       
+             
           const dataAloj = await API.fetchData("http://localhost:3001/alojamiento/getAlojamientos");
           const images = await API.fetchData("http://localhost:3001/imagen/getAllImagenes");     
          
@@ -28,9 +27,7 @@ function Tarjetas({selectedTipo,selectedDormitorios,btnBuscar}) {
             });
                      
              setAlojamientos(alojamientoFiltrado);
-             console.log('tipo recibido ',selectedTipo);
-             console.log('dormitorios recibido ',selectedDormitorios);
-             console.log('alojamientos',alojamientos )
+            
           } else {                         
               // Sino hay datos en selectedTipo, selectedDormitorios hago un random de 5 item
               const maxIndex = Math.max(0, dataAloj.length - 5);

@@ -19,7 +19,6 @@ const sendEmail = (e) => {
     .then(
       () => {
         console.log('Email enviado!');
-
       },
       (error) => {
         console.log('Fallo al enviar mail...', error.text);

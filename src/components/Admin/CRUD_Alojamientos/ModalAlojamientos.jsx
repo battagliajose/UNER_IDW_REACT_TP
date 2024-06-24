@@ -128,8 +128,7 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, alojamientos, item, 
           setIdAlojNuevo(responseData.id);
         }
       } else {
-        response = await API.updateItem(submitItem, "http://localhost:3001/alojamiento/putAlojamiento/", submitItem.idAlojamiento);
-        console.log(submitItem);
+        response = await API.updateItem(submitItem, "http://localhost:3001/alojamiento/putAlojamiento/", submitItem.idAlojamiento);        
         updateServicios();
         handleImageUpload();
       }
@@ -192,7 +191,7 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, alojamientos, item, 
 
         API.createItem(submitItem, 'http://localhost:3001/imagen/createImagen');
       } catch (error) {
-        console.error('Error uploading image:', error);
+        
       }
     }
   };

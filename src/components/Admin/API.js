@@ -7,7 +7,8 @@ export const fetchData = async (url) => {
       const data = await response.json();
       return data;
     } catch (error) {
-      console.error(error);
+     
+      
       return null;
     }
   };
@@ -25,7 +26,7 @@ export const deleteItem = async (url, id) => {
     } 
     return response;
   } catch (error) {
-    console.error('Error eliminando:', error);
+    
     return false;
   }
 };
@@ -44,8 +45,7 @@ export const createItem = async (dataJson, url) => {
     if (response.ok) {
       return response;
     }
-  } catch (error) {
-    console.log('Error: ' + error.message);
+  } catch (error) {    
     return false;
   }
 };
@@ -62,7 +62,6 @@ export const updateItem = async (dataJson, url, id) => {
     });
     return response;
   } catch (error) {
-    console.log('Error: ' + error.message);
     return false;
   }
 };
