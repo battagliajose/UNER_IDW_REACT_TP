@@ -168,7 +168,8 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTi
     if (FlagEliminarImgAnterior) 
     {
       deleteImageHandle(item.ID);
-
+    }
+    
       if(imgFile) {
         const formData = new FormData();
         formData.append('image', imgFile);
@@ -202,7 +203,7 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTi
           
         }
       }
-    }
+    
   };
   
   return (
