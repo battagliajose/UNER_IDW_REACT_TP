@@ -9,7 +9,6 @@ import sessionImagen from "../assets/seccion5/session5-img.jpg";
 function Home(props) {
 
   //Variables para pasar a tarjetas
-
   const [selectedTipo, setSelectedTipo] = useState("");
   const [selectedDormitorios, setSelectedDormitorios] = useState("");
   const [btnBuscar, setbtnBuscarHome] = useState(false); 

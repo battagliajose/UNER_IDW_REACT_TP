@@ -193,7 +193,7 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTi
 
         API.createItem(submitItem, 'http://localhost:3001/imagen/createImagen');
       } catch (error) {
-        console.error('Error uploading image:', error);
+        
       }
     }
   };
