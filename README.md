@@ -23,4 +23,12 @@
 
 <h3>API:</h2>
 <p>La Api no está incluida en el repositorio, se espera que esté corriendo en el puerto 3001 para las consultas.</p>
-
+<h3>Componente API<h3>
+<p>
+    Para mayor limpieza y compresion del codigo se ha creado un archivo llamado API.js que se importa en todos los componentes en los que se necesita
+    interactuar con la api. Se movio toda la logica de conexion a este archivo y desde los componentes solo nos encargamos de usar los metodos y recibir lo
+    retornado pasando por parametros los endpoint expuestos.
+</p>
+<h3>Diagrama de Interacciones</h3>
+<p> A continuacion mostramos como usamos los componentes para reutilizarlos</p>
+<img src="public/diagrama-de-componentes.jpeg">Diagrama<im/g>
