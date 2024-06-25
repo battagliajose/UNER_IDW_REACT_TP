@@ -36,7 +36,7 @@ function Tarjeta({ alojamiento: {PrecioPorDia, CantidadDormitorios, CantidadBani
         <div className="tarjetaPie">
         
           <Dropdown >
-            <DropdownToggle className="tarjetaPieBotonServ btn  btn-dark" caret>
+            <DropdownToggle className="btn btn-dark" caret>
               Servicios
             </DropdownToggle>
             <DropdownMenu>
@@ -49,7 +49,7 @@ function Tarjeta({ alojamiento: {PrecioPorDia, CantidadDormitorios, CantidadBani
           </Dropdown>
                           
           <p className="tarjetaPieOferta"></p>
-          <Link className="tarjetaPieBoton" to="/contacto">
+          <Link className="btn btn-danger" to="/contacto">
             ¡Reserva Ya!
           </Link>
         </div>
