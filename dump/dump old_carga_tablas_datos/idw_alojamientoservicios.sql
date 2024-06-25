@@ -16,27 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `servicios`
+-- Dumping data for table `alojamientoservicios`
 --
 
-DROP TABLE IF EXISTS `servicios`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `servicios` (
-  `idServicio` int NOT NULL AUTO_INCREMENT,
-  `Nombre` varchar(50) NOT NULL,
-  PRIMARY KEY (`idServicio`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `servicios`
---
-
-LOCK TABLES `servicios` WRITE;
-/*!40000 ALTER TABLE `servicios` DISABLE KEYS */;
-INSERT INTO `servicios` VALUES (1,'WIFI'),(2,'Pileta'),(3,'Cochera'),(4,'Parrilla'),(5,'Yakuzi');
-/*!40000 ALTER TABLE `servicios` ENABLE KEYS */;
+LOCK TABLES `alojamientoservicios` WRITE;
+/*!40000 ALTER TABLE `alojamientoservicios` DISABLE KEYS */;
+INSERT INTO `alojamientoservicios` VALUES (13,10,2),(14,10,1),(15,9,2),(16,9,3),(17,9,4),(18,9,1),(19,18,1),(20,18,2),(21,18,5),(22,1,2),(23,1,1),(24,1,3),(25,8,1),(26,25,2),(27,25,3),(28,27,5),(29,27,4),(30,27,2),(31,29,4),(32,29,3),(33,29,1),(37,30,1),(38,30,4),(39,30,2),(40,32,1),(41,32,2),(42,33,1),(43,34,5),(44,35,2),(45,36,4),(46,36,1),(47,37,5),(48,37,3),(49,38,1),(50,38,2),(51,38,3),(52,39,2),(53,40,2),(54,40,1),(55,40,5),(56,41,2),(57,42,4),(58,43,4),(59,44,1),(60,45,2),(61,45,1),(62,45,3),(63,45,4),(64,45,5);
+/*!40000 ALTER TABLE `alojamientoservicios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -48,4 +34,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-24 21:05:28
+-- Dump completed on 2024-06-23 23:16:45
