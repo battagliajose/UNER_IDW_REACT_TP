@@ -6,8 +6,9 @@ import HeartTransp from "../assets/tarjetas/heart-transp.png";
 import HeartFull from "../assets/tarjetas/heart-Full.png";
 import bath from "../assets/tarjetas/banera.png";
 import dorm from "../assets/tarjetas/dormitorio.png";
+import ubicacionIcon from "../assets/tarjetas/ubicacion.svg"
 
-function Tarjeta({ alojamiento: {PrecioPorDia, CantidadDormitorios, CantidadBanios, Titulo, Descripcion, Estado}, image, serviciosAlojamiento }) {
+function Tarjeta({ alojamiento: {PrecioPorDia, CantidadDormitorios, CantidadBanios, Titulo, Descripcion, Estado, Latitud, Longitud}, image, serviciosAlojamiento }) {
   const [like, setLike] = useState(false);
 
   const serviciosAlojamientoConValor = serviciosAlojamiento && serviciosAlojamiento.length > 0 
@@ -20,6 +21,9 @@ function Tarjeta({ alojamiento: {PrecioPorDia, CantidadDormitorios, CantidadBani
         <img src={image} alt="tarjeta" />
         <div className="tarjetafavoriteIcon" onClick={(e) => setLike(!like)}>
           <img src={like ? HeartFull : HeartTransp} alt="favorito" />
+        </div>
+        <div className="tarjetaUbicacionIcon" onClick={(e) =>  window.open(`https://www.google.com/maps/search/?api=1&query=${Latitud},${Longitud}&zoom=20`, '_blank')}>
+          <img src={ubicacionIcon} alt="ubicacion" />
         </div>
         <p className="tarjetaPrecioDia">${PrecioPorDia}</p>
         <p className="tarjetaEstado">{Estado}</p>  
