@@ -314,6 +314,7 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTi
                     <div className='modal__botones'>
                         <Button className='btn btn-danger button-cancelar' onClick={handleClose}>Cancelar</Button>
                         <Button className='btn btn-danger button-aceptar' type="submit">Aceptar</Button>
+                        {actualizando && <div className='modal__botones'><p>Actualizando...</p></div>}
                       </div>
                     <Form.Control.Feedback type="invalid">Debe llenar este campo</Form.Control.Feedback>
                   </InputGroup>
