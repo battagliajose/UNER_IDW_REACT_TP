@@ -5,7 +5,7 @@ import * as API from '../API';
 import '../../../styles/modales.css';
 import ChecksServicios from './ChecksServicios';
 
-function ModalAlojamientos({ show, handleClose, fetchDatos, alojamientos, item, imagen, dataTipos, dataServicios, deleteImageHandle, selectedServicios }) {
+function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTipos, dataServicios, deleteImageHandle, selectedServicios }) {
   const [validated, setValidated] = useState(false);
   const [snack, setSnack] = useState(false);
 
@@ -28,6 +28,9 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, alojamientos, item, 
   const [arrayServAloj, setArrayServAloj] = useState();
 
   const [idAlojNuevo, setIdAlojNuevo] = useState();
+
+  const [FlagEliminarImgAnterior, setFlagEliminarImgAnterior] = useState();
+  const [actualizando, setActualizando] = useState(false);
 
   var create = false;
 
@@ -63,23 +66,25 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, alojamientos, item, 
     } else {
       setValidated(true);
       event.preventDefault();
+      setActualizando(true);
       await submitItem();
-      //handleImageUpload();
-      //updateServicios();
+      await fetchDatos();
       handleClose();
-      fetchDatos();
       setValidated(false);
+      setActualizando(false);
     }
   };
 
   useEffect(() => {
+    if (idAlojNuevo) {
       updateServicios();
       handleImageUpload();
+    }
   }, [idAlojNuevo]);
   
 
   const updateServicios = async () => {
-    selectedServicios.map( (servicio) => {
+    await selectedServicios.map( (servicio) => {
       const response =  API.deleteItem("http://localhost:3001/alojamientosServicios/deleteAlojamientoServicio/", servicio.idAlojamientoServicio)
     })
 
@@ -92,7 +97,7 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, alojamientos, item, 
     }
 
     if(arrayServAloj) {
-    arrayServAloj.map ( (servicio) => {
+    await arrayServAloj.map ( (servicio) => {
       const submitServicioAloj = {
         "idAlojamiento": idAlojServicios,
         "idServicio": servicio
@@ -129,13 +134,12 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, alojamientos, item, 
         }
       } else {
         response = await API.updateItem(submitItem, "http://localhost:3001/alojamiento/putAlojamiento/", submitItem.idAlojamiento);
-        console.log(submitItem);
-        updateServicios();
-        handleImageUpload();
+        await updateServicios();
+        await handleImageUpload();
       }
 
       if (response.ok) {
-        fetchDatos();
+        await fetchDatos();
         setSnack(true);
         setTimeout(() => {
           setSnack(false);
@@ -156,50 +160,55 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, alojamientos, item, 
     const file = e.target.files[0];
     setImgAloj(URL.createObjectURL(file));
     setImgFile(file);
+    setFlagEliminarImgAnterior(true);
   }
 
   const handleImageUpload = async () => {
 
-    deleteImageHandle(item.ID);
-
-    if(imgFile) {
-      const formData = new FormData();
-      formData.append('image', imgFile);
-
-      try {
-        const response = await fetch('https://api.imgbb.com/1/upload?key=8ae73ed418d9c5b532e34d98e047fd64', {
-          method: 'POST',
-          body: formData,
-        });
-
-        if (!response.ok) {
-          throw new Error('Upload failed');
-        }
-
-        const data = await response.json();
-        
-        let idImagenAloj = "";
-        if (!item.ID) {
-          idImagenAloj = idAlojNuevo;
-        }
-        else {
-          idImagenAloj = item.ID;
-        }
-        const submitItem = {
-          "idAlojamiento": idImagenAloj,
-          "RutaArchivo": data.data.url
-        }
-
-        API.createItem(submitItem, 'http://localhost:3001/imagen/createImagen');
-      } catch (error) {
-        console.error('Error uploading image:', error);
-      }
+    if (FlagEliminarImgAnterior) 
+    {
+      deleteImageHandle(item.ID);
     }
+    
+      if(imgFile) {
+        const formData = new FormData();
+        formData.append('image', imgFile);
+
+        try {
+          const response = await fetch('https://api.imgbb.com/1/upload?key=8ae73ed418d9c5b532e34d98e047fd64', {
+            method: 'POST',
+            body: formData,
+          });
+
+          if (!response.ok) {
+            throw new Error('Upload failed');
+          }
+
+          const data = await response.json();
+          
+          let idImagenAloj = "";
+          if (!item.ID) {
+            idImagenAloj = idAlojNuevo;
+          }
+          else {
+            idImagenAloj = item.ID;
+          }
+          const submitItem = {
+            "idAlojamiento": idImagenAloj,
+            "RutaArchivo": data.data.url
+          }
+
+          API.createItem(submitItem, 'http://localhost:3001/imagen/createImagen');
+        } catch (error) {
+          
+        }
+      }
+    
   };
   
   return (
     <>
-      <Modal className='modal-lg modal-blur' show={show} onHide={handleClose} aria-labelledby="contained-modal-title-vcenter" centered>
+<Modal className='modal-lg modal-blur' show={show} onHide={handleClose} aria-labelledby="contained-modal-title-vcenter" centered>
         <Modal.Body className='form-modal'>
           <p>Alojamientos</p>
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
@@ -301,12 +310,19 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, alojamientos, item, 
                           <option value="Reservado">Reservado</option>
                         </Form.Select>
                       </div>                      
+
+                    </div>
+                    <div className='modal__botones'>
+                      <Button className='btn btn-danger button-cancelar' onClick={handleClose}>Cancelar</Button>
+                      <Button className='btn btn-danger button-aceptar' type="submit">Aceptar</Button>
+
                     </div>
                     <div className='modal__botones'>
                         <Button className='btn btn-danger button-cancelar' onClick={handleClose}>Cancelar</Button>
                         <Button className='btn btn-danger button-aceptar' type="submit">Aceptar</Button>
                       </div>
                     <Form.Control.Feedback type="invalid">Debe llenar este campo</Form.Control.Feedback>
+                    {actualizando && <div className='modal__botones'><p>Actualizando...</p></div>}
                   </InputGroup>
                 </Form.Group>
               </div>

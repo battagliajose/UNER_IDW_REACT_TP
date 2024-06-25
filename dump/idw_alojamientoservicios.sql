@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: idw
 -- ------------------------------------------------------
--- Server version	8.0.37
+-- Server version	8.4.0
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -31,7 +31,7 @@ CREATE TABLE `alojamientoservicios` (
   KEY `idServicio` (`idServicio`),
   CONSTRAINT `alojamientoservicios_ibfk_1` FOREIGN KEY (`idAlojamiento`) REFERENCES `alojamientos` (`idAlojamiento`),
   CONSTRAINT `alojamientoservicios_ibfk_2` FOREIGN KEY (`idServicio`) REFERENCES `servicios` (`idServicio`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +40,7 @@ CREATE TABLE `alojamientoservicios` (
 
 LOCK TABLES `alojamientoservicios` WRITE;
 /*!40000 ALTER TABLE `alojamientoservicios` DISABLE KEYS */;
+INSERT INTO `alojamientoservicios` VALUES (13,10,2),(14,10,1),(15,9,2),(16,9,3),(17,9,4),(18,9,1),(19,18,1),(20,18,2),(21,18,5),(22,1,2),(23,1,1),(24,1,3),(25,8,1),(26,25,2),(27,25,3),(28,27,5),(29,27,4),(30,27,2),(31,29,4),(32,29,3),(33,29,1),(37,30,1),(38,30,4),(39,30,2),(40,32,1),(41,32,2),(42,33,1),(43,34,5),(44,35,2),(45,36,4),(46,36,1),(47,37,5),(48,37,3),(49,38,1),(50,38,2),(51,38,3),(52,39,2),(53,40,2),(54,40,1),(55,40,5),(56,41,2),(57,42,4),(58,43,4),(59,44,1),(60,45,2),(61,45,1),(62,45,3),(63,45,4),(64,45,5);
 /*!40000 ALTER TABLE `alojamientoservicios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-19 10:20:00
+-- Dump completed on 2024-06-24 21:05:29

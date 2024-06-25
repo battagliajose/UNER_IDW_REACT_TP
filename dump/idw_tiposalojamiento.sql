@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: idw
 -- ------------------------------------------------------
--- Server version	8.0.37
+-- Server version	8.4.0
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -26,7 +26,7 @@ CREATE TABLE `tiposalojamiento` (
   `idTipoAlojamiento` int NOT NULL AUTO_INCREMENT,
   `Descripcion` varchar(255) NOT NULL,
   PRIMARY KEY (`idTipoAlojamiento`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,7 +35,7 @@ CREATE TABLE `tiposalojamiento` (
 
 LOCK TABLES `tiposalojamiento` WRITE;
 /*!40000 ALTER TABLE `tiposalojamiento` DISABLE KEYS */;
-INSERT INTO `tiposalojamiento` VALUES (1,'Casa grande'),(2,'Departamento'),(3,'Cabaña'),(4,'Apartamento');
+INSERT INTO `tiposalojamiento` VALUES (1,'Casa'),(2,'Departamento'),(3,'Cabaña'),(4,'Hotel');
 /*!40000 ALTER TABLE `tiposalojamiento` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -48,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-19 10:19:59
+-- Dump completed on 2024-06-24 21:05:29

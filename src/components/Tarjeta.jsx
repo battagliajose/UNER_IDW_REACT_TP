@@ -1,21 +1,33 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'react-bootstrap';
 
 import HeartTransp from "../assets/tarjetas/heart-transp.png";
 import HeartFull from "../assets/tarjetas/heart-Full.png";
 import bath from "../assets/tarjetas/banera.png";
 import dorm from "../assets/tarjetas/dormitorio.png";
+import ubicacionIcon from "../assets/tarjetas/ubicacion.svg"
 
-function Tarjeta({ alojamiento: {imagen, PrecioPorDia, CantidadDormitorios, CantidadBanios, Titulo, Descripcion, oferta}, image}) {
+function Tarjeta({ alojamiento: {PrecioPorDia, CantidadDormitorios, CantidadBanios, Titulo, Descripcion, Estado, Latitud, Longitud}, image, serviciosAlojamiento }) {
   const [like, setLike] = useState(false);
+
+  const serviciosAlojamientoConValor = serviciosAlojamiento && serviciosAlojamiento.length > 0 
+  ? serviciosAlojamiento 
+  : ["No dispone de servicios adicionales"];
 
   return (
     <div className="tarjeta">
-      <img src={image} alt="tarjeta" />
-      <div className="tarjetafavoriteIcon" onClick={(e) => setLike(!like)}>
-        <img src={like ? HeartFull : HeartTransp} alt="favorito" />
+      <div className="tarjetaImageContainer">
+        <img src={image} alt="tarjeta" />
+        <div className="tarjetafavoriteIcon" onClick={(e) => setLike(!like)}>
+          <img src={like ? HeartFull : HeartTransp} alt="favorito" />
+        </div>
+        <div className="tarjetaUbicacionIcon" onClick={(e) =>  window.open(`https://www.google.com/maps/search/?api=1&query=${Latitud},${Longitud}&zoom=20`, '_blank')}>
+          <img src={ubicacionIcon} alt="ubicacion" />
+        </div>
+        <p className="tarjetaPrecioDia">${PrecioPorDia}</p>
+        <p className="tarjetaEstado">{Estado}</p>  
       </div>
-      <p className="tarjetaPrecioDia">${PrecioPorDia}</p>
       <div className="tarjetaInfoIcons">
         <img src={dorm} alt="Dormitorios" />
         <p>{CantidadDormitorios}</p>
@@ -26,8 +38,22 @@ function Tarjeta({ alojamiento: {imagen, PrecioPorDia, CantidadDormitorios, Cant
         <h4 className="tarjetaTitulo">{Titulo}</h4>
         <p className="tarjetaDescripcion">{Descripcion}</p>
         <div className="tarjetaPie">
-          <p className="tarjetaPieOferta">Oferta! {oferta}</p>
-          <Link className="tarjetaPieBoton" to="/">
+        
+          <Dropdown >
+            <DropdownToggle className="btn btn-dark" caret>
+              Servicios
+            </DropdownToggle>
+            <DropdownMenu>
+              {serviciosAlojamientoConValor.map((servicio, index) => (
+                <DropdownItem key={index}>
+                  {servicio}
+                </DropdownItem>
+              ))}
+            </DropdownMenu>
+          </Dropdown>
+                          
+          <p className="tarjetaPieOferta"></p>
+          <Link className="btn btn-danger" to="/contacto">
             ¡Reserva Ya!
           </Link>
         </div>

@@ -41,7 +41,7 @@ function Portada({ setSelectedTipo, setSelectedDormitorios,setbtnBuscarHome}) {
     };
 
     fetchTiposAlojamiento();
-   console.log("los datos de tipos alojamient", tipoAlojamiento);
+   
   }, []);
 
   return (
@@ -64,8 +64,6 @@ function Portada({ setSelectedTipo, setSelectedDormitorios,setbtnBuscarHome}) {
             {tipoAloj.Descripcion}
             </option>
   ))}
-
-
           </Form.Select>
           <Form.Select
             className="inputPortada"

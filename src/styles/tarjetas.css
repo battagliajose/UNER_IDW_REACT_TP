@@ -14,7 +14,7 @@
     max-width: 18vw;
     background-color: #E9E0B4;
     position: relative;
-    padding-bottom: 8vh;
+    padding-bottom: 19vh;
 }
 
 .tarjeta:hover {
@@ -24,13 +24,19 @@
     max-width: 18vw;
     background-color: #E9E0B4;
     position: relative;
-    padding-bottom: 8vh;
+    padding-bottom: 19vh;
     cursor: pointer;
 }
 
 .tarjeta img {
     width: 100%;
+    height: 100%;
     border-radius: 5px 5px 0 0;
+}
+
+.tarjetaImageContainer {
+    position: relative;
+    height: 60%;
 }
 
 .tarjetafavoriteIcon {
@@ -59,17 +65,57 @@
     transition: width 0.3s ease, height 0.3s ease;
 }
 
-.tarjetaPrecioDia {
+.tarjetaUbicacionIcon {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(255, 255, 255, 0.60);
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    width: 2vw;
+    height: 2vw;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    min-width: 30px;
+    min-height: 30px;
+}
+
+.tarjetaUbicacionIcon img {
+    width: 100%;
+    height: 100%;
+    filter: invert(100%);
+}
+
+.tarjetaUbicacionIcon:hover {
+    width: 2.5vw;
+    height: 2.5vw;
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.tarjetaPrecioDia,
+.tarjetaEstado {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: 800;
     border-radius: 10px;
     position: absolute;
     padding: 5px 15px;
+}
+
+.tarjetaPrecioDia {
+    background-color: rgba(255, 255, 255, 0.60);
     top: 10px;
     left: 10px;
+    min-width: 30px;
+    min-height: 30px;
+}
+
+.tarjetaEstado {
+    background-color: rgba(68, 68, 68, 0.6);
+    color: white;
+    bottom: 10px;
+    right: 10px;
     min-width: 30px;
     min-height: 30px;
 }
@@ -90,6 +136,7 @@
     font-size: 1rem;
     font-weight: 500;
     letter-spacing: 0.01vw;
+
 }
 
 .tarjetaPie {
@@ -130,9 +177,11 @@
     padding: 10px;
     align-items: center;
     width: fit-content;
+    
 }
 
 .tarjetaInfoIcons img {
     width: 1vw;
     margin: 5px;
+    min-width: 15px;
 }
