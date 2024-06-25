@@ -310,11 +310,17 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTi
                           <option value="Reservado">Reservado</option>
                         </Form.Select>
                       </div>                      
+
                     </div>
                     <div className='modal__botones'>
                       <Button className='btn btn-danger button-cancelar' onClick={handleClose}>Cancelar</Button>
                       <Button className='btn btn-danger button-aceptar' type="submit">Aceptar</Button>
+
                     </div>
+                    <div className='modal__botones'>
+                        <Button className='btn btn-danger button-cancelar' onClick={handleClose}>Cancelar</Button>
+                        <Button className='btn btn-danger button-aceptar' type="submit">Aceptar</Button>
+                      </div>
                     <Form.Control.Feedback type="invalid">Debe llenar este campo</Form.Control.Feedback>
                     {actualizando && <div className='modal__botones'><p>Actualizando...</p></div>}
                   </InputGroup>
