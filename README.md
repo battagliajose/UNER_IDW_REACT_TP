@@ -47,7 +47,13 @@ interactuar con la api.
 Se movio toda la logica de conexion a este archivo y desde los componentes solo nos encargamos de usar los metodos y recibir lo
 retornado pasando por parametros los endpoint expuestos.
 
+## Esquema de cards de alojamientos
+Presentamos un detalle de la información que muestran los cards de los alojamientos
+<img src="public/IDW - Esquema Cards Aloj.png">Esquema</img>
+
 ## Diagrama de Interacciones
-A continuacion mostramos un diagrama del CRUD Alojamientos que resulto ser el más complejo</p>
+A continuacion mostramos un diagrama del CRUD Alojamientos que resulto ser el más complejo
 <img src="public/IDW - Diagrama CRUD Aloj.png">Diagrama</img>
+
+
 
