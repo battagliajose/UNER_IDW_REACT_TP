@@ -16,23 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `imagenes`
---
-
-DROP TABLE IF EXISTS `imagenes`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `imagenes` (
-  `idImagen` int NOT NULL AUTO_INCREMENT,
-  `idAlojamiento` int DEFAULT NULL,
-  `RutaArchivo` varchar(255) NOT NULL,
-  PRIMARY KEY (`idImagen`),
-  KEY `idAlojamiento` (`idAlojamiento`),
-  CONSTRAINT `imagenes_ibfk_1` FOREIGN KEY (`idAlojamiento`) REFERENCES `alojamientos` (`idAlojamiento`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `imagenes`
 --
 
@@ -51,4 +34,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-24 21:05:29
+-- Dump completed on 2024-06-23 23:16:45

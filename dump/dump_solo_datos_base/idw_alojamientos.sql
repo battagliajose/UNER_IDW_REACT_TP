@@ -16,30 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `alojamientos`
---
-
-DROP TABLE IF EXISTS `alojamientos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `alojamientos` (
-  `idAlojamiento` int NOT NULL AUTO_INCREMENT,
-  `Titulo` varchar(255) NOT NULL,
-  `Descripcion` text,
-  `Latitud` decimal(10,8) NOT NULL,
-  `Longitud` decimal(11,8) NOT NULL,
-  `PrecioPorDia` decimal(10,2) NOT NULL,
-  `CantidadDormitorios` int NOT NULL,
-  `CantidadBanios` int NOT NULL,
-  `Estado` enum('Disponible','Reservado') NOT NULL,
-  `idTipoAlojamiento` int DEFAULT NULL,
-  PRIMARY KEY (`idAlojamiento`),
-  KEY `idTipoAlojamiento` (`idTipoAlojamiento`),
-  CONSTRAINT `alojamientos_ibfk_1` FOREIGN KEY (`idTipoAlojamiento`) REFERENCES `tiposalojamiento` (`idTipoAlojamiento`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `alojamientos`
 --
 
@@ -58,4 +34,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-24 21:05:29
+-- Dump completed on 2024-06-23 23:16:45
