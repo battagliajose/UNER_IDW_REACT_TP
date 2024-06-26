@@ -134,7 +134,7 @@ function CrudAlojamientos() {
     const deleteServicios = async (id) => {
       const serviciosAlojActual = serviciosAloj.filter(servicio => servicio.idAlojamiento === id)
 
-      serviciosAlojActual.map( (servicio) => {
+      await serviciosAlojActual.map( (servicio) => {
         const response =  API.deleteItem("http://localhost:3001/alojamientosServicios/deleteAlojamientoServicio/", servicio.idAlojamientoServicio)
       })
     };
@@ -142,7 +142,9 @@ function CrudAlojamientos() {
     const deleteAlojamiento = async (id) => {
         await deleteImageHandle(id);
         await deleteServicios(id);
-        await API.deleteItem("http://localhost:3001/alojamiento/deleteAlojamiento/", id);
+        setTimeout(() => {
+          API.deleteItem("http://localhost:3001/alojamiento/deleteAlojamiento/", id);
+        }, 1000);
         setSnack(true);
         setTimeout(() => {
             setSnack(false);
