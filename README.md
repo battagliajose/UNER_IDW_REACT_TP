@@ -15,6 +15,9 @@
 
 Este proyecto consistió en la migración de todas las páginas y secciones a componentes de React, además de la implementación de un CRUD para Alojamientos, Servicios y Tipos de Alojamientos. A continuación, se detallan los principales aspectos y funcionalidades desarrolladas:
 
+## Link al video de presentación:
+[Video en Youtube](https://www.youtube.com/watch?v=7AiEdkykkW0)
+
 ### Funcionalidades:
 - **Migración a React:** Todas las páginas y secciones fueron migradas a componentes de React.
 - **CRUD de Alojamientos, Servicios y Tipos de Alojamientos:** Se creó una sección de administración para gestionar estos elementos utilizando modales para la entrada de datos.
