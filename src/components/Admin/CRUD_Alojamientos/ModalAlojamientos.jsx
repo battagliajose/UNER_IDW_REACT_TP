@@ -85,7 +85,7 @@ function ModalAlojamientos({ show, handleClose, fetchDatos, item, imagen, dataTi
 
   const updateServicios = async () => {
     await selectedServicios.map( (servicio) => {
-      return response =  API.deleteItem("http://localhost:3001/alojamientosServicios/deleteAlojamientoServicio/", servicio.idAlojamientoServicio)
+      const response =  API.deleteItem("http://localhost:3001/alojamientosServicios/deleteAlojamientoServicio/", servicio.idAlojamientoServicio)
     })
 
     let idAlojServicios = "";

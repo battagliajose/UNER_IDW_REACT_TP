@@ -99,7 +99,7 @@ function CrudAlojamientos() {
     const deleteImageHandle = async(id) => {
         const imgAEliminar = imagenes.find(imagen => imagen.idAlojamiento === id); // Se elimina imagen por clave foranea
         if (imgAEliminar) {
-         await API.deleteItem("http://localhost:3001/imagen/deleteImagen/", imgAEliminar.idImagen)
+         const response = await API.deleteItem("http://localhost:3001/imagen/deleteImagen/", imgAEliminar.idImagen)
         }
     }
 
@@ -135,7 +135,7 @@ function CrudAlojamientos() {
       const serviciosAlojActual = serviciosAloj.filter(servicio => servicio.idAlojamiento === id)
 
       await serviciosAlojActual.map( (servicio) => {
-        return response =  API.deleteItem("http://localhost:3001/alojamientosServicios/deleteAlojamientoServicio/", servicio.idAlojamientoServicio)
+        const response =  API.deleteItem("http://localhost:3001/alojamientosServicios/deleteAlojamientoServicio/", servicio.idAlojamientoServicio)
       })
     };
 
@@ -155,7 +155,7 @@ function CrudAlojamientos() {
     useEffect(() => {
       // Obtener datos cuando el componente se monta
       fetchData();      
-    });
+    }, []);
 
     return (
         <div className="admin">
