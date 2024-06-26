@@ -9,19 +9,16 @@ function Portada({ setSelectedTipo, setSelectedDormitorios,setbtnBuscarHome}) {
   const [tipoAlojamiento,setTipoAlojamiento]=useState([])
   const [tipo, setTipo] = useState("");
   const [dormitorios, setDormitorios] = useState("");  
-  const [btnBuscar, setbtnBuscar] = useState(false);
 
   const handleTipoChange = (e) => {
     const selectedIdTipo = e.target.options[e.target.selectedIndex].value;
     setTipo(selectedIdTipo);
     setSelectedTipo(selectedIdTipo);
-    setbtnBuscar(false);
   };
 
   const handleDormitoriosChange = (e) => {
     setDormitorios(e.target.value);
     setSelectedDormitorios(e.target.value);
-    setbtnBuscar(false);
   };
 
   const handleButtonClick = () => {

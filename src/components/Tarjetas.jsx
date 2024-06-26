@@ -42,7 +42,6 @@ function Tarjetas({selectedTipo,selectedDormitorios,btnBuscar}) {
           setImages(images);
           setServicios(servicios);
           setServiciosAlojamientos(serviciosAloj);
-          console.log(serviciosAloj);
     };
 
     fetchCards();
